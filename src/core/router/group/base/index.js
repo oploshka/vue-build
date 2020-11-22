@@ -2,6 +2,6 @@ export default [
   {
     path: '/',
     name: 'front',
-    component: () => import('@/page/logic/front.vue'),
+    component: () => import('@/page/Front.vue'),
   },
-]
+];

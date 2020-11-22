@@ -1,13 +1,16 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
-Vue.use(VueRouter);
 
 import routeDefault     from './group/base/index';
-import routeTestVueMap  from './group/test/vueMap.js';
+import routeSystem      from './group/system/index';
+import routeTest        from './group/test/index'; // TODO: use for develop
+
+Vue.use(VueRouter);
 
 let routeList = [
   routeDefault,
-  routeTestVueMap,
+  routeSystem,
+  routeTest,
 ];
 
 const routes = [];
@@ -20,7 +23,15 @@ for(let i = 0; i < routeList.length; i++){
 const router = new VueRouter({
   mode: 'history',
   base: process.env.BASE_URL,
-  routes
+  routes,
+  scrollBehavior(to, from, savedPosition) {
+    if (savedPosition) {
+      return savedPosition;
+    } else {
+      // document.getElementById('app').scrollTo(0, 0);
+      return { x: 0, y: 0 };
+    }
+  }
 });
 
 export default router;
