@@ -1,3 +1,4 @@
-export const SERVER_TYPE_LOCAL        = 'SERVER_TYPE_LOCAL';
-export const SERVER_TYPE_DEVELOP      = 'SERVER_TYPE_DEVELOP';
-export const SERVER_TYPE_PRODUCTION   = 'SERVER_TYPE_PRODUCTION';
+import Vue from 'vue';
+import * as $enum from '@enum/variable';
+
+Vue.prototype.$ENUM = $enum;

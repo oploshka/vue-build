@@ -23,7 +23,7 @@ export default {
         // if (!newLayout) { this.layoutName = this.layout || 'default'; return; }
         // this.layoutName = newLayout;
         //
-        this.layoutName = newLayout ?? 'default';
+        this.layoutName = newLayout ? newLayout.toLowerCase() : 'default';
       }
     }
   },
@@ -31,7 +31,7 @@ export default {
     currentLayout () {
       if (!this.layoutName) return;
       const ln = this.layoutName;
-      return () => import(/* webpackChunkName: "layout-[request]" */ `@/core/layout/template/${ln}.vue`);
+      return () => import(/* webpackChunkName: "layout-[request]" */ `@layout/template/${ln}.vue`);
     }
   }
 };
