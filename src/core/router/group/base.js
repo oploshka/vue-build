@@ -1,23 +1,31 @@
 import * as pageName from '@router/variable';
 
 export default [
-  // home
   {
     path: "/",
     name: pageName.HOME,
-    component: () => import('@pages/Base/Home'),
+    component: () => import('@page/Base/Home'),
     meta: {
       layout: 'DEFAULT',
       auth: 'NOT_AUTH',
     },
   },
-  // {
-  //   path: "/dashboard",
-  //   name: pageName.DASHBOARD,
-  //   component: () => import('@pages/Base/Dashboard'),
-  //   meta: {
-  //     layout: 'DEFAULT-AUTH',
-  //     auth: 'AUTH',
-  //   },
-  // },
+  {
+    path: "/about",
+    name: pageName.ABOUT,
+    component: () => import('@page/Base/About'),
+    meta: {
+      layout: 'DEFAULT',
+      auth: 'NOT_AUTH',
+    },
+  },
+  {
+    path: "/contact",
+    name: pageName.CONTACT,
+    component: () => import('@page/Base/Contact'),
+    meta: {
+      layout: 'DEFAULT',
+      auth: 'NOT_AUTH',
+    },
+  }
 ];

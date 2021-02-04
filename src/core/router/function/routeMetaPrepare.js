@@ -1,15 +1,15 @@
 import $store from "@store/index";
-import * as pageName from "@router/variable"
+import * as pageName from "@router/variable";
 
 // проверка авторизованности пользователя
 export const ifAuthenticated = (to, from, next) => {
   if ($store.getters.isAuth) {
 
-    let tokenInfo = $store.getters.getTokenInfo;
-    if (tokenInfo.resetedPassword) {
-      next({ name: pageName.TEMP_PASSWORD_RESET });
-      return;
-    }
+    // let tokenInfo = $store.getters.getTokenInfo;
+    // if (tokenInfo.resetedPassword) {
+    //   next({ name: pageName.TEMP_PASSWORD_RESET });
+    //   return;
+    // }
 
     next();
     return;
@@ -22,7 +22,7 @@ export const ifNotAuthenticated = (to, from, next) => {
     next();
     return;
   }
-  next({ name: pageName.DASHBOARD });
+  next({ name: pageName.HOME });
 };
 
 export const ifPagePasswordReset = (to, from, next) => {
@@ -60,7 +60,7 @@ export const routeMetaPrepare = (routeInfo) => {
   }
 
   if( !meta.layout ){
-    meta.layout = 'DEFAULT'
+    meta.layout = 'DEFAULT';
   }
 
   const children = routeInfo.children || [];
@@ -70,4 +70,4 @@ export const routeMetaPrepare = (routeInfo) => {
 
   routeInfo.meta = meta;
   return routeInfo;
-}
+};

@@ -28,8 +28,8 @@ const alias = {
   '@store'          : path.join(__dirname, './src/core/store'       ),
 
   // base
-  '@pages'          : path.join(__dirname, './src/page'             ),
-  '@components'     : path.join(__dirname, './src/component'        ),
+  '@page'           : path.join(__dirname, './src/page'             ),
+  '@component'      : path.join(__dirname, './src/component'        ),
   '@'               : path.join(__dirname, './src'                  ),
 
   // test

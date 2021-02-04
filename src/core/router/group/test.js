@@ -8,7 +8,7 @@ export default [
       {
         path: '',
         name: 'test',
-        component: () => import('@pages/Test/Test'),
+        component: () => import('@page/Test/Test'),
         meta: {
           permission: {
             [roleName.ROLE_ANONYMOUS] : true,

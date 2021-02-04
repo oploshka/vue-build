@@ -1,6 +1,7 @@
 <template>
   <div>
-    <component :is="currentLayout" id="app" :class="getGridClass"/>
+<!--    // :class="getGridClass"-->
+    <component :is="currentLayout" id="app" />
   </div>
 </template>
 

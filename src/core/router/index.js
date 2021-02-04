@@ -1,22 +1,25 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
+import * as $routeName from '@router/variable';
+import {routeMetaPrepare} from '@router/function/routeMetaPrepare';
+
+Vue.prototype.$routeName = $routeName;
+Vue.use(VueRouter);
 
 import routeDefault     from './group/base';
-// import routeSystem      from './group/system';
-// import routeTest        from './group/test'; // TODO: use for develop
-
-Vue.use(VueRouter);
+import routeSystem      from './group/system';
+import routeTest        from './group/test'; // TODO: use for develop
 
 let routeList = [
   routeDefault,
-  // routeSystem,
-  // routeTest,
+  routeSystem,
+  routeTest,
 ];
 
 const routes = [];
 for(let i = 0; i < routeList.length; i++){
   for(let j = 0; j < routeList[i].length; j++){
-    routes.push(routeList[i][j]);
+    routes.push( routeMetaPrepare(routeList[i][j]) );
   }
 }
 
