@@ -18,7 +18,7 @@ const alias = {
   '@entity'         : path.join(__dirname, './src/core/entity'      ),
   '@enum'           : path.join(__dirname, './src/core/enum'        ),
   '@filter'         : path.join(__dirname, './src/core/filter'      ),
-  '@layouts'        : path.join(__dirname, './src/core/layouts'     ),
+  '@layout'         : path.join(__dirname, './src/core/layout'      ),
   '@library'        : path.join(__dirname, './src/core/library'     ),
   '@middleware'     : path.join(__dirname, './src/core/middleware'  ),
   '@permission'     : path.join(__dirname, './src/core/permission'  ),
