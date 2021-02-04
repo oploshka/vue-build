@@ -1,29 +1,36 @@
 import Vue from 'vue';
 
+// глобально инитим классы
+import '@enum';
+import '@entity';
+
+// глобально инитим константу CONST
+import '@/core/constGlobal.js';
+
 // Library
-import '@/core/library/dayjs';
+import '@library/dayjs';
 
-import '@/core/enum';
-import '@/core/entity';         // глобально инитим классы
-import '@/core/constGlobal.js'; // глобально инитим константу CONST
-
-import '@/services/request/RequestManagerGlobal'; // глобальный реквест менеджер
+// глобальный реквест менеджер
+import '@services/RequestManager';
 
 // дефолтный импорт
-import App    from '@/core/layout';
-import router from '@/core/router';
-import store  from '@/core/store';
+import App    from '@layout';
+import store  from '@store';
+import router from '@router';
 
-// Filter
+// filter
 import '@/core/filter';
 
 // Plugins
-import '@/core/plugin/bootstrap-vue';
-import '@/core/plugin/v-slim-dialog';
-import '@/core/plugin/vue-js-modal';
-import '@/core/plugin/element-ui';
-import '@/core/plugin/vue-suggestion';
-import '@/core/plugin/vue-click-outside';
+// import '@plugin/bootstrap-vue';
+// import '@plugin/v-slim-dialog';
+// import '@plugin/vue-js-modal';
+// import '@plugin/element-ui';
+// import '@plugin/vue-suggestion';
+// import '@plugin/vue-click-outside';
+// import '@plugins/v-mask';
+
+import '@permission/init';
 
 // глобальные стили
 import '@style/init.scss';
@@ -34,5 +41,5 @@ global.Vue = Vue;
 global.VueApp = new Vue({
   router,
   store,
-  render: h => h(App)
+  render: h => h(App),
 }).$mount('#app');

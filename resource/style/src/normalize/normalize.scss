@@ -1,0 +1,45 @@
+
+html, body {padding:0;margin:0;width:100%;height:100%;}
+
+// custom
+//body{padding:15px;}
+#app{padding:0;margin:0;width:100%;height:100%; overflow-y: auto; display: flex}
+
+button,
+input {
+  &:focus {
+    outline: none;
+  }
+
+  &::-webkit-input-placeholder {
+    font-family       : var(--fve-placeholder--font-family      ) !important;
+    //font-size         : var(--fve-placeholder--font-size        ) !important;
+    font-weight       : var(--fve-placeholder--font-weight      ) !important;
+    color             : var(--fve-placeholder--font-color       ) !important;
+    line-height       : var(--fve-placeholder--line-height      ) !important;
+  }
+  &:-ms-input-placeholder      {
+    font-family       : var(--fve-placeholder--font-family      ) !important;
+    //font-size         : var(--fve-placeholder--font-size        ) !important;
+    font-weight       : var(--fve-placeholder--font-weight      ) !important;
+    color             : var(--fve-placeholder--font-color       ) !important;
+    line-height       : var(--fve-placeholder--line-height      ) !important;
+  }
+  &::-ms-input-placeholder     {
+    font-family       : var(--fve-placeholder--font-family      ) !important;
+    //font-size         : var(--fve-placeholder--font-size        ) !important;
+    font-weight       : var(--fve-placeholder--font-weight      ) !important;
+    color             : var(--fve-placeholder--font-color       ) !important;
+    line-height       : var(--fve-placeholder--line-height      ) !important;
+  }
+  &::placeholder               {
+    font-family       : var(--fve-placeholder--font-family      ) !important;
+    //font-size         : var(--fve-placeholder--font-size        ) !important;
+    font-weight       : var(--fve-placeholder--font-weight      ) !important;
+    color             : var(--fve-placeholder--font-color       ) !important;
+    line-height       : var(--fve-placeholder--line-height      ) !important;
+  }
+}
+svg {
+  outline: none;
+}

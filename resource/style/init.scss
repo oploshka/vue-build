@@ -1,7 +1,20 @@
-@import "./variable.scss";
-@import "./root.scss";
+@import "./base/variable.scss";
+@import "./base/mixins.scss";
+@import "./base/root.scss";
 
-@import "./font/default.scss";
+@import "./src/normalize/reset.scss";
+@import "./src/normalize/font.scss";
+@import "./src/normalize/normalize.scss";
 
-@import "./normalize/normalize.scss";
-@import "./normalize/grid/grid.scss";
+/*
+@import "~bootstrap/scss/bootstrap-grid.scss";
+// bootstrap container fix
+@media (min-width: 576px) and (max-width: 769px) {
+  .container, .container-sm {
+    max-width: 540px;
+  }
+}
+*/
+
+@import './src/base.scss';
+@import './src/dialog.scss';

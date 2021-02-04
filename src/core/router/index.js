@@ -1,16 +1,16 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
 
-import routeDefault     from './group/base/index';
-import routeSystem      from './group/system/index';
-import routeTest        from './group/test/index'; // TODO: use for develop
+import routeDefault     from './group/base';
+// import routeSystem      from './group/system';
+// import routeTest        from './group/test'; // TODO: use for develop
 
 Vue.use(VueRouter);
 
 let routeList = [
   routeDefault,
-  routeSystem,
-  routeTest,
+  // routeSystem,
+  // routeTest,
 ];
 
 const routes = [];
