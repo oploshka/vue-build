@@ -1,0 +1,16 @@
+{
+  "name": "cypress_test",
+  "version": "1.0.0",
+  "description": "visual test",
+  "main": "index.js",
+  "scripts": {
+    "test": "cypress open",
+    "cypress:open": "cypress open"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "cypress": "^6.3.0",
+    "eslint-plugin-cypress": "^2.11.2"
+  }
+}
