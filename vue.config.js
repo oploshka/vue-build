@@ -1,4 +1,6 @@
-const path = require("path");
+const aliasObj = require('./vue.alias');
+
+// const path = require("path");
 // const fs = require('fs');
 
 // eslint-disable-next-line no-unused-vars
@@ -8,14 +10,22 @@ function relayResponseHeaders(proxyRes, req, res) {}
 // eslint-disable-next-line no-unused-vars
 function bypassFunction(req, res, proxyOptions) {}
 
-let testDomainProtocol  = 'http';
-let testDomainName      = 'domain.t.com';
-let testDomainPort      = '8131';
+let testDomainProtocol  = process.env.DOMAIN_PROTOCOL;
+let testDomainName      = process.env.DOMAIN_NAME;
+let testDomainPort      = process.env.DOMAIN_PORT;
 let testDomainFull      = testDomainProtocol + '://' + testDomainName + ':' + testDomainPort;
 
 module.exports = {
+  "transpileDependencies": [
+    "vuetify"
+  ],
+  lintOnSave: process.env.NODE_ENV !== 'production',
+
 
   devServer: {
+    // TODO:
+    //   host: testDomainName, https: true
+
     public : testDomainName + ':' + testDomainPort,
     proxy: {
       [testDomainName + ':' + testDomainPort]: {
@@ -36,25 +46,16 @@ module.exports = {
     // },
   },
 
-  // рендерим все в папку
-  outputDir: path.resolve(__dirname, "./web"),
+  // TODO: рендерим все в папку
+  // outputDir: path.resolve(__dirname, "./web"),
   assetsDir: "./resource/",
 
   filenameHashing: true,
 
   chainWebpack: (config) => {
-    // test
-    // config.resolve.alias.set('@FormValidate' , path.join(__dirname, './src/component/FormValidate')   );
-    // добавляем свои сокращения
-    config.resolve.alias.set('@img'  , path.join(__dirname, './resource/img')   );
-    config.resolve.alias.set('@font' , path.join(__dirname, './resource/font')  );
-    config.resolve.alias.set('@style', path.join(__dirname, './resource/style') );
-    config.resolve.alias.set('@lang' , path.join(__dirname, './resource/lang')  );
-    config.resolve.alias.set('@public', path.join(__dirname, './public')  );
-    // system
-    config.resolve.alias.set('@page'      , path.join(__dirname, './src/page')        );
-    config.resolve.alias.set('@component' , path.join(__dirname, './src/component')   );
-    config.resolve.alias.set('@'          , path.join(__dirname, './src')             );
+    for (let aliasName in aliasObj) {
+      config.resolve.alias.set(aliasName , aliasObj[aliasName] );
+    }
 
     config.module
       .rule("vue")
@@ -62,13 +63,17 @@ module.exports = {
       .loader("vue-svg-inline-loader")
       .options({ /* ... */ });
   },
-  pluginOptions: {
-    'style-resources-loader': {
-      preProcessor: 'scss',
-      patterns: [
-        // Подключать только переменные, иначе стили будут дублироваться!!!
-        path.resolve(__dirname, './resource/style/variable.scss'),
-      ]
-    }
-  },
+
+  // TODO
+  // pluginOptions: {
+  //   'style-resources-loader': {
+  //     preProcessor: 'scss',
+  //     patterns: [
+  //       // Подключать только переменные scss, иначе стили будут дублироваться!!!
+  //       path.resolve(__dirname, './resource/style/variable.scss'),
+  //       path.resolve(__dirname, './resource/style/mixins.scss'),
+  //     ]
+  //   }
+  // },
+
 };
