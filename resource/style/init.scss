@@ -3,8 +3,12 @@
 @import "./base/root.scss";
 
 @import "./src/normalize/reset.scss";
-@import "./src/normalize/font.scss";
+@import "./src/normalize/normalize-box-sizing.scss";
 @import "./src/normalize/normalize.scss";
+@import "./src/normalize/normalize-fix.scss";
+
+// font
+// @import "./src/font/font.scss";
 
 /*
 @import "~bootstrap/scss/bootstrap-grid.scss";
@@ -16,5 +20,6 @@
 }
 */
 
-@import './src/base.scss';
-@import './src/dialog.scss';
+@import './src/visual/base.scss';
+@import './src/component/dialog.scss';
+

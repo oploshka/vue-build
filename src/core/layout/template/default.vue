@@ -1,19 +1,19 @@
 <template>
   <div style="display: block;">
-    <Header />
+    <HeaderSection />
     <router-view style="min-height: calc( 100vh - 160px );"/>
-    <Footer />
+    <FooterSection />
   </div>
 </template>
 
 <script>
-import Header from "@component/Part/Header";
-import Footer from "@component/Part/Footer";
+import HeaderSection from "@component/Part/HeaderSection";
+import FooterSection from "@component/Part/FooterSection";
 
 export default {
   components: {
-    Header,
-    Footer,
+    HeaderSection,
+    FooterSection,
   },
 };
 </script>
