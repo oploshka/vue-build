@@ -11,7 +11,7 @@ export default (SendRequest) => {
       // TODO: вызвать исключение
       return {};
     });
-  }
+  };
 
   return request;
 };

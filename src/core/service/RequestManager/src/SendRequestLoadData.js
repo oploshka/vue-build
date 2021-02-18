@@ -1,11 +1,11 @@
 import axios from 'axios';
 import fileDownload from 'js-file-download';
 
-import RequestManagerException from "@services/RequestManager/RequestManagerException";
+import RequestManagerException from "@service/RequestManager/RequestManagerException";
 
-import RequestTypePrepare from "@services/RequestManager/src/RequestPrepare/RequestTypePrepare";
-import RequestUrlPrepare  from "@services/RequestManager/src/RequestPrepare/RequestUrlPrepare";
-import RequestDataPrepare from "@services/RequestManager/src/RequestPrepare/RequestDataPrepare";
+import RequestTypePrepare from "@service/RequestManager/src/RequestPrepare/RequestTypePrepare";
+import RequestUrlPrepare  from "@service/RequestManager/src/RequestPrepare/RequestUrlPrepare";
+import RequestDataPrepare from "@service/RequestManager/src/RequestPrepare/RequestDataPrepare";
 
 /**
  * @param type {String}

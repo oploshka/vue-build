@@ -11,7 +11,7 @@ import '@/core/constGlobal.js';
 import '@library/dayjs';
 
 // глобальный реквест менеджер
-import '@services/RequestManager';
+import '@service/RequestManager';
 
 // дефолтный импорт
 import App    from '@layout';

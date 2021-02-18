@@ -2,10 +2,10 @@ const path = require('path');
 
 const alias = {
   // widget
-  // '@widgetFormValidate'   : path.join(__dirname, './src/components/Widget/FormValidate'),
-  // '@widgetFormGenerate'   : path.join(__dirname, './src/components/Widget/FormGenerate'),
-  // '@widgetLoader'         : path.join(__dirname, './src/components/Widget/Loader'),
-  // '@widgetPermission'     : path.join(__dirname, './src/components/Widget/Permission'),
+  // '@widgetFormValidate'   : path.join(__dirname, './src/component/Widget/FormValidate'),
+  // '@widgetFormGenerate'   : path.join(__dirname, './src/component/Widget/FormGenerate'),
+  // '@widgetLoader'         : path.join(__dirname, './src/component/Widget/Loader'),
+  // '@widgetPermission'     : path.join(__dirname, './src/component/Widget/Permission'),
 
   // resource
   '@img'            : path.join(__dirname, './resource/img'         ),
@@ -22,10 +22,13 @@ const alias = {
   '@library'        : path.join(__dirname, './src/core/library'     ),
   '@middleware'     : path.join(__dirname, './src/core/middleware'  ),
   '@permission'     : path.join(__dirname, './src/core/permission'  ),
-  '@plugins'        : path.join(__dirname, './src/core/plugins'     ),
+  '@plugin'         : path.join(__dirname, './src/core/plugin'      ),
   '@router'         : path.join(__dirname, './src/core/router'      ),
-  '@services'       : path.join(__dirname, './src/core/services'    ),
+  '@service'        : path.join(__dirname, './src/core/service'     ),
   '@store'          : path.join(__dirname, './src/core/store'       ),
+
+  // service fix
+  '@requestManager' : path.join(__dirname, './src/core/service/RequestManager/src' ),
 
   // base
   '@page'           : path.join(__dirname, './src/page'             ),
