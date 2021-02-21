@@ -2,6 +2,14 @@ import * as pageName from '@router/variable';
 
 export default [
   {
+    path: '/site-map',
+    name: 'siteMap',
+    component: () => import('@page/System/SiteMap'),
+    meta: {
+      layout: 'DEFAULT',
+    },
+  },
+  {
     path: '/404',
     name: pageName.NOT_FOUND,
     component: () => import('@page/System/NotFound'),
