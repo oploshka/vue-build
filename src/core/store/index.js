@@ -2,13 +2,13 @@ import Vue from "vue";
 import Vuex from "vuex";
 
 // modules
-import user from "./modules/user";
-import grid from "./modules/grid";
-import appClass from "./modules/appClass";
-import system from "./modules/system";
+// import user from "./modules/user";
+// import grid from "./modules/grid";
+// import appClass from "./modules/appClass";
+// import system from "./modules/system";
 
 // справочники
-import cityCollection               from "@/core/store/modules/cityCollection";
+// import cityCollection               from "@/core/store/modules/cityCollection";
 // import ConferenceTagCollection      from "@/core/store/modules/ConferenceTagCollection";
 // import ConferenceUserRoleCollection from "@/core/store/modules/ConferenceUserRoleCollection";
 
@@ -21,18 +21,15 @@ Vue.use(Vuex);
 const debug = process.env.NODE_ENV !== "production";
 
 const modules = {
-  user,
-  grid,
-  appClass,
-  system,
-
-  //
-  cityCollection,
+  // user,
+  // grid,
+  // appClass,
+  // system,
+  // //
+  // cityCollection,
   //
   // ConferenceTagCollection,
   // ConferenceUserRoleCollection,
-
-  //
 
 };
 

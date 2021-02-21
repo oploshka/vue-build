@@ -10,25 +10,26 @@
 
 <script>
 
-export default {};
+export default {
+
+};
 
 </script>
 
 <style lang="scss" scoped>
-  .page-not-found {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100%;
-    width: 100%;
-  }
+.page-not-found {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+}
 
-  .link {
-    font-size: 14px;
-    line-height: 18px;
-    -webkit-text-decoration-line: underline;
-    text-decoration-line: underline;
-    color: #F5AC1C;
-  }
-
+.link {
+  font-size: 14px;
+  line-height: 18px;
+  -webkit-text-decoration-line: underline;
+  text-decoration-line: underline;
+  color: #F5AC1C;
+}
 </style>

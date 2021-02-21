@@ -1,7 +1,23 @@
-@import "./variable.scss";
-@import "./root.scss";
+@import "./base/variable.scss";
+@import "./base/mixins.scss";
+@import "./base/root.scss";
 
-@import "./font/default.scss";
+// font
+@import "~@font/roboto/roboto.scss";
 
-@import "./normalize/normalize.scss";
-@import "./normalize/grid/grid.scss";
+//
+@import "./src/normalize/reset.scss";
+@import "./src/normalize/normalize-box-sizing.scss";
+@import "./src/normalize/normalize.scss";
+@import "./src/normalize/custom-fix.scss";
+@import "./src/normalize/grid.scss";
+
+//
+@import './src/visual/base.scss';
+@import './src/visual/reduction.scss';
+
+// theme
+// @import './src/theme/card.scss';
+
+// global component style
+@import './src/component/dialog.scss';
