@@ -2,24 +2,22 @@
 @import "./base/mixins.scss";
 @import "./base/root.scss";
 
+// font
+@import "~@font/roboto/roboto.scss";
+
+//
 @import "./src/normalize/reset.scss";
 @import "./src/normalize/normalize-box-sizing.scss";
 @import "./src/normalize/normalize.scss";
-@import "./src/normalize/normalize-fix.scss";
+@import "./src/normalize/custom-fix.scss";
+@import "./src/normalize/grid.scss";
 
-// font
-// @import "./src/font/font.scss";
-
-/*
-@import "~bootstrap/scss/bootstrap-grid.scss";
-// bootstrap container fix
-@media (min-width: 576px) and (max-width: 769px) {
-  .container, .container-sm {
-    max-width: 540px;
-  }
-}
-*/
-
+//
 @import './src/visual/base.scss';
-@import './src/component/dialog.scss';
+@import './src/visual/reduction.scss';
 
+// theme
+// @import './src/theme/card.scss';
+
+// global component style
+@import './src/component/dialog.scss';

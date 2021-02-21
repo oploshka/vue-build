@@ -25,12 +25,14 @@ export default {
 
 <style lang="scss" scoped>
 .header{
-  height: 80px;
   width: 100%;
-  background: #2C3242;
-  color: #D3D3D3;
+  background-color: #ffffff;
+  border-bottom: solid 1px rgba(160, 160, 160, 0.3);
+  color: #646464;
   a {
-    color: #D3D3D3;
+    display: inline-block;
+    padding: 15px;
+    color: #646464;
     margin-left: 5px;
   }
 }

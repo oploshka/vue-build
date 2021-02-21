@@ -9,7 +9,7 @@
 
 <script>
 
-import LoginForm from "@components/Page/Auth/LoginForm";
+import LoginForm from "@component/Page/Auth/LoginForm";
 
 export default {
   name: "Authorization",

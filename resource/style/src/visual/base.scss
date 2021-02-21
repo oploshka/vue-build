@@ -1,149 +1,18 @@
-.tmp {
-  outline: 1px dashed lightgray;
+
+html, body {
+  line-height: 1.4;
 }
 html, body, a {
   font-family: Inter, Arial, sans-serif;
   color: #15131f;
+}
+a {
+  text-decoration: none;
+  text-transform: uppercase;
 }
 html {
   overflow: hidden;
 }
 body {
   background: #F8F8FB;
-}
-
-.page {
-  padding: 30px 30px;
-
-  &__title {
-    margin: 0 0 15px 0;
-    font-size: 20px;
-  }
-}
-
-.btn-wrap {
-  width: 100%;
-  display: flex;
-  justify-content: center;
-
-  &--right {
-    justify-content: flex-end;
-  }
-
-  .pl-btn {
-    &:not(:last-child) {
-      margin-right: 20px;
-    }
-  }
-}
-.pl-btn {
-  padding: 12px 32px 11px;
-  border: 1px solid var(--color-main);
-  box-sizing: border-box;
-  border-radius: 30px;
-  color: #ffffff;
-  font-weight: bold;
-  font-size: 12px;
-  line-height: 15px;
-  text-align: center;
-  background: var(--color-main);
-  text-transform: uppercase;
-  text-decoration: none;
-  
-  &:hover {
-    transition: .5s;
-    filter: saturate(300%);
-    box-shadow: 0 0 3px 3px var(--color-main);
-  }
-
-  &--disabled {
-    background: #AEAEAE;
-    border-color: #A0A0A0;
-  }
-  &--second {
-    color: var(--color-main);
-    border-color: var(--color-main);
-    background: transparent;
-    
-    &:hover {
-      transition: .5s;
-      filter: saturate(300%);
-      box-shadow: 0 0 3px 3px var(--color-main);
-    }
-  }
-  &--third {
-    padding-right: 0;
-    padding-left: 0;
-    color: #A8A8A9;
-    border-color: transparent;
-    background: transparent;
-
-    &:hover {
-      filter: none;
-      box-shadow: none;
-    }
-  }
-
-  &:focus {
-    outline: none;
-  }
-
-}
-
-.label {
-  display: block;
-  margin-bottom: 5px;
-  font-size: 12px;
-  color: #A8A8A9;
-}
-.input {
-  width: 100%;
-  height: 45px;
-  background: #ffffff;
-  border: 1.5px solid #eeeeee;
-  box-sizing: border-box;
-  box-shadow: 0px 4px 30px 2px rgba(0, 0, 0, 0.01);
-  border-radius: 5px;
-  padding-left: 20px;
-  padding-right: 20px;
-  font-size: 14px;
-  line-height: 17px;
-  outline: none;
-}
-
-.table {
-  width: 100%;
-  text-align: center;
-  border-collapse: separate;
-  border-spacing: revert;
-
-  thead {
-    background: var(--color-main);
-    color: #ffffff;
-    font-weight: 600;
-    font-size: 16px;
-    line-height: 20px;
-  }
-
-  thead td {
-    padding: 22px 20px 45px 20px;
-    text-align: left;
-  }
-
-  tbody {
-    font-size: 16px;
-    line-height: 20px;
-    text-align: center;
-    color: #15131f;
-    background: #ffffff;
-  }
-
-  tbody td {
-    padding: 27px 28px;
-    text-align: left;
-  }
-}
-
-.scroll-wrap {
-  overflow: auto;
 }
