@@ -26,6 +26,12 @@ module.exports = {
     // TODO:
     //   host: testDomainName, https: true
 
+    // proxyTable: {},
+    // env: require('./dev.env'),
+    port: testDomainPort,
+    // assetsSubDirectory: 'static',
+    // assetsPublicPath: '/',
+    // cssSourceMap: false
     public : testDomainName + ':' + testDomainPort,
     proxy: {
       [testDomainName + ':' + testDomainPort]: {
