@@ -1,0 +1,15 @@
+{
+  "baseUrl": "http://pluspay.test:9090",
+
+  "viewportWidth": 1300,
+  "viewportHeight": 1000,
+
+  "componentFolder"   : "src/component",
+  "downloadsFolder"   : "src/downloads",
+  "fixturesFolder"    : "src/fixtures",
+  "integrationFolder" : "src/integration",
+  "pluginsFile"       : "src/plugins",
+  "screenshotsFolder" : "src/screenshots",
+  "supportFile"       : "src/support",
+  "videosFolder"      : "src/videos"
+}

@@ -1,25 +1,39 @@
 {
-  "name": "plus_pay",
+  "name": "project_name",
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "serve": "vue-cli-service serve --port 8131",
+    "serve": "vue-cli-service serve",
+    "serveOld": "vue-cli-service serve --port 9010",
+    "serveHttps": "vue-cli-service serve --port 9010 --https true",
     "build": "vue-cli-service build",
-    "lint": "vue-cli-service lint"
+    "lint": "vue-cli-service lint",
+    "test:unit": "vue-cli-service test:unit"
   },
   "dependencies": {
+    "axios": "^0.20.0",
+    "bootstrap": "^4.6.0",
     "core-js": "^3.6.5",
+    "dayjs": "^1.9.6",
+    "js-file-download": "^0.4.12",
+    "lodash": "^4.17.20",
+    "normalize.scss": "^0.1.0",
+    "v-calendar": "^1.0.8",
+    "v-mask": "^2.2.3",
+    "v-slim-dialog": "0.0.10",
     "vue": "^2.6.11",
     "vue-router": "^3.2.0",
     "vuex": "^3.4.0"
   },
   "devDependencies": {
-    "@vue/cli-plugin-babel": "~4.4.0",
-    "@vue/cli-plugin-eslint": "~4.4.0",
-    "@vue/cli-plugin-router": "~4.4.0",
-    "@vue/cli-plugin-vuex": "~4.4.0",
-    "@vue/cli-service": "~4.4.0",
+    "@vue/cli-plugin-babel": "~4.5.0",
+    "@vue/cli-plugin-eslint": "~4.5.0",
+    "@vue/cli-plugin-router": "~4.5.0",
+    "@vue/cli-plugin-unit-jest": "~4.5.0",
+    "@vue/cli-plugin-vuex": "~4.5.0",
+    "@vue/cli-service": "~4.5.0",
     "@vue/eslint-config-standard": "^5.1.2",
+    "@vue/test-utils": "^1.0.3",
     "babel-eslint": "^10.1.0",
     "eslint": "^6.7.2",
     "eslint-plugin-import": "^2.20.2",
@@ -27,8 +41,11 @@
     "eslint-plugin-promise": "^4.2.1",
     "eslint-plugin-standard": "^4.0.0",
     "eslint-plugin-vue": "^6.2.2",
-    "sass": "^1.26.5",
+    "node-sass": "^4.12.0",
+    "sass": "^1.19.0",
     "sass-loader": "^8.0.2",
+    "vue-cli-plugin-vuetify": "~2.0.7",
+    "vue-svg-inline-loader": "^2.0.0",
     "vue-template-compiler": "^2.6.11"
   },
   "eslintConfig": {
@@ -41,18 +58,52 @@
       "eslint:recommended"
     ],
     "rules": {
-      "semi": [2, "always"],
+      "semi": [
+        2,
+        "always"
+      ],
       "no-unused-vars": "off",
       "no-console": "off",
       "no-debugger": "off"
     },
     "parserOptions": {
       "parser": "babel-eslint"
+    },
+    "globals": {
+      "CONST": true,
+      "ENUM": true,
+      "VueApp": true,
+      "RequestManager": true,
+      "DateTime": true,
+      "FileClass": true
     }
   },
   "browserslist": [
     "> 1%",
     "last 2 versions",
     "not dead"
-  ]
+  ],
+  "jest": {
+    "moduleFileExtensions": [
+      "js",
+      "jsx",
+      "json",
+      "vue"
+    ],
+    "transform": {
+      "^.+\\.vue$": "vue-jest",
+      ".+\\.(css|styl|less|sass|scss|svg|png|jpg|ttf|woff|woff2)$": "jest-transform-stub",
+      "^.+\\.jsx?$": "babel-jest"
+    },
+    "moduleNameMapper": {
+      "^@/(.*)$": "<rootDir>/src/$1"
+    },
+    "snapshotSerializers": [
+      "jest-serializer-vue"
+    ],
+    "testMatch": [
+      "**/tests/unit/**/*.spec.(js|jsx|ts|tsx)|**/__tests__/*.(js|jsx|ts|tsx)"
+    ],
+    "testURL": "http://localhost/"
+  }
 }

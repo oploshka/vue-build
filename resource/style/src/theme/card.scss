@@ -1,0 +1,30 @@
+
+
+
+/*
+
+<div class="th-card">
+  <div class="th-card__title"></div>
+  <div class="th-card__image"></div>
+  <div class="th-card__content">
+    <a href="#" class="th-card__link"></a>
+  </div>
+</div>
+
+*/
+
+.th-card {
+  .th-card__title {
+    color: red;
+    font-weight: bold;
+  }
+  .th-card__image {
+    width: 100%;
+  }
+  .th-card__content {
+    padding: 15px;
+  }
+  .th-card__link {
+    cursor: pointer;
+  }
+}
