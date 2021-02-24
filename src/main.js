@@ -5,7 +5,7 @@ import '@enum';
 import '@entity';
 
 // глобально инитим константу CONST
-import '@/core/constGlobal.js';
+import '@/core/constGlobal';
 
 // Library
 import '@library/dayjs';
@@ -41,5 +41,5 @@ global.Vue = Vue;
 global.VueApp = new Vue({
   router,
   store,
-  render: h => h(App),
+  render: (h) => h(App),
 }).$mount('#app');

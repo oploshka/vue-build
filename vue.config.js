@@ -16,11 +16,10 @@ let testDomainPort      = process.env.DOMAIN_PORT;
 let testDomainFull      = testDomainProtocol + '://' + testDomainName + ':' + testDomainPort;
 
 module.exports = {
-  "transpileDependencies": [
-    "vuetify"
+  transpileDependencies: [
+    'vuetify'
   ],
   lintOnSave: process.env.NODE_ENV !== 'production',
-
 
   devServer: {
     // TODO:
@@ -32,9 +31,9 @@ module.exports = {
     // assetsSubDirectory: 'static',
     // assetsPublicPath: '/',
     // cssSourceMap: false
-    public : testDomainName + ':' + testDomainPort,
+    public: `${testDomainName}:${testDomainPort}`,
     proxy: {
-      [testDomainName + ':' + testDomainPort]: {
+      [`${testDomainName}:${testDomainPort}`]: {
         target: testDomainFull,
         secure: false,
         changeOrigin: true,
@@ -44,7 +43,7 @@ module.exports = {
         // router: routedRoutes
       },
     },
-    headers: { "Access-Control-Allow-Origin": "*" }, // is not work???
+    headers: { 'Access-Control-Allow-Origin': '*' }, // is not work???
     // https: true,
     // https: {
     //   key : fs.readFileSync('./certificate/test00.key'),
@@ -54,19 +53,19 @@ module.exports = {
 
   // TODO: рендерим все в папку
   // outputDir: path.resolve(__dirname, "./web"),
-  assetsDir: "./resource/",
+  assetsDir: './resource/',
 
   filenameHashing: true,
 
   chainWebpack: (config) => {
-    for (let aliasName in aliasObj) {
-      config.resolve.alias.set(aliasName , aliasObj[aliasName] );
+    for (const aliasName in aliasObj) {
+      config.resolve.alias.set(aliasName, aliasObj[aliasName]);
     }
 
     config.module
-      .rule("vue")
-      .use("vue-svg-inline-loader")
-      .loader("vue-svg-inline-loader")
+      .rule('vue')
+      .use('vue-svg-inline-loader')
+      .loader('vue-svg-inline-loader')
       .options({ /* ... */ });
   },
 
