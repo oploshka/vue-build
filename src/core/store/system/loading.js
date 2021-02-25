@@ -1,3 +1,4 @@
+
 let _requestCount = 1;
 const getRequestId = () => {
   let requestId = _requestCount;
@@ -6,7 +7,7 @@ const getRequestId = () => {
 };
 
 export default {
-  // namespaced: true,
+  namespaced: true,
   state: {
     loading: [],
   },

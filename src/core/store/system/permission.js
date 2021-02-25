@@ -1,5 +1,6 @@
 
 export default {
+  namespaced: true,
   state: {
     userRoleList: [], //[role.ROLE_AUTH, role.ROLE_CASHIER];
   },
