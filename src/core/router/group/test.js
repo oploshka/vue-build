@@ -16,6 +16,17 @@ export default [
           }
         }
       },
+      {
+        path: 'grid',
+        name: 'test-grid',
+        component: () => import('@page/Test/TestGrid'),
+        meta: {
+          permission: {
+            [roleName.ROLE_ANONYMOUS] : true,
+            [roleName.ROLE_AUTH] : true
+          }
+        }
+      },
     ]
   },
 ];
