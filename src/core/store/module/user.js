@@ -4,25 +4,37 @@
 
 import jwtDecode from "jwt-decode";
 
+const getDefaultProfile = () => {
+  return  {
+    login : '',
+    name  : '',
+  };
+};
+
 export default  {
   namespaced: true,
   state: {
+    //
     token : '',
-    user  : null,
+    //
+    roleList: [],
+    // profile
+    profile: getDefaultProfile(),
   },
   getters: {
-    isAuth        (state) { return !!state.token;                             },
-    getToken      (state) { return state.token;                               },
-    getTokenInfo  (state) { return state.user;                                },
-    userRoles     (state) { return state.user?.roles ? state.user.roles : []; },
+    isAuth          (state) { return !!state.token;   },
+    getUserToken    (state) { return state.token;     },
+    getUserRoleList (state) { return state.roleList;  },
+    getUserProfile  (state) { return state.profile;   },
   },
   mutations: {
-    setToken: (state, token) => {
+    setUserToken: (state, token) => {
       const clearToken = () => {
-        state.user  = null
-        state.token = '';
+        state.token     = '';
+        state.roleList  = '';
+        state.profile   = getDefaultProfile();
         localStorage.setItem('user-token', '');
-      }
+      };
 
       if(!token) {
         clearToken();
@@ -32,18 +44,21 @@ export default  {
       try {
         const tokenInfo = jwtDecode(token);
 
+        // validate token
         const tokenTime =  tokenInfo.exp;
         const realTime = new Date().getTime() / 1000;
         if(tokenTime < realTime) {
           clearToken();
-          // dispatch('logout');
-          // await router.push({ name: pageName.AUTH });
-          // Vue.dialogs.alert('Время сессии истекло', {title: 'Ошибка', size: 'sm'});
         }
 
-        state.user  = tokenInfo
-        state.token = token;
+        state.token     = token;
+        state.roleList  = '';
+        state.profile   = {
+          login : tokenInfo.login,
+          name  : tokenInfo.name,
+        };
         localStorage.setItem('user-token', token);
+
       } catch (e) {
         console.error('Не удалось установить токен', e);
         clearToken();
