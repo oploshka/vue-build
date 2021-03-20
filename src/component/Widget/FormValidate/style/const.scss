@@ -1,9 +1,7 @@
-// Импортировать глобально
-// @import "~@widgetFormValidate/style/const.scss";
 
 // используем префикс FEI (form element item)
 // используем css variable
-:root /* .fve */ {
+.fve {
 
   --fve-input--display      : block;
   --fve-input--margin       : 0 0 0 0;
@@ -13,8 +11,7 @@
   // font
   --fve-input--font-family  : "Montserrat", Monospase, sans-serif;
   --fve-input--font-size    : 16px;
-  --fve-input--font-weight  : 400;
-  --fve-input--font-color   : #000000;
+  --fve-input--font-color   : 16px;
   --fve-input--line-height  : 16px;
   // border
   --fve-input--border       : 1px solid #E4E6EB;
@@ -32,16 +29,9 @@
   --fve-color: #2C3242;
   --fve-color-gray: #757A8A;
   --fve-color-prime: #094E91;
+  --fve-color-placeholder: #9E9E9E;
   --fve-color-success: #009688;
   --fve-color-error: #DC472E;
-
-  //
-  --fve-placeholder--font-family  : var(--fve-input--font-family);
-  --fve-placeholder--font-size    : var(--fve-input--font-size);
-  --fve-placeholder--font-weight  : var(--fve-input--font-weight);
-  --fve-placeholder--font-color   : #ddd;
-  --fve-placeholder--line-height  : var(--fve-input--line-height);
-
   // === checkbox
   --fve-checkbox-size: 18px;
   --fve-checkbox-mark: "\2713";
@@ -56,11 +46,42 @@
 
 }
 
-.fve-require {
-  --fve-input--border-color : #f5ac1c;
-  //--fve-input--background-color: #fefbf3;
+
+/*
+.fve {
+  // parent block
+  --fve--display: block;
+  --fve--margin: 0 12px 0 0;
+  --fve--padding: 11px 16px;
+  --fve--color: #2C3242;
+  --fve--font-size: 16px;
+  --fve--line-height: 1.3;
+
+  // label block
+  // label
+  --fve-label--display: inline-block;
+  --fve-label--margin: 0 0 3px 0;
+  --fve-label--padding: 0 0 0 0;
+  --fve-label--color: #757A8A;
+  --fve-label--font-size: 0.75em;
+  --fve-label--line-height: 1.3;
+
+  // label-require
+  --fve-label-require--display: inline-block;
+  --fve-label-require--margin: 0 4px 0 0;
+  --fve-label-require--padding: 0 0 0 0;
+  --fve-label-require--color: #DC472E;
+  --fve-label-require--font-size: 1.2em;
+  --fve-label-require--line-height: 1.3;
+
+  // field block
+  --fve-field--display: inline-block;
+  --fve-field--margin: 0 0 3px 0;
+  --fve-field--padding: 0 0 0 0;
+  --fve-field--color: #757A8A;
+  --fve-field--font-size: 0.75em;
+  --fve-field--line-height: 1.3;
+
+  // message block
 }
-.fve.fve-status__error {
-  --fve-input--border-color : var(--fve-color-error);
-  --fve-input--background-color: #fff5f5;
-}
+*/

@@ -1,17 +1,18 @@
 <template>
   <FveFieldTemplate>
-    <select
-      class="fei-control"
-      :value="value"
-      :name="name"
-      :placeholder="placeholder"
-      :readonly="readonly"
-      :disabled="disabled"
-      :required="required"
-      @change="inputFormElement"
-    >
-      <option v-for="option in options" v-bind:key="getKey(option)" v-bind:value="getKey(option)">{{ getName(option) }}</option>
-    </select>
+    <textarea
+        type="text"
+        class="fei-control"
+        :name="name"
+        :placeholder="placeholder"
+        :readonly="readonly"
+        :disabled="disabled"
+        :value="value"
+        :required="required"
+        @input="inputFormElement"
+        @change="inputFormElement"
+        @keypress.enter="$emit('keypress-enter')"
+    ></textarea>
   </FveFieldTemplate>
 </template>
 
@@ -24,37 +25,29 @@ export default {
     FveFieldMixin
   ],
   props: {
-    value: [Number, String],
-    options: Array,
-    getKey: {
-      type: Function,
-      default: (obj)=>{ return obj.id.toString(); }
-    },
-    getName: {
-      type: Function,
-      default: (obj)=>{ return obj.name; }
-    },
+    // значение по умолчанию (можно переопределить тип)
+    value    : { type: String, default: '' },
   },
   methods: {
     prepareValue($event) {
-      const key = $event.target.value;
-      return key;
+      return $event.target.value;
     },
     isEmpty(value) {
-      return !value;
+      return value === '';
     },
-    validateFunction(value){
+    validateFunction(str) {
       return 'SUCCESS';
     },
-  },
+  }
 };
 </script>
+
 
 <style lang="scss" scoped>
 
 @import '~@FormValidate/style/const.scss';
 
-select {
+textarea {
   ::-webkit-input-placeholder { color: var(--fve-color-placeholder); }
   :-ms-input-placeholder      { color: var(--fve-color-placeholder); }
   ::-ms-input-placeholder     { color: var(--fve-color-placeholder); }
@@ -64,7 +57,7 @@ select {
   margin            : var(--fve-input--margin           );
   padding           : var(--fve-input--padding          );
   width             : var(--fve-input--width            );
-  height            : var(--fve-input--height           );
+  height            : var(--fve-textarea--height        );
   font-family       : var(--fve-input--font-family      );
   font-size         : var(--fve-input--font-size        );
   color             : var(--fve-input--font-color       );
@@ -77,10 +70,12 @@ select {
 
   transition: border-color 0.15s ease-in-out;
   box-sizing: border-box;
+  resize: vertical;
 
   &:focus {
     outline: none;
   }
+
 
   // TODO: fix
   &[readonly],
@@ -90,31 +85,4 @@ select {
 
 }
 
-/*
-// TODO: fix
-.fve-select {
-  .fve-control {
-    height: var(--fve-input-height);
-    padding-right: 26px;
-    -webkit-appearance: none;
-    -moz-appearance   : none;
-    appearance        : none;
-    &::-ms-expand {
-      display: none;
-    }
-  }
-  &:after {
-    content: "";
-    position: absolute;
-    top: 50%;
-    right: 10px;
-    margin-top: -3px;
-    border: 6px solid transparent;
-    border-top: 6px solid var(--fve-color-gray);
-    pointer-events: none;
-    z-index: 1;
-  }
-}
-*/
 </style>
-

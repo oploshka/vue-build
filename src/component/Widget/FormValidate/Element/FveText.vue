@@ -8,18 +8,16 @@
         :disabled="disabled"
         :value="value"
         :required="required"
-        autocomplete="off"
         @input="inputFormElement"
         @change="inputFormElement"
         @keypress.enter="$emit('keypress-enter')"
-        v-bind="inputAttr"
     />
   </FveFieldTemplate>
 </template>
 
 <script>
 
-import FveFieldMixin from "@widgetFormValidate/FveFieldMixin";
+import FveFieldMixin from "@FormValidate/FveFieldMixin";
 
 export default {
   mixins: [
@@ -28,7 +26,6 @@ export default {
   data(){
     return {
       type: 'text',
-      inputAttr: {},
     };
   },
   props: {
@@ -42,7 +39,6 @@ export default {
     isEmpty(value) {
       return value === '';
     },
-    // eslint-disable-next-line
     validateFunction(str) {
       return 'SUCCESS';
     },
@@ -52,6 +48,7 @@ export default {
 
 <style lang="scss" scoped>
 
-@import "~@widgetFormValidate/style/inputText.scss";
+@import '~@FormValidate/style/const.scss';
+@import "~@FormValidate/style/inputText.scss";
 
 </style>

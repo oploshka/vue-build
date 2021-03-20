@@ -1,6 +1,6 @@
 <script>
 
-import FveText from "@widgetFormValidate/Element/FveText";
+import FveText from "@FormValidate/Element/FveText";
 
 export default {
   mixins: [

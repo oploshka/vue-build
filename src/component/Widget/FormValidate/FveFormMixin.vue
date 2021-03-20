@@ -32,19 +32,15 @@ export default {
 
 
     ////////////////////////////////
-    // eslint-disable-next-line
     formReset($event) {
       // todo после сброса остаются сообщения об ошибке
       this.form = this.formGetDefaultData();
       this.$emit('reset');
     },
-    // eslint-disable-next-line
     formCancel($event) {
       this.$emit('cancel');
     },
-    // eslint-disable-next-line
     formSubmit($event) {
-
       // TODO: fix default prevent
       // if($event && 'currentTarget' in $event) {
       //   // $event.defaultPrevented = true;
@@ -81,23 +77,12 @@ export default {
       return this.getFormData();
     },
     formElementGet(){
-      return this.formElementGetByChildren(this.$children);
-    },
-    formElementGetByChildren($children){
-      let formElementArr = [];
-      for(let i = 0; i < $children.length; i++){
-
-        switch ($children[i].interface) {
-          case "FormElementInterface":
-            formElementArr.push($children[i]);
-            break;
-          case "FormProxyInterface":
-            var res =  this.formElementGetByChildren($children[i].$children);
-            formElementArr = formElementArr.concat(res);
-            break;
-          default:
-            continue;
+      const formElementArr = [];
+      for(let i = 0; i < this.$children.length; i++){
+        if(this.$children[i].interface !== 'FormElementInterface'){
+          continue;
         }
+        formElementArr.push(this.$children[i]);
       }
       return formElementArr;
     },

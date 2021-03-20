@@ -18,6 +18,8 @@ export default {};
 
 <style lang="scss" scoped>
 
+@import '~@FormValidate/style/const.scss';
+
 .fve {
 
   box-sizing: border-box;
@@ -64,34 +66,23 @@ export default {};
     right: 0;
     bottom: 100%;
     padding: 6px 8px;
-    //color: #757A8A;
+    color: #757A8A;
     font-size: 0.75em;
-    //background-color: #ffffff;
+    background-color: #ffffff;
     border-radius: 4px;
     box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1);
     transform: translateY(10px);
     transition: all 0.25s ease-in-out;
     opacity: 0;
     visibility: hidden;
-
-    background-color: #ffb3b3;
-    color: #1c1c1c;
     &:after {
       content: "";
       position: absolute;
       right: 10px;
       top: 100%;
       border: 6px solid transparent;
-      //border-top: 6px solid #ffffff;
-
-      border-top: 6px solid #ffb3b3;
+      border-top: 6px solid #ffffff;
     }
-  }
-}
-.fve.fve-require {
-  // label
-  .fve-label {
-    color: #f5ac1c;
   }
 }
 

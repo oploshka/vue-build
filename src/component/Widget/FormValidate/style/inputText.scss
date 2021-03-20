@@ -1,4 +1,8 @@
 input {
+  ::-webkit-input-placeholder { color: var(--fve-color-placeholder); }
+  :-ms-input-placeholder      { color: var(--fve-color-placeholder); }
+  ::-ms-input-placeholder     { color: var(--fve-color-placeholder); }
+  ::placeholder               { color: var(--fve-color-placeholder); }
 
   display           : var(--fve-input--display          );
   margin            : var(--fve-input--margin           );
@@ -7,7 +11,6 @@ input {
   height            : var(--fve-input--height           );
   font-family       : var(--fve-input--font-family      );
   font-size         : var(--fve-input--font-size        );
-  font-weight       : var(--fve-input--font-weight      );
   color             : var(--fve-input--font-color       );
   line-height       : var(--fve-input--line-height      );
   border            : var(--fve-input--border           );
@@ -29,44 +32,4 @@ input {
     opacity: .5;
   }
 
-  // placeholder fix
-  &::-webkit-input-placeholder {
-    font-family       : var(--fve-placeholder--font-family      ) !important;
-    font-size         : var(--fve-placeholder--font-size        ) !important;
-    font-weight       : var(--fve-placeholder--font-weight      ) !important;
-    color             : var(--fve-placeholder--font-color       ) !important;
-    line-height       : var(--fve-placeholder--line-height      ) !important;
-  }
-  &:-ms-input-placeholder      {
-    font-family       : var(--fve-placeholder--font-family      ) !important;
-    font-size         : var(--fve-placeholder--font-size        ) !important;
-    font-weight       : var(--fve-placeholder--font-weight      ) !important;
-    color             : var(--fve-placeholder--font-color       ) !important;
-    line-height       : var(--fve-placeholder--line-height      ) !important;
-  }
-  &::-ms-input-placeholder     {
-    font-family       : var(--fve-placeholder--font-family      ) !important;
-    font-size         : var(--fve-placeholder--font-size        ) !important;
-    font-weight       : var(--fve-placeholder--font-weight      ) !important;
-    color             : var(--fve-placeholder--font-color       ) !important;
-    line-height       : var(--fve-placeholder--line-height      ) !important;
-  }
-  &::placeholder               {
-    font-family       : var(--fve-placeholder--font-family      ) !important;
-    font-size         : var(--fve-placeholder--font-size        ) !important;
-    font-weight       : var(--fve-placeholder--font-weight      ) !important;
-    color             : var(--fve-placeholder--font-color       ) !important;
-    line-height       : var(--fve-placeholder--line-height      ) !important;
-  }
-
-  // autofill fix
-  &:-webkit-autofill {
-    -webkit-box-shadow: 0 0 0 1000px #fff inset;
-  }
-  &:-webkit-autofill::first-line {
-    font-family       : var(--fve-input--font-family      );
-    font-size         : var(--fve-input--font-size        );
-    font-weight       : var(--fve-input--font-weight      );
-    color             : #094E91;
-  }
 }
