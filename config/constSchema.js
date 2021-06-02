@@ -4,5 +4,5 @@ export default function (pub, priv) {
 
     version: pub.VERSION,
     serverType: pub.SERVER_TYPE,
-  }
+  };
 }

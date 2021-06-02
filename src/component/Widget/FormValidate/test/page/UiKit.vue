@@ -1,114 +1,62 @@
 <template>
   <div class="container">
 
-    <form @submit.prevent="formSubmit" novalidate="novalidate">
+    <form @submit.prevent="formSubmit" novalidate="novalidate" class="row form-example">
       <input type="submit" value="submit" style="display: none !important;">
       <!-- form start -->
 
-      <div class="row">
-        <div class="col-3">
-          <FveText
-              name="text"
-              label="Text field"
-              placeholder="Placeholder"
-              v-model="form.text"
-          />
-        </div>
-        <div class="col-3 form-base">
-          <FveText
-              name="text"
-              label="Text field readonly"
-              placeholder="Readonly"
-              :readonly="true"
-              v-model="form.text"
-          />
-        </div>
-        <div class="col-3">
-          <FveText
-              name="text"
-              label="Text field disabled"
-              placeholder="Disabled"
-              :disabled="true"
-              v-model="form.text"
-          />
-        </div>
-        <div class="col-3">
-          <FveText
-              name="text"
-              label="Text field readonly disabled"
-              placeholder="Readonly Disabled"
-              :readonly="true"
-              :disabled="true"
-              v-model="form.text"
-          />
-        </div>
+      <div class="col-12">
+        <p>
+          Элемент только для чтения просто не редактируется,
+          но отправляется при отправке соответствующей формы.
+          Отключенный элемент не редактируется и не отправляется при отправке.
+          Еще одно отличие заключается в том,
+          что элементы только для чтения могут быть сфокусированы
+          (и становятся сфокусированными при "закладке" через форму),
+          в то время как отключенные элементы-нет.
+        </p>
       </div>
 
+      <template v-for="componentInfo in componentInfoList">
+      <div class="col-12" :key="componentInfo.name">
+        <div class="row" style="margin-top: 30px;">
 
-      <FveTextarea
-          name="textarea"
-          label="Text field"
-          placeholder="Placeholder"
-          v-model="form.textarea"
-      />
+          <div class="col-12"><h4>{{componentInfo.name}}</h4></div>
+          <div class="col-12"><pre>{{form[componentInfo.name]}}</pre></div>
 
-      <FveSelect
-          name="select"
-          label="Select"
-          v-model="form.select"
-          :options="[{id: 1, name: 'Вариант 1'},{id: 2, name: 'Вариант 2'},{id: 3, name: 'Вариант 3'},{id: 4, name: 'Вариант 5'},{id: 5, name: 'Вариант 5'}]"
-      />
+          <template v-for="required in ['', 'required']">
+            <template v-for="readonly in ['', 'readonly']">
+              <template v-for="disabled in ['', 'disabled']">
+                <div class="col-3" :key="required + '-' + readonly + '-' + disabled">
+                  <component
+                    v-bind:is="componentInfo.component"
+                    v-bind="Object.assign({
+                    label       :'Label ' + componentInfo.name + ' ( ' + required + ' ' + readonly + ' ' + disabled + ' )',
+                    placeholder : 'Placeholder ' + componentInfo.name,
+                    required    : !!required,
+                    readonly    : !!readonly,
+                    disabled    : !!disabled,
+                  },
+                  componentInfo.data
+                )"
+                    v-model="form[componentInfo.name]"
+                  />
+                </div>
 
-      <FveDatepicker
-          name="date"
-          label="Text field"
-          placeholder="Placeholder"
-          v-model="form.date"
-      />
+              </template>
+            </template>
+          </template>
 
+          </div>
+        </div>
+      </template>
 
-      <FveRadioGroup
-          label="Radio list"
-          name="radioVer"
-          v-model="form.radioVer"
-          :options="[
-              {id: 1, name:'Вариант 1', },
-              {id: 2, name:'Вариант 2', },
-              {id: 3, name:'Вариант 3', disabled: true },
-            ]"
-      />
-
-      <FveRadioGroup
-          label="Radio list inline"
-          name="radioHr"
-          :inline="true"
-          v-model="form.radioHr"
-          :options="[
-              {id: 1, name:'Вариант 1'},
-              {id: 2, name:'Вариант 2'},
-              {id: 3, name:'Вариант 3'},
-            ]"
-      />
-
-      [checkbox start]
-      <FveCheckbox
-          name="checkbox"
-          label="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
-          v-model="form.checkbox"
-      />
-      [checkbox end]
-
-
-      <FvePhone
-          name="phone"
-          label="Phone"
-          placeholder="754654654"
-          v-model="form.phone"
-      />
-
-
-      <button type="button" @click="formReset">reset</button>
-      <button type="button" @click="formSubmit">validate</button>
+      <div class="col-12">
+        <div class="row" style="margin-top: 30px; margin-bottom: 30px;">
+          <div class="col-12"><button type="button" @click="formReset">reset</button></div>
+          <div class="col-12"><button type="button" @click="formSubmit">validate</button></div>
+        </div>
+      </div>
       <!-- form end -->
     </form>
 
@@ -117,41 +65,75 @@
 
 <script>
 
-import FveFormMixin   from "@FormValidate/FveFormMixin";
+import FveFormMixin   from "@widgetFormValidate/src/Mixin/FveFormMixin";
 
-import FveText        from "@FormValidate/Element/FveText";
-import FveTextarea    from "@FormValidate/Element/FveTextarea";
-import FveSelect      from "@FormValidate/Element/FveSelect";
-import FveDatepicker  from "@FormValidate/Element/FveDatepicker";
-import FveRadioGroup  from "@FormValidate/Element/FveRadioGroup";
-import FveCheckbox    from "@FormValidate/Element/FveCheckbox";
-import FvePhone       from "@FormValidate/Element/FvePhone";
+// text
+import FveText        from "@widgetFormValidate/src/Element/Text/FveText";
+import FveEmail       from '@widgetFormValidate/src/Element/Text/FveEmail';
+import FveLogin       from '@widgetFormValidate/src/Element/Text/FveLogin';
+import FveNumber      from '@widgetFormValidate/src/Element/Text/FveNumber';
+import FvePassword    from '@widgetFormValidate/src/Element/Text/FvePassword';
+import FveTime        from '@widgetFormValidate/src/Element/Text/FveTime';
+import FveUrl         from '@widgetFormValidate/src/Element/Text/FveUrl';
+import FvePhone       from "@widgetFormValidate/src/Element/Text/FvePhone";
+import FveTextarea    from "@widgetFormValidate/src/Element/Text/FveTextarea";
+
+// date and time
+// TODO: import FveDatepicker  from "@widgetFormValidate/src/Element/FveDatepicker";
+
+// options
+import FveSelect      from "@widgetFormValidate/src/Element/Select/html/FveSelect";
+// TODO: import FveRadioGroup  from "@widgetFormValidate/src/Element/FveRadioGroup";
+// TODO: import FveCheckbox    from "@widgetFormValidate/src/Element/FveCheckbox";
+
 
 export default {
   mixins: [
     FveFormMixin
   ],
-  components: {
-    FveText,
-    FveTextarea,
-    FveSelect,
-    FveDatepicker,
-    FveRadioGroup,
-    FveCheckbox,
-    FvePhone,
+  components: {},
+  data() {
+    const options = [{id: 1, name: 'Вариант 1'},{id: 2, name: 'Вариант 2'},{id: 3, name: 'Вариант 3'},{id: 4, name: 'Вариант 5'},{id: 5, name: 'Вариант 5'}];
+
+    return {
+      componentInfoList: [
+        {name: 'text'         , component: FveText  , data: {} },
+        {name: 'textarea'     , component: FveTextarea  , data: {} },
+        //
+        {name: 'text-phone'   , component: FvePhone     , data: {} },
+        {name: 'text-email'   , component: FveEmail     , data: {} },
+        {name: 'text-login'   , component: FveLogin     , data: {} },
+        {name: 'text-number'  , component: FveNumber    , data: {} },
+        {name: 'text-password', component: FvePassword  , data: {} },
+        {name: 'text-time'    , component: FveTime      , data: {} },
+        {name: 'text-url'     , component: FveUrl       , data: {} },
+        //
+        // {name: 'datepicker' , component: FveDatepicker  , data: {} },
+        // {name: 'datepicker' , component: FveDatepicker  , data: {required: true} },
+        //
+        {name: 'select'     , component: FveSelect, data: { options: options} },
+
+      ],
+    };
   },
   methods: {
     formSchema() {
       return {
-        text      : { type: String    , default: () => { return '';     } },
-        password  : { type: String    , default: () => { return '';     } },
-        phone     : { type: String    , default: () => { return '';     } },
-        select    : { type: String    , default: () => { return '';     } },
+        text            : { type: String    , default: () => { return '';     } },
+        'text-phone'    : { type: String    , default: () => { return '';     } },
+        'text-email'    : { type: String    , default: () => { return '';     } },
+        'text-login'    : { type: String    , default: () => { return '';     } },
+        'text-number'   : { type: String    , default: () => { return '';     } },
+        'text-password' : { type: String    , default: () => { return '';     } },
+        'text-time'     : { type: String    , default: () => { return '';     } },
+        'text-url'      : { type: String    , default: () => { return '';     } },
+
         textarea  : { type: String    , default: () => { return '';     } },
-        date      : { type: DateTime  , default: () => { return null;   } },
-        radioVer  : { type: Number    , default: () => { return 1;      } },
-        radioHr   : { type: Number    , default: () => { return 2;      } },
-        checkbox  : { type: Boolean   , default: () => { return false;  } },
+        // // time
+        // datepicker: { type: String    , default: () => { return '';     } },
+        // date      : { type: DateTime  , default: () => { return null;   } },
+        // // options
+        select    : { type: String    , default: () => { return '';     } },
       };
     },
   }
@@ -159,5 +141,10 @@ export default {
 
 </script>
 
+<style lang="scss">
+@import "~@widgetFormValidate/style/const.scss";
+</style>
+
 <style lang="scss" scoped>
+@import "~bootstrap";
 </style>

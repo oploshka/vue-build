@@ -38,6 +38,8 @@
     "sass": "^1.26.5",
     "sass-loader": "^8.0.2",
     "vue-svg-inline-loader": "^2.1.2",
-    "vue-template-compiler": "^2.6.11"
+    "vue-template-compiler": "^2.6.11",
+    "style-resources-loader": "^1.4.1",
+    "vue-cli-plugin-style-resources-loader": "^0.1.4"
   }
 }

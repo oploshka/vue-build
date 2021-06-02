@@ -1,10 +1,10 @@
-input {
+textarea {
 
   display           : var(--fve-input--display          );
   margin            : var(--fve-input--margin           );
   padding           : var(--fve-input--padding          );
   width             : var(--fve-input--width            );
-  height            : var(--fve-input--height           );
+  height            : var(--fve-textarea--height        );
   font-family       : var(--fve-input--font-family      );
   font-size         : var(--fve-input--font-size        );
   font-weight       : var(--fve-input--font-weight      );
@@ -18,6 +18,7 @@ input {
 
   transition: border-color 0.15s ease-in-out;
   box-sizing: border-box;
+  resize: vertical;
 
   &:focus {
     outline: none;

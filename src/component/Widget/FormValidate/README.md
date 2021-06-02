@@ -22,15 +22,16 @@ const path = require("path");
 module.exports = {
   chainWebpack: (config) => {
     // WARNING - укажи путь к своей папке!!! (замени /src/components/FormValidate src на свой путь)
-    config.resolve.alias.set('@FormValidate'       , path.join(__dirname, './src/components/FormValidate')   );
-    config.resolve.alias.set('@FormValidateCustom' , path.join(__dirname, './src/components/FormValidateCustom')   );
+    config.resolve.alias.set('@widgetFormValidate'       , path.join(__dirname, './src/components/FormValidate')   );
+    config.resolve.alias.set('@widgetFormValidateCustom' , path.join(__dirname, './src/components/FormValidateCustom')   );
   }
 }
 ```
 4) установить пакеты (не обязательно)
 - "dayjs": "^1.8.36", (легкая библиотека для работы с датой, нужна для datepicker)
-- "v-calendar": "^1.0.8", (необходимо для поля даты)
+- "v-calendar": "^2.3.0", (необходимо для поля даты)
 - "vue-phone-mask-input": "^1.1.11", (необходимо для поля телефон)
+- "v-mask": "^2.2.4",
 
 5) перезапустить сборку
 
@@ -70,9 +71,9 @@ module.exports = {
 
 <script>
 // подключаем необходимые поля для формы
-import FveText from "@FormValidate/Element/FveText";
+import FveText from "@widgetFormValidate/src/Element/Text/FveText";
 // подключаем миксин формы
-import FveFormMixin   from "@FormValidate/FveFormMixin";
+import FveFormMixin   from "@widgetFormValidate/src/Mixin/FveFormMixin";
 
 export default {
   mixins: [
@@ -128,7 +129,7 @@ export default {
 
 <script>
 
-import FveFieldMixin from "@FormValidate/FveFieldMixin";
+import FveFieldMixin from "@widgetFormValidate/src/Mixin/FveFieldMixin";
 
 export default {
   mixins: [
@@ -181,8 +182,8 @@ export default {
 
 <style lang="scss" scoped>
 // используются стили которые не влияют на весь проект и на чужие компоненты (которые используют select, input и тд...)
-@import '~@FormValidate/style/const.scss';
-@import "~@FormValidate/style/inputText.scss";
+@import '~@widgetFormValidate/style/const.scss';
+@import "~@widgetFormValidate/style/inputText.scss";
 
 </style>
 ```
@@ -191,7 +192,7 @@ export default {
 ```vue
 <script>
 
-import FveText from "@FormValidate/Element/FveText";
+import FveText from "@widgetFormValidate/src/Element/Text/FveText";
 
 export default {
   mixins: [
@@ -248,10 +249,10 @@ export default {
 
 <script>
 
-import LoginFormElement    from "@FormValidate/Element/Text/FveLogin";
-import PasswordFormElement from "@FormValidate/Element/Text/FvePassword";
+import LoginFormElement    from "@widgetFormValidate/src/Element/Text/FveLogin";
+import PasswordFormElement from "@widgetFormValidate/src/Element/Text/FvePassword";
 //
-import FveFormMixin   from "@FormValidate/FveFormMixin";
+import FveFormMixin   from "@widgetFormValidate/src/Mixin/FveFormMixin";
 
 export default {
   mixins: [
