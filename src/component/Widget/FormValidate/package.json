@@ -2,12 +2,11 @@
   "name": "form-validate",
   "version": "0.1.0",
   "dependencies": {
+    "dayjs": "^1.10.4",
     "v-calendar": "^2.3.0",
     "v-mask": "^2.2.4",
     "vue-multiselect": "^2.1.6",
-    "vue-phone-mask-input": "^1.1.11",
-    "vue-suggestion": "^1.1.0",
-    "vuetify": "^2.4.9"
+    "vue-phone-mask-input": "^1.1.11"
   },
   "devDependencies": {}
 }

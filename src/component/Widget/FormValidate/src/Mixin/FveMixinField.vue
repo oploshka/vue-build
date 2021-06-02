@@ -1,10 +1,10 @@
 <script>
 
-import FveFieldTemplate from "@widgetFormValidate/src/Mixin/FveFieldTemplate";
+import FveTemplateField from "@widgetFormValidate/src/Mixin/FveTemplateField";
 
 export default {
   components: {
-    FveFieldTemplate,
+    FveTemplateField,
   },
   props: {
     // стилистика

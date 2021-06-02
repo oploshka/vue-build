@@ -8,8 +8,8 @@
 Много магии). Основано все на миксинах (используется вместо наследования) и доверии (интерфейс). В js без доверия ни как).
 
 Все это основано на 3 базовых элементах:
-- Формы (FveFormMixin.vue)
-- Элементы формы (FveFieldMixin.vue и FveFieldTemplate.vue)
+- Формы (FveMixinForm.vue)
+- Элементы формы (FveFieldMixin.vue и FveTemplateField.vue)
 - TODO Группа элементов (FveMultiMixin.vue и FveMultiTemplate.vue)
 
 ## Как установить
@@ -44,7 +44,7 @@ module.exports = {
 ```vue
 <template>
   <!--
-     @submit.prevent="formSubmit" - вызывает событие обработки в миксине FveFormMixin
+     @submit.prevent="formSubmit" - вызывает событие обработки в миксине FveMixinForm
      novalidate="novalidate"      - отключаем браузерную валидацию полей
   -->
   <form @submit.prevent="formSubmit" novalidate="novalidate">
@@ -73,11 +73,11 @@ module.exports = {
 // подключаем необходимые поля для формы
 import FveText from "@widgetFormValidate/src/Element/Text/FveText";
 // подключаем миксин формы
-import FveFormMixin   from "@widgetFormValidate/src/Mixin/FveFormMixin";
+import FveMixinForm   from "@widgetFormValidate/src/Mixin/FveMixinForm";
 
 export default {
   mixins: [
-    FveFormMixin
+    FveMixinForm
   ],
   components: {
     FveText,
@@ -105,8 +105,8 @@ export default {
 Рассмотрим все на примере обычного текстового поля
 ```vue
 <template>
-  <FveFieldTemplate>
-    <!-- FveFieldTemplate - это однообразная обертка для всех наших полей -->
+  <FveTemplateField>
+    <!-- FveTemplateField - это однообразная обертка для всех наших полей -->
     <input
         :type="type"
         :name="name"
@@ -124,7 +124,7 @@ export default {
 
       @keypress.enter="$emit('keypress-enter')"  - добавляет в форму отправку по нажатию enter
     -->
-  </FveFieldTemplate>
+  </FveTemplateField>
 </template>
 
 <script>
@@ -213,7 +213,7 @@ export default {
 
 ## Хочу изменить вид полей...
 Нет проблем, в папке style есть настройки переменных css variable (const.scss) и общие стили для input полей (inputText.scss).
-Так же есть общий template для всех полей - FveFieldTemplate.vue (в корне).
+Так же есть общий template для всех полей - FveTemplateField.vue (в корне).
 
 
 ## Как это будет выглядеть
@@ -252,11 +252,11 @@ export default {
 import LoginFormElement    from "@widgetFormValidate/src/Element/Text/FveLogin";
 import PasswordFormElement from "@widgetFormValidate/src/Element/Text/FvePassword";
 //
-import FveFormMixin   from "@widgetFormValidate/src/Mixin/FveFormMixin";
+import FveMixinForm   from "@widgetFormValidate/src/Mixin/FveMixinForm";
 
 export default {
   mixins: [
-    FveFormMixin
+    FveMixinForm
   ],
   components: {
     LoginFormElement,

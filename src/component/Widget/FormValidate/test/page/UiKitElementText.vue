@@ -1,9 +1,7 @@
 <script>
 
-import UiKit from '@widgetFormValidate/test/page/UiKit';
+import UiKitMixin from '@widgetFormValidate/test/page/UiKitMixin'
 
-// text
-// import FveText        from "";
 import FveEmail       from '@widgetFormValidate/src/Element/Text/FveEmail';
 import FveLogin       from '@widgetFormValidate/src/Element/Text/FveLogin';
 import FveNumber      from '@widgetFormValidate/src/Element/Text/FveNumber';
@@ -15,7 +13,7 @@ import FveTextarea    from "@widgetFormValidate/src/Element/Text/FveTextarea";
 
 export default {
   mixins: [
-    UiKit
+    UiKitMixin
   ],
   components: {},
   data() {

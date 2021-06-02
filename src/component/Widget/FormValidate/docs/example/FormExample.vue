@@ -1,6 +1,6 @@
 <template>
   <!--
-     @submit.prevent="formSubmit" - вызывает событие обработки в миксине FveFormMixin
+     @submit.prevent="formSubmit" - вызывает событие обработки в миксине FveMixinForm
      novalidate="novalidate"      - отключаем браузерную валидацию полей
   -->
   <form @submit.prevent="formSubmit" novalidate="novalidate">
@@ -29,11 +29,11 @@
 // подключаем необходимые поля для формы
 import FveText from "@widgetFormValidate/src/Element/Text/FveText";
 // подключаем миксин формы
-import FveFormMixin   from "@widgetFormValidate/src/Mixin/FveFormMixin";
+import FveMixinForm   from "@widgetFormValidate/src/Mixin/FveMixinForm";
 
 export default {
   mixins: [
-    FveFormMixin
+    FveMixinForm
   ],
   components: {
     FveText,

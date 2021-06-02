@@ -1,5 +1,5 @@
 <template>
-  <FveFieldTemplate>
+  <FveTemplateField>
     <textarea
       type="text"
       class="fei-control"
@@ -14,16 +14,16 @@
       @change="inputFormElement"
       @keypress.enter="$emit('keypress-enter')"
     ></textarea>
-  </FveFieldTemplate>
+  </FveTemplateField>
 </template>
 
 <script>
 
-import FveFieldMixin from "@widgetFormValidate/src/Mixin/FveFieldMixin";
+import FveMixinField from "@widgetFormValidate/src/Mixin/FveMixinField";
 
 export default {
   mixins: [
-    FveFieldMixin
+    FveMixinField
   ],
   props: {
     // значение по умолчанию (можно переопределить тип)

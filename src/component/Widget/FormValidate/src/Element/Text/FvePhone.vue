@@ -1,5 +1,5 @@
 <template>
-  <FveFieldTemplate>
+  <FveTemplateField>
     <PhoneMaskInput
       autoDetectCountry
       showFlag
@@ -10,18 +10,18 @@
       :value="value"
       @input="inputFormElement"
     />
-  </FveFieldTemplate>
+  </FveTemplateField>
 </template>
 
 <script>
 
 import PhoneMaskInput from  "vue-phone-mask-input";
 
-import FveFieldMixin from "@widgetFormValidate/src/Mixin/FveFieldMixin";
+import FveMixinField from "@widgetFormValidate/src/Mixin/FveMixinField";
 
 export default {
   mixins: [
-    FveFieldMixin
+    FveMixinField
   ],
   components: {
     PhoneMaskInput

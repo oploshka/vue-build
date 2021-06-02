@@ -1,5 +1,5 @@
 <template>
-  <FveFieldTemplate>
+  <FveTemplateField>
     <input
       :type="type"
       :name="name"
@@ -14,16 +14,16 @@
       @keypress.enter="$emit('keypress-enter')"
       v-bind="inputAttr"
     />
-  </FveFieldTemplate>
+  </FveTemplateField>
 </template>
 
 <script>
 
-import FveFieldMixin from "@widgetFormValidate/src/Mixin/FveFieldMixin";
+import FveMixinField from "@widgetFormValidate/src/Mixin/FveMixinField";
 
 export default {
   mixins: [
-    FveFieldMixin
+    FveMixinField
   ],
   data(){
     return {
@@ -33,7 +33,7 @@ export default {
   },
   props: {
     // значение по умолчанию (можно переопределить тип)
-    value    : { type: String, default: '' },
+    value    : { type: [String, Number], default: '' },
   },
   methods: {
     prepareValue($event) {

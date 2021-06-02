@@ -1,28 +1,35 @@
 <script>
 
-import UiKit from '@widgetFormValidate/test/page/UiKit';
+import UiKitMixin from '@widgetFormValidate/test/page/UiKitMixin';
 
-
-// TODO: import FveRadioGroup  from "@widgetFormValidate/src/Element/FveRadioGroup";
-// TODO: import FveCheckbox    from "@widgetFormValidate/src/Element/FveCheckbox";
+import FveSelectValue   from '@widgetFormValidate/src/Element/Select/FveSelectValue';
+import FveSelectObject  from '@widgetFormValidate/src/Element/Select/FveSelectObject';
+import FveSelectLine    from '@widgetFormValidate/src/Element/Select/FveSelectLine';
+import FveMultiSelectObject from '@widgetFormValidate/src/Element/MultiSelect/FveMultiSelectObject'
 
 export default {
   mixins: [
-    UiKit
+    UiKitMixin
   ],
   components: {},
   data() {
-    const options = [{id: 1, name: 'Вариант 1'},{id: 2, name: 'Вариант 2', asdasd:'asdasd'},{id: 3, name: 'Вариант 3'},{id: 4, name: 'Вариант 5'},{id: 5, name: 'Вариант 5'}];
+    const options = [
+      {id: 1, name: 'Вариант 1', q: 1},
+      {id: 2, name: 'Вариант 2', asdasd:'asdasd'},
+      {id: 3, name: 'Вариант 3', q: 3},
+      {id: 4, name: 'Вариант 4', q: 14},
+      {id: 5, name: 'Вариант 5', q: 785}
+    ];
+    const options2 = [{id: 1, name: 'Вариант 1'},{id: 2, name: 'Вариант 2', asdasd:'asdasd'}];
 
     return {
       componentInfoList: [
-        {name: 'select-object', component: () => import('@widgetFormValidate/src/Element/Select/vue-multiselect/FveSelectObject')  , data: {'option-list': options} },
-        {name: 'select-value1', component: () => import('@widgetFormValidate/src/Element/Select/vue-multiselect/FveSelectValue')   , data: {'option-list': options} },
-        {name: 'select-value2', component: () => import('@widgetFormValidate/src/Element/Select/vue-multiselect/FveSelectValue')   , data: {'option-list': options} },
-        {name: 'select-value3', component: () => import('@widgetFormValidate/src/Element/Select/vue-multiselect/FveSelectValue')   , data: {'option-list': options} },
-        {name: 'html-select'  , component: () => import('@widgetFormValidate/src/Element/Select/html/FveSelect')  , data: {options: options} },
-        {name: 'html-radio'   , component: () => import('@widgetFormValidate/src/Element/Select/html/FveHtmlRadio')  , data: {options: options} },
-        {name: 'FveVueSuggestionSelect'   , component: () => import('@widgetFormValidate/src/Element/Select/_vue-suggestion/FveVueSuggestionSelect')  , data: {options: options} },
+        {name: 'multi-select-object', component: FveMultiSelectObject  , data: {'option-list': options} },
+
+        {name: 'select-object', component: FveSelectObject  , data: {'option-list': options} },
+        {name: 'select-value' , component: FveSelectValue   , data: {'option-list': options} },
+        {name: 'select-line'  , component: FveSelectLine    , data: {'option-list': options2} },
+
       ],
     };
   },
@@ -30,11 +37,9 @@ export default {
     formSchema() {
       return {
         'select-object'  : { type: Object    , default: () => { return {id: 3, name: 'Вариант 3'}; } },
-        'select-value1'  : { type: Number    , default: () => { return 1; } },
-        'select-value3'  : { type: Number    , default: () => { return null; } },
-        'html-select'    : { type: String    , default: () => { return ''; } },
-        'html-radio'     : { type: String    , default: () => { return ''; } },
-        'FveVueSuggestionSelect'     : { type: String    , default: () => { return ''; } },
+        'select-value'   : { type: Number    , default: () => { return 1; } },
+        'select-line'    : { type: Number    , default: () => { return 1; } },
+        'multi-select-object'  : { type: Object    , default: () => { return []; } },
       };
     },
   }
