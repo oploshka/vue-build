@@ -1,6 +1,6 @@
 const aliasObj = require('./vue.alias');
+const path = require("path");
 
-// const path = require("path");
 // const fs = require('fs');
 
 // eslint-disable-next-line no-unused-vars
@@ -69,16 +69,13 @@ module.exports = {
       .options({ /* ... */ });
   },
 
-  // TODO
-  // pluginOptions: {
-  //   'style-resources-loader': {
-  //     preProcessor: 'scss',
-  //     patterns: [
-  //       // Подключать только переменные scss, иначе стили будут дублироваться!!!
-  //       path.resolve(__dirname, './resource/style/variable.scss'),
-  //       path.resolve(__dirname, './resource/style/mixins.scss'),
-  //     ]
-  //   }
-  // },
+  pluginOptions: {
+    'style-resources-loader': {
+      preProcessor: 'scss',
+      patterns: [
+        path.resolve(__dirname, './resource/style/base/variable.scss'),
+      ]
+    }
+  },
 
 };

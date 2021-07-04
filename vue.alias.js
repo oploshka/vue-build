@@ -2,10 +2,10 @@ const path = require('path');
 
 const alias = {
   // widget
-  // '@widgetFormValidate'   : path.join(__dirname, './src/component/Widget/FormValidate'),
-  // '@widgetFormGenerate'   : path.join(__dirname, './src/component/Widget/FormGenerate'),
-  // '@widgetLoader'         : path.join(__dirname, './src/component/Widget/Loader'),
-  // '@widgetPermission'     : path.join(__dirname, './src/component/Widget/Permission'),
+  '@widgetFormValidate'   : path.join(__dirname, './src/component/Widget/FormValidate'),
+  '@widgetFormGenerate'   : path.join(__dirname, './src/component/Widget/FormGenerate'),
+  '@widgetLoader'         : path.join(__dirname, './src/component/Widget/Loader'),
+  '@widgetPermission'     : path.join(__dirname, './src/component/Widget/Permission'),
 
   // resource
   '@img'            : path.join(__dirname, './resource/img'         ),
