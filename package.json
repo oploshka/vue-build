@@ -16,7 +16,7 @@
     "core-js": "^3.6.5",
     "dayjs": "^1.10.4",
     "js-file-download": "^0.4.12",
-    "js-request-manager": "^0.2.1",
+    "js-request-manager": "^1.0.1",
     "lodash": "^4.17.21",
     "v-slim-dialog": "0.0.10",
     "vue": "^2.6.11",

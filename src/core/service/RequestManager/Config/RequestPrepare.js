@@ -13,8 +13,7 @@ export default {
   url(requestType, requestUrl, requestData) {
     return requestUrl.getUrl();
   },
-  //
-  axiosObject(axiosObject, options) {
+  requestClientDataPrepare(axiosObject, requestClass) {
     //
     let token = localStorage.getItem('user-token');
     if(token) {
