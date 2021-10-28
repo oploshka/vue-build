@@ -1,40 +1,39 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
 import * as $routeName from '@router/variable';
-import {routeMetaPrepare} from '@router/function/routeMetaPrepare';
+import { routePrepare } from '@router/function/routePrepare';
 
 Vue.prototype.$routeName = $routeName;
+
+// user
+import routeUser        from '@user/page/routeGroupUser';
+//
+import routeBase     from './group/base';
+//
+import routeSystem      from '@router/page/routeGroupSystem';
+
 Vue.use(VueRouter);
 
-import routeDefault     from './group/base';
-import routeSystem      from './group/system';
-import routeTest        from './group/test'; // TODO: use for develop
-
 let routeList = [
-  routeDefault,
+  // custom
+  routeBase,
+  // user
+  routeUser,
+  //
   routeSystem,
-  routeTest,
 ];
 
 const routes = [];
 for(let i = 0; i < routeList.length; i++){
   for(let j = 0; j < routeList[i].length; j++){
-    routes.push( routeMetaPrepare(routeList[i][j]) );
+    routes.push(routePrepare(routeList[i][j]));
   }
 }
 
 const router = new VueRouter({
   mode: 'history',
   base: process.env.BASE_URL,
-  routes,
-  scrollBehavior(to, from, savedPosition) {
-    if (savedPosition) {
-      return savedPosition;
-    } else {
-      // document.getElementById('app').scrollTo(0, 0);
-      return { x: 0, y: 0 };
-    }
-  }
+  routes
 });
 
 export default router;

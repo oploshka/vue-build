@@ -1,63 +1,30 @@
-const aliasObj = require('./vue.alias');
 const path = require("path");
-
-// const fs = require('fs');
-
-// eslint-disable-next-line no-unused-vars
-function relayRequestHeaders(proxyReq, req) {}
-// eslint-disable-next-line no-unused-vars
-function relayResponseHeaders(proxyRes, req, res) {}
-// eslint-disable-next-line no-unused-vars
-function bypassFunction(req, res, proxyOptions) {}
-
-let testDomainProtocol  = process.env.DOMAIN_PROTOCOL;
-let testDomainName      = process.env.DOMAIN_NAME;
-let testDomainPort      = process.env.DOMAIN_PORT;
-let testDomainFull      = testDomainProtocol + '://' + testDomainName + ':' + testDomainPort;
+const aliasObj = require('./vue.alias');
+const devServer = require('./vue.config.devserver');
 
 module.exports = {
-  transpileDependencies: [
-    'vuetify'
-  ],
   lintOnSave: process.env.NODE_ENV !== 'production',
 
-  devServer: {
-    // TODO:
-    //   host: testDomainName, https: true
+  devServer: devServer,
 
-    // proxyTable: {},
-    // env: require('./dev.env'),
-    port: testDomainPort,
-    // assetsSubDirectory: 'static',
-    // assetsPublicPath: '/',
-    // cssSourceMap: false
-    public: `${testDomainName}:${testDomainPort}`,
-    proxy: {
-      [`${testDomainName}:${testDomainPort}`]: {
-        target: testDomainFull,
-        secure: false,
-        changeOrigin: true,
-        bypass: bypassFunction,
-        onProxyReq: relayRequestHeaders,
-        onProxyRes: relayResponseHeaders,
-        // router: routedRoutes
-      },
-    },
-    headers: { 'Access-Control-Allow-Origin': '*' }, // is not work???
-    // https: true,
-    // https: {
-    //   key : fs.readFileSync('./certificate/test00.key'),
-    //   cert: fs.readFileSync('./certificate/test00.csr'),
-    // },
-  },
-
-  // TODO: рендерим все в папку
-  // outputDir: path.resolve(__dirname, "./web"),
+  // рендерим все в папку
+  outputDir: path.resolve(__dirname, "./web"),
   assetsDir: './resource/',
 
   filenameHashing: true,
-
+  // css: {
+  //   loaderOptions: {
+  //     sass: {
+  //       additionalData: `@import '@style/_variable.scss'`,
+  //     },
+  //     scss: {
+  //       additionalData: `@import '@style/_variable.scss';`,
+  //     },
+  //   },
+  //   // sourceMap: true
+  // },
   chainWebpack: (config) => {
+    // добавляем свои сокращения
     for (const aliasName in aliasObj) {
       config.resolve.alias.set(aliasName, aliasObj[aliasName]);
     }
@@ -73,7 +40,9 @@ module.exports = {
     'style-resources-loader': {
       preProcessor: 'scss',
       patterns: [
+        // Подключать только переменные, иначе стили будут дублироваться!!!
         path.resolve(__dirname, './resource/style/base/variable.scss'),
+        path.resolve(__dirname, './resource/style/base/_mixin.scss'),
       ]
     }
   },

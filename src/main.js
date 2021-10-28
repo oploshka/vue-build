@@ -5,7 +5,7 @@ import '@enum';
 import '@entity';
 
 // глобально инитим константу CONST
-import '@/core/constGlobal';
+import '@/core/config';
 
 // Library
 import '@library/dayjs';
@@ -14,12 +14,16 @@ import '@library/dayjs';
 import '@service/RequestManager';
 
 // дефолтный импорт
-import App    from '@layout';
-import store  from '@store';
-import router from '@router';
+import App    from '@/core/layout';
+import router from '@/core/router';
+// import store  from '@/core/store'; // TODO ... подумать
 
 // filter
 import '@/core/filter';
+
+// Пользователь
+//   TODO: это нужно запустить как можно раньше (оптимизировать)
+import userInitFunc from '@user/init';
 
 // Plugins
 // import '@plugin/bootstrap-vue';
@@ -30,16 +34,35 @@ import '@/core/filter';
 // import '@plugin/vue-click-outside';
 // import '@plugins/v-mask';
 
-import '@permission/init';
+import '@plugin/vue-form-element';
+import '@plugin/vue-dlg';
 
 // глобальные стили
 import '@style/init.scss';
 
 Vue.config.productionTip = false;
 
+console.info('VERSION: ' + Vue.prototype.$ENUM.VERSION);
+
 global.Vue = Vue;
-global.VueApp = new Vue({
-  router,
-  store,
-  render: (h) => h(App),
-}).$mount('#app');
+
+userInitFunc().then((User) => {
+
+  /**
+   * @type {typeof UserClassExample}
+   */
+  global.User = User;
+
+
+  /**
+   * @type {typeof UserClassExample}
+   */
+  Vue.prototype.$user = User;
+
+  global.VueApp = new Vue({
+    router,
+    // store,
+    render: (h) => h(App),
+  }).$mount('#app');
+
+});
