@@ -16,11 +16,11 @@
 
 <script>
 
-import FveMixinField from "@widgetFormValidate/src/Mixin/FveMixinField";
+import FveFieldMixin from "@widgetFormValidate/src/Mixin/FveFieldMixin";
 
 export default {
   mixins:[
-    FveMixinField
+    FveFieldMixin
   ],
   props: {
     value: {

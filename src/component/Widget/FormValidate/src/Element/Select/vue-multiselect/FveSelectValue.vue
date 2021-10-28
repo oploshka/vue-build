@@ -1,5 +1,5 @@
 <template>
-  <FveTemplateField>
+  <FveFieldTemplate>
     <Multiselect
       :name="name"
       :placeholder="placeholder"
@@ -11,7 +11,6 @@
 
       :options="_optionList"
 
-      :multiple="multiple"
 
       selectLabel=""
       selectedLabel="Выбрано"
@@ -24,22 +23,22 @@
       v-model="_value"
     >
       <template v-slot:noOptions>Пустой список</template>
-      <template v-slot:noResult><div>По вашему запросу ничего не найдено. <span v-if="searchAdd" style="color: red;" @click="addItem">Добавить</span></div></template>
+      <template v-slot:noResult>По вашему запросу ничего не найдено.</template>
     </Multiselect>
-  </FveTemplateField>
+  </FveFieldTemplate>
 </template>
 
 <script>
 
-import FveMixinField from "@widgetFormValidate/src/Mixin/FveMixinField";
-import FveMixinFieldSelect from '@widgetFormValidate/src/Mixin/FveMixinFieldSelect';
+import FveFieldMixin from "@widgetFormValidate/src/Mixin/FveFieldMixin";
+import FveFieldSelectMixin from '@widgetFormValidate/src/Mixin/FveFieldSelectMixin';
 
 import Multiselect from 'vue-multiselect';
 
 export default {
   mixins: [
-    FveMixinField,
-    FveMixinFieldSelect
+    FveFieldMixin,
+    FveFieldSelectMixin
   ],
   components: {
     Multiselect
@@ -48,33 +47,7 @@ export default {
     // значение по умолчанию (можно переопределить тип)
     value    : { type: Number, default: () => null },
   },
-  data(){
-    return {
-      multiple: false,
-      search: '',
-      searchAdd: false,
-    };
-  },
   methods: {
-    addItem(){},
-
-    // для строк -> приходит строка и преобразуем в DateTime
-    prepareInput(value){
-      return value ? {
-        id: this.optionGetKey(value),
-        name: this.optionGetName(value),
-        origin: value,
-      } : null;
-    },
-    // на выходе ожидается строка у нас DateTime
-    prepareOutput(value){
-      return value ? value.origin : null;
-    },
-    inputPrepareFormElement(valueDateTime) {
-      this.inputFormElement( this.prepareOutput(valueDateTime) );
-    },
-
-
     prepareValue($event) {
       return $event;
     },
@@ -87,15 +60,23 @@ export default {
     },
   },
   computed: {
-    valuePrepare() {
-      return this.prepareInput(this.value);
-    },
     _value: {
       get() {
-        return this.valuePrepare;
+        if(!this.value) {
+          return null;
+        }
+        let v = this._optionList.find(option => option.id === this.value.toString());
+        v =  v ? v : null;
+        return v;
+        /*
+        this.value ?{
+          id: this.value,
+          name: '', // Не известное значение
+        } : null;
+         */
       },
       set(option){
-        this.inputPrepareFormElement(option);
+        this.inputFormElement(option.id);
       }
     },
     _optionList() {
@@ -103,20 +84,20 @@ export default {
         return {
           id: this.optionGetKey(option),
           name: this.optionGetName(option),
-          origin: option,
+          // origin: option,
         };
       });
     }
   }
+
+  // TODO: add watcher value ---> value2
 };
 </script>
-
 
 <style lang="scss" >
 // TODO use scope
 .fve {
   @import "~vue-multiselect/dist/vue-multiselect.min";
-
   /*
   .multiselect {
     margin: var(--fve-input--margin);
@@ -131,33 +112,15 @@ export default {
       border-color: var(--fve-input--border-color);
       border-radius: var(--fve-input--border-radius);
       background-color: var(--fve-input--background-color);
-      .multiselect__tag {
-        margin-bottom: 3px;
-        padding: 3px 26px 4px 10px;
-        color: #ACACAC;
-        font-weight: 500;
-        font-size: 16px;
+      .multiselect__single {
+        padding-top: 2px;
+        padding-left: 0;
+        margin-bottom: 0;
+        font-family: var(--fve-input--font-family);
+        font-size: var(--fve-input--font-size);
+        font-weight: var(--fve-input--font-weight);
+        color: var(--fve-input--font-color);
         background-color: rgba(0,0,0,0);
-        border: 1px solid #ACACAC;
-        border-radius: 20px;
-        .multiselect__tag-icon {
-          width: 28px;
-          background-color: rgba(0,0,0,0);
-          &:after {
-            content: "\D7";
-            color: #ACACAC;
-            font-size: 17px;
-            font-weight: 400;
-            line-height: 1;
-            transition: all .2s ease-in-out;
-          }
-          &:hover {
-            background-color: rgba(0,0,0,0);
-            &:after {
-              color: var(--fve-input--background);
-            }
-          }
-        }
       }
     }
     .multiselect__input {
@@ -188,7 +151,7 @@ export default {
       }
     }
   }
-  */
+   */
 }
 
 </style>

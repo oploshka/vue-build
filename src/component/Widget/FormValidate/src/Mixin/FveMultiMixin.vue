@@ -22,12 +22,12 @@ FveMultiItemMixin.vue
 <script>
 
 import FveMultiTemplate from "@widgetFormValidate/src/Mixin/FveMultiTemplate";
-import FveMixinField from "@widgetFormValidate/src/Mixin/FveMixinField";
+import FveFieldMixin from "@widgetFormValidate/src/Mixin/FveFieldMixin";
 
 export default {
   mixins: [
     FveMultiTemplate,
-    FveMixinField,
+    FveFieldMixin,
   ],
   props: {
     // значение по умолчанию (можно переопределить тип)
