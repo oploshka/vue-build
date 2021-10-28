@@ -7,7 +7,6 @@ export default [
     component: () => import('@page/Base/Home'),
     meta: {
       layout: 'DEFAULT',
-      auth: 'NOT_AUTH',
     },
   },
   {
@@ -16,7 +15,6 @@ export default [
     component: () => import('@page/Base/About'),
     meta: {
       layout: 'DEFAULT',
-      auth: 'NOT_AUTH',
     },
   },
   {
@@ -25,7 +23,6 @@ export default [
     component: () => import('@page/Base/Contact'),
     meta: {
       layout: 'DEFAULT',
-      auth: 'NOT_AUTH',
     },
   }
 ];
