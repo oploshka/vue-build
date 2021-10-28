@@ -1,5 +1,4 @@
-
-import FileClass                      from "./class/FileClass";
+import FileClass from './class/FileClass';
 
 /** @type {FileClass} */
 global.FileClass = FileClass;

@@ -19,10 +19,12 @@ $grid-columns:      12;
 $grid-gutter-width: 30px;
 $grid-row-columns:  6; // class row-cols-5 (сетка на 5 колонок)
 
-@import "~bootstrap/scss/bootstrap-grid.scss";
-// bootstrap container fix
-@media (min-width: 576px) and (max-width: 769px) {
-  .container, .container-sm {
-    max-width: 540px;
-  }
-}
+//@import "~bootstrap/scss/bootstrap-grid.scss";
+//@import "../b5_my_grid/bootstrap-grid.scss";
+
+//// bootstrap container fix
+//@media (min-width: 576px) and (max-width: 769px) {
+//  .container, .container-sm {
+//    max-width: 540px;
+//  }
+//}

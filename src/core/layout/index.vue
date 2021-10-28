@@ -1,8 +1,5 @@
 <template>
-  <div>
-<!--    // :class="getGridClass"-->
-    <component :is="currentLayout" id="app" />
-  </div>
+  <component :is="currentLayout" id="app" />
 </template>
 
 <script>
@@ -26,6 +23,14 @@
     // destroyed () {
     //   document.body.classList.remove('bg-light');
     // }
+    mounted() {
+      // магическая штука для отключения лоадинга
+      document.onreadystatechange = () => {
+        if (document.readyState == "complete") {
+          document.body.className = document.body.className.replace("loading","");
+        }
+      };
+    },
   };
 </script>
 
