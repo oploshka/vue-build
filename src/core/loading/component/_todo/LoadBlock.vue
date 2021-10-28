@@ -59,7 +59,7 @@ export default {
     isEmptyFunction: {
       type: Function,
       default: (v) => {
-        return !v
+        return !v;
       }
     },
   },
@@ -67,27 +67,23 @@ export default {
     setSuccess(data) {
       this.loadData   = data;
       this.loadStatus = LOAD_STATUS_SUCCESS;
-      //
-      return data;
     },
     setError(err) {
       this.loadData   = null;
       this.errorData   = err;
       this.loadStatus = LOAD_STATUS_ERROR;
-      //
-      return err;
     },
     //
     load(){
       this.loadStatus = LOAD_STATUS_LOAD;
       return this.loadFunction(...arguments)
-        .then(this.setSuccess, this.setError)
+        .then(this.setSuccess, this.setError);
         // .catch( );
     }
   },
   computed: {
     isEmpty() {
-      return this.isEmptyFunction(this.loadData)
+      return this.isEmptyFunction(this.loadData);
     }
   }
 };
