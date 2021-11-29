@@ -2,6 +2,8 @@ export const HOME     = 'HOME';
 export const ABOUT    = 'ABOUT';
 export const CONTACT  = 'CONTACT';
 
+export const TODO     = 'TODO';
+
 // auth
 export const AUTH           = 'AUTH';
 export const REGISTRATION   = 'REGISTRATION';
