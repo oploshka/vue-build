@@ -11,6 +11,7 @@
       <router-link :to="{ name: this.$routeName.HOME      }">Главная</router-link>
       <router-link :to="{ name: this.$routeName.ABOUT     }">О нас</router-link>
       <router-link :to="{ name: this.$routeName.CONTACT   }">Контакты</router-link>
+      <router-link :to="{ name: this.$routeName.TODO      }">ToDo Демо</router-link>
       <router-link :to="{ name: this.$routeName.NOT_FOUND }">404</router-link>
     </div>
   </header>

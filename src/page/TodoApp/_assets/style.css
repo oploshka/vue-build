@@ -1,0 +1,222 @@
+
+* {
+    box-sizing: border-box;
+}
+
+#todoWrapper{
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+.wrapper {
+    max-width: 800px;
+    width: 100%;
+    margin: 0 auto 15px;
+    padding:  0 15px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.wrapper:first-of-type {
+    margin-top: 15px;
+}
+
+.form {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    padding: 15px;
+    background-color: #fff;
+}
+
+.form > input {
+    height: 40px;
+    width: calc(100% - 145px);
+    border: 1px solid transparent;
+    text-indent: 10px;
+    outline: none;
+    background-color: #eee;
+    border: 1px solid #bfbfbf;
+}
+
+.btn {
+    background-color: #2196F3;
+    border: 1px solid #2196F3;
+    color: #fff;
+    font-weight: 700;
+    text-transform: uppercase;
+    padding: 10px 15px;
+    font-size: 12px;
+    height: 40px;
+    outline: none;
+    transition: 0.2s;
+    cursor: pointer;
+}
+
+.btn:hover {
+    background-color: transparent;
+    color: #2196F3;
+}
+
+.tasks-wrapper {
+    width: 100%;
+}
+
+.task-list {
+    width: 100%;
+    margin-bottom: 25px;
+}
+
+.task-list__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 15px;
+    border-bottom: 1px solid #bfbfbf;
+}
+
+.task-list__title {
+    font-weight: bold;
+}
+
+.task-list__counter {
+    border-radius: 20px;
+    border: 2px	solid #2a2f36;
+    color: #2a2f36;
+    font-size: 14px;
+    font-weight: 700;
+    padding: 5px 10px;
+    text-align: center;
+}
+
+.task-list__body {
+    padding: 10px 0;
+    margin: 0
+}
+
+.task-list__item {
+    padding: 10px;
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-shadow: 0 2px 5px 2px rgba(30, 30, 30, .25);
+}
+
+.column {
+    flex-direction: column;
+}
+
+.checkbox > label {
+    position: relative;
+    display: flex;
+    cursor: pointer;
+}
+
+.checkbox > label > input[type="checkbox"] {
+    position: absolute;
+    opacity: 0;
+    z-index: -1;
+    left: 0;
+    top: 0;
+}
+
+.checkbox > label > input[type="checkbox"]:checked + i.checkbox__mark {
+    background-color: #2196F3;
+    border: 1px solid #2196F3;
+}
+
+.checkbox__mark {
+    display: block;
+    width:  18px;
+    height: 18px;
+    border:  1px solid #333;
+    position: relative;
+    margin-right: 10px;
+}
+
+.checkbox__mark:after {
+    content: '';
+    position: absolute;
+    display: none;
+    left: 4px;
+    top: 0;
+    width: 5px;
+    height: 10px;
+    border: solid white;
+    border-width: 0 3px 3px 0;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+}
+
+
+.task-list__item.completed > .checkbox {
+    opacity: .5;
+    text-decoration: line-through;
+}
+
+.task-list__item.completed i.checkbox__mark {
+    background-color: #2196F3;
+    border: 1px solid #2196F3;
+}
+
+.task-list__item.completed i.checkbox__mark:after {
+    display: block !important;
+}
+
+.btn-remove {
+    border: 1px solid #2a2f36;
+    font-size: 12px;
+    border: 2px solid #2a2f36;
+    background-color: #333333;
+    color: #fff;
+    font-weight: 700;
+    text-transform: uppercase;
+    padding: 5px 10px;
+    font-size: 12px;
+    outline: none;
+    transition: 0.2s;
+    cursor: pointer;
+}
+
+.btn-edit {
+    border: 1px solid #2196F3;
+    font-size: 12px;
+    border: 2px solid #2196F3;
+    background-color: #2196F3;
+    color: #fff;
+    font-weight: 700;
+    text-transform: uppercase;
+    padding: 5px 10px;
+    font-size: 12px;
+    outline: none;
+    transition: 0.2s;
+    cursor: pointer;
+}
+
+.btn-edit:disabled {
+    opacity: 5;
+}
+
+.task-filters {
+    width: 100%;
+    margin-bottom: 15px;
+}
+
+.btn-filter {
+    border: 2px solid #2196F3;
+    background-color: transparent;
+    text-transform: uppercase;
+    padding: 5px 10px;
+    font-size: 12px;
+    line-height: 1;
+    cursor: pointer;
+    color:  #2196F3;
+}
+
+.btn-filter.active {
+    background-color: #2196F3;
+    color: #fff;
+}

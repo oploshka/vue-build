@@ -24,5 +24,13 @@ export default [
     meta: {
       layout: 'DEFAULT',
     },
+  },
+  {
+    path: "/todo",
+    name: pageName.TODO,
+    component: () => import('@page/TodoApp/TodoMain'),
+    meta: {
+      layout: 'DEFAULT',
+    },
   }
 ];
