@@ -1,5 +1,8 @@
+@use "sass:meta";
+
 :root {
-  --color-main: #F5AC1C;
+  --color-primary: #{$color-primary};
+  --color-primary-hover: #{$color-primary-hover};
 }
 
 // TODO: @import "~@widgetFormValidate/style/const.scss";

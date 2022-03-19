@@ -1,0 +1,19 @@
+
+svg, svg:focus {
+  outline: none;
+  // Класс new-notify показывает метку, что имеем новое уведомление путем изменения fill свойства внутри иконки.
+  & > rect.new-notify {
+    fill: transparent;
+  }
+
+  // Класс .filled показывает состояние outline звезды при наведении,
+  // клике и выбранной опции (например, добавлено в избранное)
+  & > path.filled {
+    fill: transparent;
+  }
+
+}
+
+// svg path{fill:#f00;}
+// svg rect{fill:#f00;}
+// svg polygon{fill:#f00;}

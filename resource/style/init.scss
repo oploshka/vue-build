@@ -10,7 +10,10 @@
 @import "./src/normalize/normalize-box-sizing.scss";
 @import "./src/normalize/normalize.scss";
 @import "./src/normalize/custom-fix.scss";
-@import "./src/normalize/grid.scss";
+
+// grid
+//@import "./src/grid/grid.scss";
+//@import "./src/grid/bootstrap-grid.css";
 
 //
 @import './src/visual/base.scss';
@@ -18,6 +21,7 @@
 
 // theme
 // @import './src/theme/card.scss';
+@import './src/theme/color.scss';
 
-// global component style
-@import './src/component/dialog.scss';
+// custom
+@import './src/custom/svg.scss';

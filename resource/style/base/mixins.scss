@@ -19,3 +19,12 @@
 //   }
 // }
 
+@mixin icon-size($iconSize) {
+    width: $iconSize + rem;
+    height: $iconSize + rem;
+    font-size: ($iconSize * 0.45) + rem;
+}
+
+@mixin random-bg(){
+    background: rgb(random(255), random(255), random(255));
+}
