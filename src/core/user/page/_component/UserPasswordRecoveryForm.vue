@@ -3,20 +3,13 @@
     <div class="form-group">
       <FveEmail
         :field="field.login"
-        label="E-mail"
+        label="Additional email"
         placeholder="name@mail.com"
       />
     </div>
     <div class="form-group">
-      <FvePassword
-        :field="field.password"
-        label="Password"
-        placeholder="6+ Characters"
-      />
-    </div>
-    <div class="form-group">
       <!-- <router-link :to="{name: $routerName.USER_AUTH}" class="auth__remember-password">Забыли пароль?</router-link> -->
-      <button type="button" @click="submit" class="pl-btn auth__btn">Log in</button>
+      <button type="button" @click="submit" class="pl-btn auth__btn">Send new password</button>
     </div>
   </FveForm>
 </template>
@@ -24,18 +17,15 @@
 <script>
 
 import FveMixinForm    from '@fve/Mixin/FveMixinForm';
-
 import FveEmail        from '@fve/Element/Text/FveEmail';
-import FvePassword     from '@fve/Element/Text/FvePasswordShowPass';
 
 export default {
-  name: "UserLoginForm",
+  name: "UserPasswordRecoveryForm",
   mixins: [
     FveMixinForm
   ],
   components: {
     FveEmail,
-    FvePassword,
   },
   methods: {
     submit() {
@@ -82,10 +72,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-
-.form-group {
-  margin-bottom: 2rem;
-}
 
 .auth__add-info {
   // display: flex;

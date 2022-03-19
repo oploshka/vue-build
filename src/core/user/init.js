@@ -1,4 +1,3 @@
-import Vue from 'vue';
 
 //
 import initUser from "@user/initUser";
@@ -13,9 +12,9 @@ initPermission();
 
 export default async function () {
 
-  if(global.User || Vue.prototype.$user) {
+  if( global.USER ) {
     console.error('Duplicate user init');
-    return User;
+    return global.USER;
   }
   await initUser(User);
 

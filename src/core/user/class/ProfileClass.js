@@ -1,12 +1,17 @@
-import Vue from 'vue';
+
+import { reactive } from 'vue';
 
 const getDefault = () =>  {
   return {
-    name         : '',
+    //
+    login                :  '',
+    firstName            :  '',
+    lastName             :  '',
+    mail                 :  '',
   };
 };
 
-const profile = Vue.observable(getDefault());
+const profile = reactive(getDefault());
 
 export default {
   store: profile,
@@ -14,6 +19,7 @@ export default {
   methods: {
     //
     getName()            { return profile.name; },
+    getProfileObj()      { return profile; },
 
   }
 };

@@ -1,5 +1,5 @@
 <template>
-  <form class="form-auth form-base row" @submit="formSubmit"  @submit.prevent="formSubmit">
+  <FveForm class="form-auth form-base row">
     <div class="col-12">
       <FveText
         label="Введите код из SMS"
@@ -10,9 +10,9 @@
     </div>
 
     <div class="col-12">
-      <button type="button" @click="formSubmit" class="pl-btn auth-form__btn">Подтвердить</button>
+      <button type="button" @click="formSubmit" class="pl-btn auth__btn">Подтвердить</button>
     </div>
-  </form>
+  </FveForm>
 </template>
 
 <script>
@@ -51,7 +51,7 @@ export default {
   // justify-content: space-between;
   margin-bottom: 43px;
 }
-.auth-form__btn {
+.auth__btn {
   width: 100%;
 }
 

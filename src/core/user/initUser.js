@@ -11,11 +11,20 @@ export default async function UserInit(User) {
 
   //# load additional info
   // TODO: fix
-  const userInfo = {
-    name: "tester",
-    roles: [],
-  };
+  // const userInfo = {
+  //   name: "tester",
+  //   roles: [],
+  // };
 
   //# init store
-  User.authorization({jwtToken:token, userInfo});
+  try {
+    await User.authorization({
+      token:token,
+      userInfo: null
+    });
+  } catch (e) {
+    return User;
+  }
+  
+  return User;
 }

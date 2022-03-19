@@ -1,10 +1,18 @@
 <template>
   <FveForm class="form-auth form-base row">
     <div class="form-group">
-      <FveEmail
+      <FveText
         :field="field.login"
-        label="E-mail"
-        placeholder="name@mail.com"
+        label="Login"
+        placeholder="Login"
+        caption="Login will be used for email@zombty.com"
+      />
+    </div>
+    <div class="form-group">
+      <FveEmail
+          :field="field.email"
+          label="E-mail"
+          placeholder="name@mail.com"
       />
     </div>
     <div class="form-group">
@@ -16,7 +24,7 @@
     </div>
     <div class="form-group">
       <!-- <router-link :to="{name: $routerName.USER_AUTH}" class="auth__remember-password">Забыли пароль?</router-link> -->
-      <button type="button" @click="submit" class="pl-btn auth__btn">Log in</button>
+      <button type="button" @click="submit" class="pl-btn auth__btn">Get started</button>
     </div>
   </FveForm>
 </template>
@@ -25,15 +33,17 @@
 
 import FveMixinForm    from '@fve/Mixin/FveMixinForm';
 
+import FveText         from "@fve/Element/Text/FveText";
 import FveEmail        from '@fve/Element/Text/FveEmail';
 import FvePassword     from '@fve/Element/Text/FvePasswordShowPass';
 
 export default {
-  name: "UserLoginForm",
+  name: "UserRegistrationForm",
   mixins: [
     FveMixinForm
   ],
   components: {
+    FveText,
     FveEmail,
     FvePassword,
   },
@@ -52,6 +62,13 @@ export default {
     formSchema() {
       return {
         login: {
+          type: String,
+          default() { return ''; },
+          field: {
+            required: true,
+          }
+        },
+        email: {
           type: String,
           default() { return ''; },
           field: {
@@ -82,10 +99,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-
-.form-group {
-  margin-bottom: 2rem;
-}
 
 .auth__add-info {
   // display: flex;

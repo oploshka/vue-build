@@ -1,16 +1,18 @@
-import Vue from 'vue';
+
+import { reactive } from "vue";
 
 // import jwtDecode from "jwt-decode";
 
-const getDefault = () =>  {
+const getDefault = () => {
   return {
-    token     : '',
-    cert      : '',
+    userId: "",
+    token: "",
+    // cert      : '',
     // life_time : 0,
   };
 };
 
-const auth = Vue.observable(getDefault());
+const auth = reactive(getDefault());
 
 export default {
   store: auth,
@@ -18,11 +20,12 @@ export default {
   methods: {
     //
     getToken    () { return auth.token;      },
+    getUserId   () { return auth.userId;     },
     getTokenDecode() {
       // return jwtDecode(auth.token);
       return {};
     },
-    getCert     () { return auth.cert;       },
+    // getCert     () { return auth.cert;       },
     // getLifeTime () { return auth.life_time;  },
     //
     // setToken    (value) { BrowserStorage.setItem(TOKEN     , value); auth.token     = value; },
@@ -50,7 +53,5 @@ export default {
     // } catch (e) {
     //   // return e;
     // }
-  }
+  },
 };
-
-

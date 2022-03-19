@@ -1,4 +1,5 @@
-import Vue from 'vue';
+
+import { reactive } from 'vue';
 import {ROLE_ANONYMOUS} from "@permission/roleName";
 
 const getDefault = () =>  {
@@ -7,13 +8,15 @@ const getDefault = () =>  {
   };
 };
 
-const role = Vue.observable(getDefault());
+const role = reactive(getDefault());
 
 export default {
   store: role,
   getDefault: getDefault,
   methods: {
-    getRoleList () { return role.role_list;  },
+    getRoleList () {
+      return role.role_list;
+    },
     getRoleObject () {
       const userRoleObject = {};
       for (var i = 0; i < role.role_list.length; i++) {

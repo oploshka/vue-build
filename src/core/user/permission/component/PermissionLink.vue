@@ -19,12 +19,12 @@ export default {
       // get access
       let permission = {};
       let p2 = routeInfo.meta.permission;
-      for (var i = 0; i < p2.length; ++i){
+      for (var i = 0; i < p2.length; i++){
         permission[p2[i]] = true;
       }
 
-      let userRoleList = global.User.isAuth() ? [ROLE_AUTH] : [ROLE_ANONYMOUS];
-      userRoleList = userRoleList.concat(global.User.Role.getRoleList());
+      let userRoleList = global.USER.isAuth() ? [ROLE_AUTH] : [ROLE_ANONYMOUS];
+      userRoleList = userRoleList.concat(global.USER.Role.getRoleList());
 
       let access = false;
 
