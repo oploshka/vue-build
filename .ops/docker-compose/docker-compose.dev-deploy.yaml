@@ -1,0 +1,60 @@
+version: '3.8'
+
+networks:
+  default:
+    name: project_name_network
+    external: true
+
+services:
+  cmm-frontend:
+    image: registry.gitlab.com/company_name/rtelecom/project_name-frontend-vue:${DOCKER_CMM_FRONTEND_IMAGE_TAG:-docker-compose}
+    # container_name: cmm_frontend_container
+    restart: on-failure
+    build:
+      target: runtime-image
+      context: ../../
+      dockerfile: .ops/docker/cmm-frontend/Dockerfile
+      cache_from:
+        - registry.gitlab.com/company_name/rtelecom/project_name-frontend-vue:dependency
+    expose:
+      - '8080'
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.cmm-frontend.rule=Host(`dev.project_name.company_name.dev`)"
+      - "traefik.http.routers.cmm-frontend.service=cmm-frontend"
+      - "traefik.http.routers.cmm-frontend.entrypoints=websecure"
+      - "traefik.http.routers.cmm-frontend.tls.certresolver=myresolver"
+      - "traefik.http.services.cmm-frontend.loadbalancer.server.port=8080"
+    logging:
+      driver: json-file
+      options:
+        max-size: "10m"
+        max-file: "5"
+
+  cmm-frontend-mock:
+    image: registry.gitlab.com/company_name/rtelecom/project_name-frontend-vue/mock:${DOCKER_CMM_FRONTEND_MOCK_IMAGE_TAG:-docker-compose}
+    # container_name: cmm_frontend_mock_container
+    restart: on-failure
+    build:
+      target: runtime-image
+      context: ../../
+      dockerfile: .ops/docker/cmm-frontend-mock/Dockerfile
+      cache_from:
+        - registry.gitlab.com/company_name/rtelecom/project_name-frontend-vue/mock:dependency
+    environment:
+      SERVER_HOST: "0.0.0.0"
+      SERVER_PORT: "8080"
+    expose:
+      - '8080'
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.cmm-frontend-mock.rule=Host(`mock.dev.project_name.company_name.dev`)"
+      - "traefik.http.routers.cmm-frontend-mock.service=cmm-frontend-mock"
+      - "traefik.http.routers.cmm-frontend-mock.entrypoints=websecure"
+      - "traefik.http.routers.cmm-frontend-mock.tls.certresolver=myresolver"
+      - "traefik.http.services.cmm-frontend-mock.loadbalancer.server.port=8080"
+    logging:
+      driver: json-file
+      options:
+        max-size: "10m"
+        max-file: "5"

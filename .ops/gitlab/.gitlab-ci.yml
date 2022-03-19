@@ -1,0 +1,176 @@
+stages:
+  - dependency
+  - build
+  - deploy
+
+services:
+  - name: docker.io/docker:20.10-dind
+    alias: docker
+
+variables:
+  DOCKER_BUILDKIT: 1
+  COMPOSE_DOCKER_CLI_BUILD: 1
+
+# ====== DEPENDENCY ======
+
+build-depencency:
+  image: docker:20.10
+  stage: dependency
+  only:
+    - master
+    - develop
+  tags:
+    - k8s
+  before_script:
+    - docker login -u $CI_REGISTRY_USER -p $CI_REGISTRY_PASSWORD $CI_REGISTRY
+    - cat "${ENV_FILE}" > .env
+  script:
+    - docker build
+      --pull
+      --platform "linux/amd64"
+      --cache-from "${CI_REGISTRY_IMAGE}:dependency"
+      --build-arg "BUILDKIT_INLINE_CACHE=1"
+      ${DOCKER_BUILD_DEPENDENCY_EXTRA_BUILD_ARG}
+      --target "dependency-image"
+      --tag "${CI_REGISTRY_IMAGE}:dependency"
+      --file "./.ops/docker/cmm-frontend/Dockerfile"
+      "./"
+    - docker push "${CI_REGISTRY_IMAGE}:dependency" || true
+  after_script:
+    - docker image rm -f "${CI_REGISTRY_IMAGE}:dependency" || true
+
+build-mock-depencency:
+  image: docker:20.10
+  stage: dependency
+  only:
+    - master
+    - develop
+  tags:
+    - k8s
+  before_script:
+    - docker login -u $CI_REGISTRY_USER -p $CI_REGISTRY_PASSWORD $CI_REGISTRY
+    - cat "${ENV_FILE}" > .env
+  script:
+    - docker build
+      --pull
+      --platform "linux/amd64"
+      --cache-from "${CI_REGISTRY_IMAGE}/mock:dependency"
+      --build-arg "BUILDKIT_INLINE_CACHE=1"
+      ${DOCKER_BUILD_DEPENDENCY_EXTRA_BUILD_ARG}
+      --target "dependency-image"
+      --tag "${CI_REGISTRY_IMAGE}/mock:dependency"
+      --file "./.ops/docker/cmm-frontend-mock/Dockerfile"
+      "./"
+    - docker push "${CI_REGISTRY_IMAGE}/mock:dependency" || true
+  after_script:
+    - docker image rm -f "${CI_REGISTRY_IMAGE}/mock:dependency" || true
+
+# ====== BUILD ======
+
+build:
+  image: docker:20.10
+  stage: build
+  only:
+    - master
+    - develop
+  tags:
+    - k8s
+  before_script:
+    - docker login -u $CI_REGISTRY_USER -p $CI_REGISTRY_PASSWORD $CI_REGISTRY
+    - cat "${ENV_FILE}" > .env
+  script:
+    - docker build
+      --pull
+      --platform "linux/amd64" --cache-from "${CI_REGISTRY_IMAGE}:dependency"
+      --build-arg "BUILDKIT_INLINE_CACHE=1"
+      ${DOCKER_BUILD_EXTRA_BUILD_ARG}
+      --target "runtime-image"
+      --tag "${CI_REGISTRY_IMAGE}:${CI_COMMIT_REF_SLUG}-${CI_COMMIT_SHA:0:8}"
+      --tag "${CI_REGISTRY_IMAGE}:latest"
+      --file "./.ops/docker/cmm-frontend/Dockerfile"
+      "./"
+    - docker push "${CI_REGISTRY_IMAGE}:${CI_COMMIT_REF_SLUG}-${CI_COMMIT_SHA:0:8}" || true
+    - docker push "${CI_REGISTRY_IMAGE}:latest" || true
+  after_script:
+    - docker image rm -f "${CI_REGISTRY_IMAGE}:${CI_COMMIT_REF_SLUG}-${CI_COMMIT_SHA:0:8}" || true
+    - docker image rm -f "${CI_REGISTRY_IMAGE}:latest" || true
+
+build-mock:
+  image: docker:20.10
+  stage: build
+  only:
+    - master
+    - develop
+  tags:
+    - k8s
+  before_script:
+    - docker login -u $CI_REGISTRY_USER -p $CI_REGISTRY_PASSWORD $CI_REGISTRY
+    - cat "${ENV_FILE}" > .env
+  script:
+    - docker build
+      --pull
+      --platform "linux/amd64" --cache-from "${CI_REGISTRY_IMAGE}/mock:dependency"
+      --build-arg "BUILDKIT_INLINE_CACHE=1"
+      ${DOCKER_BUILD_EXTRA_BUILD_ARG}
+      --target "runtime-image"
+      --tag "${CI_REGISTRY_IMAGE}/mock:${CI_COMMIT_REF_SLUG}-${CI_COMMIT_SHA:0:8}"
+      --tag "${CI_REGISTRY_IMAGE}/mock:latest"
+      --file "./.ops/docker/cmm-frontend-mock/Dockerfile"
+      "./"
+    - docker push "${CI_REGISTRY_IMAGE}/mock:${CI_COMMIT_REF_SLUG}-${CI_COMMIT_SHA:0:8}" || true
+    - docker push "${CI_REGISTRY_IMAGE}/mock:latest" || true
+  after_script:
+    - docker image rm -f "${CI_REGISTRY_IMAGE}/mock:${CI_COMMIT_REF_SLUG}-${CI_COMMIT_SHA:0:8}" || true
+    - docker image rm -f "${CI_REGISTRY_IMAGE}/mock:latest" || true
+
+# ====== DEPLOY ======
+
+dev_deploy:
+  image: docker.io/docker:20.10
+  stage: deploy
+  only:
+    - develop
+  tags:
+    - k8s
+  before_script:
+    - apk add --update --no-cache docker-compose openssh-client
+    - eval $(ssh-agent -s)
+    - mkdir -p ~/.ssh && chmod 700 ~/.ssh
+    - echo "${SSH_PRIVATE_KEY}" > ~/.ssh/id_rsa && chmod 600 ~/.ssh/id_rsa
+    - echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config
+
+    - docker login -u $CI_REGISTRY_USER -p $CI_REGISTRY_PASSWORD $CI_REGISTRY
+  script:
+    - export DOCKER_CMM_FRONTEND_IMAGE_TAG="${CI_COMMIT_REF_SLUG}-${CI_COMMIT_SHA:0:8}"
+    - export DOCKER_CMM_FRONTEND_MOCK_IMAGE_TAG="${CI_COMMIT_REF_SLUG}-${CI_COMMIT_SHA:0:8}"
+
+    - docker -H "ssh://${SSH_USER}@${SSH_HOST_DEV}:${SSH_PORT}" pull ${CI_REGISTRY_IMAGE}:${DOCKER_CMM_FRONTEND_IMAGE_TAG}
+    - docker -H "ssh://${SSH_USER}@${SSH_HOST_DEV}:${SSH_PORT}" pull ${CI_REGISTRY_IMAGE}/mock:${DOCKER_CMM_FRONTEND_MOCK_IMAGE_TAG}
+    - docker-compose -H "ssh://${SSH_USER}@${SSH_HOST_DEV}:${SSH_PORT}" -f .ops/docker-compose/docker-compose.dev-deploy.yaml --project-name project_name_frontend up --no-build --detach cmm-frontend cmm-frontend-mock
+  environment:
+    name: dev
+    url: https://dev.project_name.company_name.dev
+
+stage-deploy:
+  image: docker.io/docker:20.10
+  stage: deploy
+  only:
+    - master
+  tags:
+    - k8s
+  before_script:
+    - apk add --update --no-cache docker-compose openssh-client
+    - eval $(ssh-agent -s)
+    - mkdir -p ~/.ssh && chmod 700 ~/.ssh
+    - echo "${SSH_PRIVATE_KEY}" > ~/.ssh/id_rsa && chmod 600 ~/.ssh/id_rsa
+    - echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config
+
+    - docker login -u $CI_REGISTRY_USER -p $CI_REGISTRY_PASSWORD $CI_REGISTRY
+  script:
+    - export DOCKER_CMM_FRONTEND_IMAGE_TAG="${CI_COMMIT_REF_SLUG}-${CI_COMMIT_SHA:0:8}"
+
+    - docker -H "ssh://${SSH_USER}@${SSH_HOST_STAGE}:${SSH_PORT}" pull ${CI_REGISTRY_IMAGE}:${DOCKER_CMM_FRONTEND_IMAGE_TAG}
+    - docker-compose -H "ssh://${SSH_USER}@${SSH_HOST_STAGE}:${SSH_PORT}" -f .ops/docker-compose/docker-compose.stage-deploy.yaml --project-name project_name_frontend up --no-build --detach cmm-frontend
+  environment:
+    name: stage
+    url: https://stage.project_name.company_name.dev
