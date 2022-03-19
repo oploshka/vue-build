@@ -1,27 +1,25 @@
-import Vue from 'vue';
-import VueRouter from 'vue-router';
-import * as $routeName from '@router/variable';
+import { createRouter, createWebHistory } from 'vue-router';
+// import * as $routeName from '@router/variable'; TODO correct way to add $routeName to Vue instance prototype
 import { routePrepare } from '@router/function/routePrepare';
 
-Vue.prototype.$routeName = $routeName;
-
-// user
-import routeUser        from '@user/page/routeGroupUser';
-//
-import routeBase     from './group/base';
-//
-import routeSystem      from '@router/page/routeGroupSystem';
-
-Vue.use(VueRouter);
+import routeBase      from './group/base';
+import routeEmail     from './group/email';
+import routeGroupUser from '@user/page/routeGroupUser';
+import routeSystem    from '@router/page/routeGroupSystem';
 
 let routeList = [
-  // custom
   routeBase,
-  // user
-  routeUser,
-  //
+  routeEmail,
+  routeGroupUser,
   routeSystem,
 ];
+
+// Test routes
+import routeGroupTest from '@test/page/routeGroupTest';
+if (process.env.NODE_ENV === 'development') {
+  routeList.push(routeGroupTest);
+}
+//
 
 const routes = [];
 for(let i = 0; i < routeList.length; i++){
@@ -30,9 +28,8 @@ for(let i = 0; i < routeList.length; i++){
   }
 }
 
-const router = new VueRouter({
-  mode: 'history',
-  base: process.env.BASE_URL,
+const router = createRouter({
+  history: createWebHistory(process.env.BASE_URL),
   routes
 });
 

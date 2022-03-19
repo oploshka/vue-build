@@ -3,9 +3,12 @@ export const ABOUT    = 'ABOUT';
 export const CONTACT  = 'CONTACT';
 
 // auth
-export const AUTH           = 'AUTH';
-export const REGISTRATION   = 'REGISTRATION';
-export const PASSWORD_RESET = 'PASSWORD_RESET';
+export const USER_AUTH                      = 'USER_AUTH';
+export const USER_REGISTRATION              = 'USER_REGISTRATION';
+export const USER_PASSWORD_RECOVERY         = 'USER_PASSWORD_RECOVERY';
+export const USER_PASSWORD_RECOVERY_CONFIRM = 'USER_PASSWORD_RECOVERY_CONFIRM';
+export const USER_PROFILE_VIEW              = 'USER_PROFILE_VIEW';
+export const USER_PROFILE_EDIT              = 'USER_PROFILE_EDIT';
 
 // system
 export const NOT_FOUND      = 'NOT_FOUND';

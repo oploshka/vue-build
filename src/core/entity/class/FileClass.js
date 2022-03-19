@@ -1,32 +1,35 @@
 // import ParentClass from "@service/class/ParentClass";
 
-export default class FileClass {
-  #field
+const FileClass = function (option = {}) {
+  
+  let _field = {
+    id  : '',
+    src : '',
+    file: {},
+  };
+  
+  const init = (option = {}) => {
+    _field.id   = option.id   || '';
+    _field.src  = option.src  || '';
+    _field.file = option.file || {};
+  };
+  
+  init(option);
+  
+  this.getId   = ()     => { return _field.id   ; };
+  this.getSrc  = ()     => { return _field.src  ; };
+  this.getFile = ()     => { return _field.file ; };
+  this.setSrc  = (src ) => { return _field.src  = src ; };
+  this.setFile = (file) => { return _field.file = file; };
+  
+  
+  this.toString = () => {
+    return _field.src;
+  };
+  this.toObject = () => {
+    return Object.assign({}, _field);
+  };
+  this.toJSON  = () => { return this.toObject(); }; // JSON.stringify
+};
 
-  constructor(fileObj = {}) {
-    // super();
-    this.#field = {
-      id  : fileObj.id  || '',
-      src : fileObj.src || '',
-      file: fileObj.file || {},
-    };
-  }
-
-  getId  () { return this.#field.id   ; }
-  getSrc () { return this.#field.src  ; }
-  getFile() { return this.#field.file ; }
-
-  setSrc (src ) { return this.#field.src  = src ; }
-  setFile(file) { return this.#field.file = file; }
-
-
-  toString() {
-    return this.#field.src;
-  }
-
-  toObject() {
-    return Object.assign({}, this.#field);
-  }
-  // system
-  toJSON  () { return this.toObject(); } // JSON.stringify
-}
+export default FileClass;
