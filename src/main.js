@@ -1,68 +1,56 @@
-import Vue from 'vue';
 
-// глобально инитим классы
-import '@enum';
-import '@entity';
+import { createApp } from 'vue';
 
-// глобально инитим константу CONST
-import '@/core/config';
-
-// Library
+// глобальные библиотеки
 import '@library/dayjs';
 
-// глобальный реквест менеджер
-import '@service/RequestManager';
+// глобальные классы
+import '@entity';
 
-// дефолтный импорт
-import App    from '@/core/layout';
-import router from '@/core/router';
-// import store  from '@/core/store'; // TODO ... подумать
+// перечисления
+import $enum from '@enum';
 
-// filter
-import '@/core/filter';
+// глобально инитим константу CONST
+import $config from "@/core/config";
+
+// service
+import $requestManager from '@service/RequestManager';
+
+import $plugin from '@plugin';
 
 // Пользователь
 //   TODO: это нужно запустить как можно раньше (оптимизировать)
 import userInitFunc from '@user/init';
 
-// Plugins
-// import '@plugin/bootstrap-vue';
-// import '@plugin/v-slim-dialog';
-// import '@plugin/vue-js-modal';
-// import '@plugin/element-ui';
-// import '@plugin/vue-suggestion';
-// import '@plugin/vue-click-outside';
-// import '@plugins/v-mask';
+// дефолтный импорт
+import App    from '@layout';
+import router from '@router';
+import * as $routeName from "@router/variable";
 
-import '@plugin/vue-form-element';
-import '@plugin/vue-dlg';
+
+global.ENUM           = $enum;
+global.CONFIG         = $config;
+global.RequestManager = $requestManager;
 
 // глобальные стили
 import '@style/init.scss';
 
-Vue.config.productionTip = false;
+userInitFunc().then(($user) => {
+  global.USER = $user;
 
-console.info('VERSION: ' + Vue.prototype.$ENUM.VERSION);
+  // 1. Assign app to a variable
+  let app = createApp(App);
 
-global.Vue = Vue;
+  // 2. Assign the global variable before mounting
+  app.config.globalProperties.$enum       = $enum;
+  app.config.globalProperties.$config     = $config;
+  app.config.globalProperties.$user       = $user;
+  app.config.globalProperties.$routeName  = $routeName;
 
-userInitFunc().then((User) => {
+  // 3. Use router and mount app
+  $plugin(app);
+  app.use(router);
 
-  /**
-   * @type {typeof UserClassExample}
-   */
-  global.User = User;
-
-
-  /**
-   * @type {typeof UserClassExample}
-   */
-  Vue.prototype.$user = User;
-
-  global.VueApp = new Vue({
-    router,
-    // store,
-    render: (h) => h(App),
-  }).$mount('#app');
+  global.VueApp = app.mount('#app');
 
 });

@@ -2,7 +2,7 @@ const path = require('path');
 
 const alias = {
   //
-  '@fve'            : path.join(__dirname, './node_modules/vue-form-element/src'),
+  '@fve'            : path.join(__dirname, './src/core/plugin/vue-form-element/src'),
   // resource
   '@img'            : path.join(__dirname, './resource/img'         ),
   '@font'           : path.join(__dirname, './resource/font'        ),
@@ -11,16 +11,18 @@ const alias = {
   '@public'         : path.join(__dirname, './public'               ),
   // system
   '@entity'         : path.join(__dirname, './src/core/entity'      ),
+  // '@mixin'          : path.join(__dirname, './src/core/mixin'       ),
   '@enum'           : path.join(__dirname, './src/core/enum'        ),
   '@filter'         : path.join(__dirname, './src/core/filter'      ),
   '@layout'         : path.join(__dirname, './src/core/layout'      ),
   '@library'        : path.join(__dirname, './src/core/library'     ),
   '@loading'        : path.join(__dirname, './src/core/loading'     ),
-  '@middleware'     : path.join(__dirname, './src/core/middleware'  ),
+  // '@middleware'     : path.join(__dirname, './src/core/middleware'  ),
   '@plugin'         : path.join(__dirname, './src/core/plugin'      ),
   '@router'         : path.join(__dirname, './src/core/router'      ),
   '@service'        : path.join(__dirname, './src/core/service'     ),
   '@store'          : path.join(__dirname, './src/core/store'       ),
+  '@test'           : path.join(__dirname, './test'),
 
 
   // auth

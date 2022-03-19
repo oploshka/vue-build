@@ -1,50 +1,47 @@
 {
-  "name": "project_name",
+  "name": "Chatmail",
   "version": "0.1.0",
   "private": true,
   "engines": {
     "node": ">=14.18.0",
-    "npm": ">=7.24.0"
+    "npm": ">=8.0.0"
   },
   "scripts": {
     "serve": "vue-cli-service serve",
     "serveHttps": "vue-cli-service serve --https true",
     "build": "vue-cli-service build",
     "test:unit": "vue-cli-service test:unit",
+    "test:e2e": "vue-cli-service test:e2e",
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
-    "axios": "^0.22.0",
-    "core-js": "^3.18.3",
+    "axios": "^0.24.0",
+    "core-js": "^3.6.5",
     "dayjs": "^1.10.7",
     "js-file-download": "^0.4.12",
     "js-request-manager": "1.2.2",
     "lodash": "^4.17.21",
-    "v-mask": "^2.3.0",
-    "v-slim-dialog": "0.0.10",
-    "vue": "^2.6.11",
-    "vue-dlg": "^0.1.2",
-    "vue-form-element": "^0.1.2",
-    "vue-router": "^3.2.0"
+    "vue": "^3.0.0",
+    "vue-router": "^4.0.0-0"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "~4.5.0",
+    "@vue/cli-plugin-e2e-cypress": "~4.5.0",
     "@vue/cli-plugin-eslint": "~4.5.0",
     "@vue/cli-plugin-router": "~4.5.0",
     "@vue/cli-plugin-unit-jest": "~4.5.0",
-    "@vue/cli-plugin-vuex": "~4.5.0",
     "@vue/cli-service": "~4.5.0",
-    "@vue/eslint-config-standard": "^5.1.2",
-    "@vue/test-utils": "^1.0.3",
+    "@vue/compiler-sfc": "^3.0.0",
+    "@vue/test-utils": "^2.0.0-0",
     "babel-eslint": "^10.1.0",
     "eslint": "^6.7.2",
-    "eslint-plugin-import": "^2.20.2",
-    "eslint-plugin-vue": "^6.2.2",
+    "eslint-plugin-vue": "^7.0.0",
     "sass": "^1.26.5",
     "sass-loader": "^8.0.2",
     "style-resources-loader": "^1.4.1",
-    "vue-cli-plugin-style-resources-loader": "^0.1.4",
-    "vue-svg-inline-loader": "^2.1.2",
-    "vue-template-compiler": "^2.6.11"
+    "typescript": "~3.9.3",
+    "vue-cli-plugin-style-resources-loader": "~0.1.5",
+    "vue-jest": "^5.0.0-0",
+    "vue-svg-inline-loader": "^2.1.2"
   }
 }
