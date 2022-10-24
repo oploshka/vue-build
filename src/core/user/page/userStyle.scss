@@ -1,15 +1,12 @@
 .auth__main {
-  margin-bottom: 2rem;
+  width: 512px;
 }
 
 .auth__title {
   margin: 0 0 32px;
-  font-weight: normal;
-  font-size: 22px;
-  line-height: 145%;
-  font-weight: 700;
-  color: var(--color-gray-08);
-  text-transform: capitalize;
+  text-align: center;
+  font-weight: 500;
+  color: #1B2E47;
 }
 
 .auth__subtitle {

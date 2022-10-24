@@ -2,7 +2,7 @@ const path = require('path');
 
 const alias = {
   //
-  '@field'          : path.join(__dirname, './src/formField'),
+  '@field'          : path.join(__dirname, './src/field'),
   '@plugin-vue-dlg' : path.join(__dirname, './node_modules/vue-dlg/src'),
   // resource
   // eslint-disable-next-line space-in-parens

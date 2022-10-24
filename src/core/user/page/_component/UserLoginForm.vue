@@ -1,54 +1,52 @@
 <template>
-  <FveForm class="form-auth form-base row">
-    <div class="form-group">
-      <FveEmail
-        :field="field.login"
-        label="E-mail"
-        placeholder="name@mail.com"
-      />
-    </div>
-    <div class="form-group">
-      <FvePassword
-        :field="field.password"
-        label="Password"
-        placeholder="6+ Characters"
-      />
-    </div>
-    <div class="form-group">
-      <!-- <router-link :to="{name: $routerName.USER_AUTH}" class="auth__remember-password">Забыли пароль?</router-link> -->
-      <button type="button" @click="submit" class="pl-btn auth__btn">Log in</button>
-    </div>
+  <FveForm class="form-auth form-base card">
+
+
+      <div class="form-group">
+        <FveLogin
+          :field="field.login"
+          label="Имя пользователя или Email"
+          placeholder="Введите данные"
+        />
+      </div>
+
+      <div class="form-group">
+        <FvePassword
+          :field="field.password"
+          label="Пароль"
+          placeholder="Введите данные"
+        />
+      </div>
+
+
+      <div class="form-group" style="margin-top: 16px;">
+        <div class="th-btn th-btn-primary"  @click="submit">Войти</div>
+        <router-link :to="{name: $routeName.USER_PASSWORD_RECOVERY}" class="form-group-link pointer">
+          Забыли пароль?
+        </router-link>
+<!--        <a class="form-group-link pointer" >Забыли пароль?</a>-->
+      </div>
+
   </FveForm>
 </template>
 
 <script>
 
-import FveMixinForm    from '@fve/Mixin/FveMixinForm';
+import FveMixinForm    from 'vue-form-element/src/Mixin/FveMixinForm';
 
-import FveEmail        from '@fve/Element/Text/FveEmail';
-import FvePassword     from '@fve/Element/Text/FvePasswordShowPass';
+import FveLogin        from '@field/Text/FveLogin';
+import FvePassword     from '@field/Text/FvePasswordShowPass';
 
 export default {
-  name: "UserLoginForm",
+  name: 'UserLoginForm',
   mixins: [
     FveMixinForm
   ],
   components: {
-    FveEmail,
+    FveLogin,
     FvePassword,
   },
   methods: {
-    submit() {
-      const formSubmitPromise = this.formSubmit();
-      formSubmitPromise.then(
-          (formData) => {
-            this.$emit('submit', formData);
-          },
-          (formFieldError) => {
-            this.$emit('error', formFieldError);
-          }
-      );
-    },
     formSchema() {
       return {
         login: {
@@ -65,17 +63,21 @@ export default {
             required: true,
           }
         },
-        // cert: {
-        //   type: File,
-        //   default: () => { return null; }
-        // },
-        // remember: {
-        //   type: Boolean,
-        //   default: () => { return true; }
-        // },
       };
     },
-  }
+
+    setError(text) {
+      for(let key in this.formElement) {
+        const formElement =  this.formElement[key];
+        if(formElement.field.name === 'login') {
+          formElement.fieldSetError('ERROR', text, 'ERROR_CODE')
+        }
+        if(formElement.field.name === 'password') {
+          formElement.fieldSetError('ERROR', '', 'ERROR_CODE')
+        }
+      }
+    }
+  },
 
 };
 
@@ -83,8 +85,33 @@ export default {
 
 <style lang="scss" scoped>
 
+.card {
+  gap: 24px;
+  display: flex;
+  flex-direction: column
+}
+
 .form-group {
-  margin-bottom: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  margin: 0;
+
+  &-link {
+    text-align: center;
+    color: #26ADE4;
+    font-size: 14px;
+  }
+}
+
+.form-group-container {
+  background: #F7F9FB;
+  border-radius: 8px;
+  padding: 24px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  margin-bottom: 24px;
 }
 
 .auth__add-info {

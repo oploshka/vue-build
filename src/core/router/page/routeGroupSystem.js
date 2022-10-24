@@ -1,4 +1,4 @@
-import * as pageName from "@router/variable";
+import * as pageName from '@router/variable';
 
 export default [
   {
@@ -12,7 +12,8 @@ export default [
     component: () => import('@router/page/NotFound'),
   },
   {
-    path: '*',
+    path: '/:catchAll(.*)',
     component: () => import('@router/page/NotFound'),
-  }
+  },
+  //{ path: '/:pathMatch(.*)*', component: NotFound }, // TODO Test vue 3 router new features
 ];

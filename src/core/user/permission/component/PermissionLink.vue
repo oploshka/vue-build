@@ -4,7 +4,7 @@
 
 <script>
 
-import {ROLE_ANONYMOUS, ROLE_AUTH} from "@permission/roleName";
+import {ROLE_ANONYMOUS, ROLE_AUTH} from '@permission/_old/roleName';
 
 export default {
   props: ['to'],

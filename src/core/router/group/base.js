@@ -1,28 +1,29 @@
 import * as pageName from '@router/variable';
+import LAYOUT from '@layout/layoutName';
 
 export default [
   {
-    path: "/",
+    path: '/',
     name: pageName.HOME,
     component: () => import('@page/Base/Home'),
     meta: {
-      layout: 'DEFAULT',
+      layout: LAYOUT.DEFAULT,
     },
   },
   {
-    path: "/about",
+    path: '/about',
     name: pageName.ABOUT,
     component: () => import('@page/Base/About'),
     meta: {
-      layout: 'DEFAULT',
+      layout: LAYOUT.DEFAULT,
     },
   },
   {
-    path: "/contact",
+    path: '/contact',
     name: pageName.CONTACT,
     component: () => import('@page/Base/Contact'),
     meta: {
-      layout: 'DEFAULT',
+      layout: LAYOUT.DEFAULT,
     },
   }
 ];

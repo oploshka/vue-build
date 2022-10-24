@@ -1,21 +1,24 @@
-import * as pageName from "@router/variable";
-// import * as roleName from '@permission/roleName';
-import permissionMethod from "@permission/permissionMethod";
+import * as pageName from '@router/variable';
 
 // route check access
 export const checkAccess = (to, from, next) => {
+  // next();
   checkAccessRoute(to, next);
 };
 
 export const checkAccessRoute = (route, next) => {
-  const accessObject = route.meta.permission;
-  if (accessObject === null) {
+  // отключение проверки прав доступа
+  if(process.env.VUE_APP_ROUTER_PERMISSION_DISABLE === 'ROUTER_PERMISSION_DISABLE') {
     next(); return;
   }
 
-  const userRoleList = global.User.Role.getRoleList();
+  const permissionName = route.meta.permissionV2;
+  if (!permissionName) {
+    next(); return;
+  }
 
-  const access = permissionMethod.accessObject(accessObject, userRoleList);
+  const access = global.USER.access(permissionName);
+  // const access = true;
 
   if(access) {
     next(); return;
@@ -23,14 +26,18 @@ export const checkAccessRoute = (route, next) => {
 
   // TODO: fix redirect
   let redirect  = { name: pageName.NOT_ACCESS }; // 403
-  if( global.User.isAuth() ) {
+  if( global.USER.isAuth() ) {
     // пользователь авторизован
-    redirect = { name: pageName.HOME };
+    const redirectPageName = global.USER.getAuthRedirectPage();
+    if(!redirectPageName) {
+      console.error('[ERROR] permission redirectPageName!!!');
+    }
+    redirect = { name: redirectPageName };
   } else {
     // пользователь не авторизован
     // TODO: fix
     // redirect = { name: pageName.NOT_ACCESS };
-    redirect = { name: pageName.AUTH };
+    redirect = { name: pageName.USER_AUTH };
   }
   next(redirect);
 };
@@ -46,6 +53,7 @@ export const routePrepare = (routeInfo) => {
   routeInfo.meta.layout     = routeInfo.meta.layout || 'DEFAULT';
 
   routeInfo.meta.permission = routeInfo.meta.permission || null;
+  routeInfo.meta.permissionV2 = routeInfo.meta.permissionV2 || null;
   // TODO: fix
   // routeInfo.meta.permission = routeInfo.meta.permission || [];
   // if(typeof routeInfo.meta.permission === 'string') {

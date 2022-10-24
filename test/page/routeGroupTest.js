@@ -1,4 +1,4 @@
-import * as roleName from "@permission/roleName";
+// import * as roleName from "@permission/roleName";
 
 export default [
   {
@@ -10,10 +10,10 @@ export default [
         name: 'test',
         component: () => import('@test/page/Test'),
         meta: {
-          permission: {
-            [roleName.ROLE_ANONYMOUS] : true,
-            [roleName.ROLE_AUTH] : true
-          }
+          // permission: {
+          //   [roleName.ROLE_ANONYMOUS] : true,
+          //   [roleName.ROLE_AUTH] : true
+          // }
         }
       },
       {
@@ -21,10 +21,10 @@ export default [
         name: 'test-grid',
         component: () => import('@test/page/TestGrid'),
         meta: {
-          permission: {
-            [roleName.ROLE_ANONYMOUS] : true,
-            [roleName.ROLE_AUTH] : true
-          }
+          // permission: {
+          //   [roleName.ROLE_ANONYMOUS] : true,
+          //   [roleName.ROLE_AUTH] : true
+          // }
         }
       },
     ]

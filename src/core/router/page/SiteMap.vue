@@ -1,10 +1,8 @@
 <template>
   <div>
-    <template v-for="rout in $routeName">
-      <div :key="rout">
-        <router-link :to="{name: rout}">{{rout}}</router-link>
-      </div>
-    </template>
+    <div v-for="route in $routeName" :key="route">
+      <router-link :to="{name: route}">{{route}}</router-link>
+    </div>
   </div>
 </template>
 

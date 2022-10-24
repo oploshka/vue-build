@@ -1,0 +1,119 @@
+// Импортировать глобально
+// используем префикс fve (form validate element)
+// используем css variable
+:root /* .fve */ {
+  --fve-input--display: block;
+  --fve-input--margin: 0 0 0 0;
+  --fve-input--padding: 12px 16px;
+  --fve-input--width: 100%;
+  --fve-input--height: 40px;
+  // font
+  --fve-input--font-family: var(--default-font-family);
+  --fve-input--font-size: 14px;
+  --fve-input--font-weight: 400;
+  --fve-input--font-color: #000000;
+  --fve-input--line-height: 24px;
+  // border
+  --fve-input--border: 1px solid var(--fve-input--border-color);
+  --fve-input--border-color: #e7e8ea;
+  --fve-input--border-radius: 8px;
+  // background
+  --fve-input--background: #ffffff;
+  --fve-input--background-color: #ffffff;
+
+  // #fix textarea
+  --fve-textarea--height: 105px;
+  --fve-textarea--min-height: 105px;
+  --fve-textarea--max-height: 360px;
+
+  // === color
+  --fve-color: #2c3242;
+  --fve-color-gray: #757a8a;
+  --fve-color-prime: #094e91;
+  --fve-color-success: #009688;
+  --fve-color-error: #dc472e;
+
+  //
+  --fve-placeholder--font-family: var(--default-font-family);
+  --fve-placeholder--font-size: var(--fve-input--font-size);
+  --fve-placeholder--font-weight: var(--fve-input--font-weight);
+  --fve-placeholder--font-color: #babace;
+  --fve-placeholder--line-height: var(--fve-input--line-height);
+
+  // === checkbox
+  --fve-checkbox-size: 18px;
+  --fve-checkbox-mark: '\2713';
+  --fve-checkbox-mark-size: 12px;
+  --fve-checkbox-indent: 30px;
+
+  // === radio
+  --fve-radio-size: 16px;
+  --fve-radio-mark-size: 8px;
+  --fve-radio-margin: 6px;
+  --fve-radio-indent: 30px;
+
+  // === label
+  --fve-label--display: inline-block;
+  --fve-label--margin: 0 0 8px 0;
+  --fve-label--padding: 0 0 0 0;
+  --fve-label--width: auto;
+  --fve-label--height: auto;
+  // font
+  --fve-label--font-family: var(--default-font-family);
+  --fve-label--font-size: var(--fve-input--font-size);
+  --fve-label--font-weight: 400;
+  --fve-label--font-color: #585858;
+  --fve-label--line-height: 20px;
+  // border
+  --fve-label--border: none;
+  --fve-label--border-color: transparent;
+  --fve-label--border-radius: 0;
+  // background
+  --fve-label--background: none;
+  --fve-label--background-color: none;
+
+  // === caption
+  --fve-caption--display: inline-block;
+  --fve-caption--margin: 4px 0 0 0;
+  --fve-caption--padding: 0 0 0 0;
+  --fve-caption--width: auto;
+  --fve-caption--height: auto;
+  // font
+  --fve-caption--font-family: var(--default-font-family);
+  --fve-caption--font-size: 0.75rem;
+  --fve-caption--font-weight: 400;
+  --fve-caption--font-color: var(--color-gray-05);
+  --fve-caption--line-height: 1.45;
+  // border
+  --fve-caption--border: none;
+  --fve-caption--border-color: transparent;
+  --fve-caption--border-radius: 0;
+  // background
+  --fve-caption--background: none;
+  --fve-caption--background-color: none;
+}
+
+.fve-require {
+  //--fve-input--border-color : #f5ac1c;
+  //--fve-input--background-color: #fefbf3;
+}
+.fve.fve-status__error {
+  --fve-input--border-color: var(--fve-color-error);
+  .fve-message {
+    color: var(--fve-color-error);
+  }
+}
+
+.fve.fve-status__success {
+  :focus {
+    --fve-input--border-color: var(--color-primary);
+  }
+}
+
+.fve.fve-disabled {
+  --fve-input--border-color: #eaeaea;
+  --fve-input--background-color: #e7e8ea;
+  --fve-input--font-color: #8e9095;
+
+  pointer-events: none;
+}

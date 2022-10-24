@@ -8,7 +8,7 @@
 import LAYOUT from "./layoutName";
 import LAYOUT_COMPONENT from "./layoutComponent";
 
-import DialogCore from "@plugin/vue-dlg/src/DialogCore";
+import DialogCore from "vue-dlg/src/DialogCore";
 
 // import Notifications from "@layout/Notifications";
 // template   => <Notifications />
@@ -55,13 +55,13 @@ export default {
   },
   computed: {
     currentLayout () {
-  
+
       let ln = this.layoutName;
       if(!LAYOUT_COMPONENT[ln]){
         console.error('[LAYOUT_COMPONENT]: undefined template name')
         ln = LAYOUT.DEFAULT;
       }
-      
+
       return LAYOUT_COMPONENT[ln];
     }
   },
