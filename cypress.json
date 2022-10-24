@@ -1,0 +1,15 @@
+{
+  "baseUrl": "$[DOMAIN_PROTOCOL]://$[DOMAIN_NAME]:$[DOMAIN_PORT]",
+  
+  "viewportWidth": 1300,
+  "viewportHeight": 1000,
+  
+  "componentFolder"   : "test/cypress/src/component",
+  "downloadsFolder"   : "test/cypress/src/downloads",
+  "fixturesFolder"    : "test/cypress/src/fixtures",
+  "integrationFolder" : "test/cypress/src/integration",
+  "pluginsFile"       : "test/cypress/src/plugins",
+  "screenshotsFolder" : "test/cypress/src/screenshots",
+  "supportFile"       : "test/cypress/src/support",
+  "videosFolder"      : "test/cypress/src/videos"
+}

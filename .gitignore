@@ -8,6 +8,10 @@ node_modules
 /.gitkeep
 __*
 
+#
+/test/e2e/videos/
+/test/e2e/screenshots/
+
 # local env files
 .env
 .env.local
