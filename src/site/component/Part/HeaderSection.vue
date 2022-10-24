@@ -8,10 +8,7 @@
 <!--      />-->
     </div>
     <div class="header__menu">
-      <router-link :to="{ name: this.$routeName.HOME      }">Главная</router-link>
-      <router-link :to="{ name: this.$routeName.ABOUT     }">О нас</router-link>
-      <router-link :to="{ name: this.$routeName.CONTACT   }">Контакты</router-link>
-      <router-link :to="{ name: this.$routeName.NOT_FOUND }">404</router-link>
+      <!--<router-link :to="{ name: this.$routeName.HOME      }"></router-link>-->
     </div>
   </header>
 </template>

@@ -1,5 +1,5 @@
 
-import $config from '@/core/config';
+import $config from '@config';
 
 export default {
   auth:       $config.AUTH_API_URL + '/',

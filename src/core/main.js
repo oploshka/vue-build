@@ -11,7 +11,7 @@ import '@entity';
 import $enum from '@enum';
 
 // глобально инитим константу CONST
-import $config from "@/core/config";
+import $config from '@config';
 
 // service
 import $requestManager from '@service/RequestManager';

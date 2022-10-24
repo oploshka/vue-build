@@ -5,6 +5,12 @@ const devServer = require('./vue.config.devserver');
 process.env.VUE_APP_VERSION = require('./package.json').version;
 
 module.exports = {
+  pages: {
+    index: {
+      entry: path.resolve(__dirname, 'src/core/main.js')
+    }
+  },
+  
   transpileDependencies: true,
   // lintOnSave: process.env.NODE_ENV !== 'production',
   lintOnSave: false,
