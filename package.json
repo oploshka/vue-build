@@ -19,9 +19,11 @@
     "core-js": "^3.8.3",
     "dayjs": "^1.11.6",
     "js-file-download": "^0.4.12",
-    "js-request-manager": "^1.2.2",
+    "js-request-manager": "^2.0.0-alpha.9",
     "lodash": "^4.17.21",
     "vue": "^3.2.13",
+    "vue-dlg": "^1.0.0-alpha.7",
+    "vue-form-element": "^1.0.0-alpha.2",
     "vue-router": "^4.0.3"
   },
   "devDependencies": {

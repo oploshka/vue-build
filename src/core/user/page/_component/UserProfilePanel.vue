@@ -69,7 +69,7 @@ export default {
   width: 100%;
 
   .user-panel__avatar {
-    @include icon-size(6.25);
+    //@include icon-size(6.25);
     margin: 0 auto 16px;
   }
 

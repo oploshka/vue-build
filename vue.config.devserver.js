@@ -1,29 +1,40 @@
 
 // const path = require("path");
 
-// eslint-disable-next-line no-unused-vars
+// eslint-disable-next-line
 function relayRequestHeaders(proxyReq, req) {}
-// eslint-disable-next-line no-unused-vars
+// eslint-disable-next-line
 function relayResponseHeaders(proxyRes, req, res) {}
-// eslint-disable-next-line no-unused-vars
+// eslint-disable-next-line
 function bypassFunction(req, res, proxyOptions) {}
 
-let testDomainProtocol  = process.env.DOMAIN_PROTOCOL;
-let testDomainName      = process.env.DOMAIN_NAME;
-let testDomainPort      = process.env.DOMAIN_PORT;
-let testDomainFull      = testDomainProtocol + '://' + testDomainName + ':' + testDomainPort;
+const testDomainProtocol  = process.env.DOMAIN_PROTOCOL;
+const testDomainName      = process.env.DOMAIN_NAME;
+const testDomainPort      = process.env.DOMAIN_PORT;
+const testDomainFull      = testDomainProtocol + '://' + testDomainName + ':' + testDomainPort;
 
-let devServer = {
+const devServer = {
   // TODO:
   //   host: testDomainName, https: true
-  
+
   // proxyTable: {},
   // env: require('./dev.env'),
   port: testDomainPort,
+  host: testDomainName,
+  // host: '0.0.0.0',
+
   // assetsSubDirectory: 'static',
   // assetsPublicPath: '/',
   // cssSourceMap: false
-  public: `${testDomainName}:${testDomainPort}`,
+
+  client: {
+    webSocketURL: {
+      hostname: testDomainName,
+      pathname: '/ws',
+      port: testDomainPort,
+    },
+  },
+
   // headers: {'Access-Control-Allow-Origin': '*'}, // is not work???
   // https: true,
   // https: {
@@ -35,22 +46,22 @@ let devServer = {
 // proxy
 if(process.env.VUE_APP_URL_MODE === 'DEV_PROXY'){
   const proxy = {};
-  let nameList = ['AUTH', 'API', 'MOCK'];
+  const nameList = ['AUTH', 'API', 'EXTRACTION'];
   nameList.forEach((name) => {
-    let valueProxy = process.env['VUE_APP_URL_DEV_PROXY_' + name];
-    let valueUrl   = process.env['VUE_APP_URL_' + name];
+    const valueProxy = process.env['VUE_APP_URL_DEV_PROXY_' + name];
+    const valueUrl   = process.env['VUE_APP_URL_' + name];
     //
     proxy[valueProxy + '/*'] = {
       target: valueUrl,
       pathRewrite: {
-        ['^' + valueProxy]: ""
+        ['^' + valueProxy]: ''
       },
       changeOrigin: true,
       secure: false,
-      logLevel: "debug"
-    }
-  })
-  
+      logLevel: 'debug'
+    };
+  });
+
   /*
   // https://stackoverflow.com/questions/57032458/how-to-use-webpack-proxy-devserver-pathrewrite
   "/server-test-api/*": {
@@ -64,7 +75,7 @@ if(process.env.VUE_APP_URL_MODE === 'DEV_PROXY'){
     "logLevel": "debug"
   },
   */
-  
+
   devServer.proxy = proxy;
 }
 

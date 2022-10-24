@@ -11,8 +11,8 @@ x-serv-front-volumes: &x-serv-front-volumes
   - ${DR__ROOT_DIR}/public:${DR__WORK_DIR}/public:ro
   - ${DR__ROOT_DIR}/resource:${DR__WORK_DIR}/resource:ro
   - ${DR__ROOT_DIR}/src:${DR__WORK_DIR}/src:ro
-  - ${DR__ROOT_DIR}/tests:${DR__WORK_DIR}/tests:ro
-  # - ${DR__ROOT_DIR}/tests:${DR__WORK_DIR}/tests:ro
+  - ${DR__ROOT_DIR}/test:${DR__WORK_DIR}/test:ro
+  # - ${DR__ROOT_DIR}/test:${DR__WORK_DIR}/test:ro
   # files
   - ${DR__ROOT_DIR}/.browserslistrc:${DR__WORK_DIR}/.browserslistrc:ro
   - ${DR__ROOT_DIR}/.editorconfig:${DR__WORK_DIR}/.editorconfig:ro
@@ -31,7 +31,7 @@ x-serv-front-volumes: &x-serv-front-volumes
   - ${DR__ROOT_DIR}/vue.config.devserver.js:${DR__WORK_DIR}/vue.config.devserver.js:ro
   - ${DR__ROOT_DIR}/vue.config.js:${DR__WORK_DIR}/vue.config.js:ro
   - ${DR__ROOT_DIR}/webpack.alias.js:${DR__WORK_DIR}/webpack.alias.js:ro
-  # - ${DR__ROOT_DIR}/tests:${DR__WORK_DIR}/tests:ro
+  # - ${DR__ROOT_DIR}/test:${DR__WORK_DIR}/test:ro
 
 
 services:

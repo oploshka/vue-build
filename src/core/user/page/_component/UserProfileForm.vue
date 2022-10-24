@@ -153,7 +153,7 @@ export default {
 }
 
 .user-edit__image {
-  @include icon-size(10);
+  //@include icon-size(10);
   border-radius: 100%;
   margin-top: 58px;
   margin-right: 16px;
