@@ -5,7 +5,17 @@ import { RequestManager } from 'js-request-manager';
 import RequestSchema from './RequestSchema';
 import Settings from './Settings';
 
-let rm = RequestManager(RequestSchema, Settings);
+type ReplaceReturnType<T extends (...arg: any) => any> = (
+  ...arg: Parameters<T>
+) => Promise<ReturnType<T>>;
+
+export type Ex<T> = {
+  [P in keyof T]: T[P] extends (...arg: any) => any
+    ? ReplaceReturnType<T[P]>
+    : Ex<T[P]>;
+};
+
+let rm: Ex<typeof RequestSchema> = RequestManager(RequestSchema, Settings);
 
 // @ts-ignore
 rm.getListener().on('REQUEST_ERROR', (error) => {
@@ -24,3 +34,7 @@ rm.getListener().on('REQUEST_ERROR', (error) => {
 });
 
 export default rm;
+
+declare global {
+  const RequestManager: typeof rm;
+}

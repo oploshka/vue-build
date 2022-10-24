@@ -1,10 +1,10 @@
 
-import RequestClass from "js-request-manager/src/Class/RequestClass";
+import {MethodInfo} from 'js-request-manager';
 
 export default {
 
   getNewsList: () => {
-    return new RequestClass({
+    return new MethodInfo({
       name: 'getNewsList',
       type: 'GET',
       url: 'api://news',
@@ -12,12 +12,13 @@ export default {
         get: {},
         post: {},
       },
-      errorMessage: `Не удалось получить список новостей`
+      errorMessage: `Не удалось получить список новостей`,
+      provider: 'API',
     });
   },
 
   getNewsById: ({id}) => {
-    return new RequestClass({
+    return new MethodInfo({
       name: 'getTransactionInfo',
       type: 'GET',
       url: 'api://news/' + id,
@@ -25,7 +26,8 @@ export default {
         get: {},
         post: {},
       },
-      errorMessage: `Новость ${id} не найдена`
+      errorMessage: `Новость ${id} не найдена`,
+      provider: 'API',
     });
   },
 

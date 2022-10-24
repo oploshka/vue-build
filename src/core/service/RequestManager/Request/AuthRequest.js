@@ -1,10 +1,10 @@
 
-import RequestClass from "js-request-manager/src/Class/RequestClass";
+import {MethodInfo} from 'js-request-manager';
 
 export default {
 
   authorization: ({login, password}) => {
-    return new RequestClass({
+    return new MethodInfo({
       name  : 'authorization',
       type  : 'POST',
       url   : 'auth://authorize',
@@ -15,7 +15,7 @@ export default {
       responsePrepare: (data) => {
         return {token: data.jwt};
       },
-      // errorMessage: '',
+      provider: 'KEYCLOAK',
     });
   },
 
