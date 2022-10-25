@@ -1,9 +1,9 @@
 # Храним стили.
 
 - base = вспомогательные
-    - variable.scss     = scss переменные
-    - mixins.scss       = scss миксины
-    - root.scss         = css variable
+  - variable.scss     = scss переменные
+  - mixins.scss       = scss миксины
+  - root.scss         = css variable
 
 
 # Папка src/normalize

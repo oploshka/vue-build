@@ -33,11 +33,11 @@ const alias = {
   // site
   '@page'           : path.join(__dirname, './src/view/page'        ),
   '@component'      : path.join(__dirname, './src/view/component'   ),
-  '@part'           : path.join(__dirname, './src/view/part'        ),
   // site base
   '@field'          : path.join(__dirname, './src/view/base/field'     ),
   '@layout'         : path.join(__dirname, './src/view/base/layout'    ),
   // '@loading'        : path.join(__dirname, './src/view/base/loading'   ),
+  '@part'           : path.join(__dirname, './src/view/base/part'        ),
   '@widget'         : path.join(__dirname, './src/view/base/widget'    ),
   '@mixin'          : path.join(__dirname, './src/view/base/mixin'     ),
   

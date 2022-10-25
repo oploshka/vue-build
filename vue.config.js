@@ -43,6 +43,21 @@ module.exports = {
       .use('vue-svg-inline-loader')
       .loader('vue-svg-inline-loader')
       .options({ /* ... */ });
+  
+    // console.log(config.plugin('copy'), '======');
+    //
+    // config.plugin('copy').tap((entries) => {
+    //   entries[0].patterns.push({
+    //     from: path.resolve(__dirname, 'resource/asset'),
+    //     to: path.resolve(__dirname, 'web/'),
+    //     toType: 'dir',
+    //     noErrorOnMissing: true,
+    //     globOptions: { ignore: ['.DS_Store'] },
+    //   })
+    //
+    //   return entries
+    // })
+    
   },
 
   pluginOptions: {

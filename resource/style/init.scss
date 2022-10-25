@@ -3,25 +3,55 @@
 @import "./base/root.scss";
 
 // font
-@import "~@font/roboto/roboto.scss";
+//@import "~@font/roboto/roboto.scss";
 
 //
 @import "./src/normalize/reset.scss";
 @import "./src/normalize/normalize-box-sizing.scss";
 @import "./src/normalize/normalize.scss";
+@import "./src/normalize/svg.scss";
 @import "./src/normalize/custom-fix.scss";
+//
+@import "./src/normalize/user-reset-default.scss";
+
+
 
 // grid
-//@import "./src/grid/grid.scss";
-//@import "./src/grid/bootstrap-grid.css";
+//@import "./src/normalize/grid.scss";
+//@import "./src/normalize/bootstrap-grid.css";
 
 //
 @import './src/visual/base.scss';
 @import './src/visual/reduction.scss';
+//@import "./src/visual/ps-custom";
 
 // theme
-// @import './src/theme/card.scss';
 @import './src/theme/color.scss';
+@import './src/theme/btn.scss';
+@import './src/theme/svg-wrapper.scss';
+@import './src/theme/tooltip.scss';
+@import './src/theme/icon-group.scss';
 
-// custom
-@import './src/custom/svg.scss';
+//html {
+//  padding: 15px;
+//  background: red;
+//}
+//body {
+//  background: #fff;
+//}
+
+
+
+
+// Это добавлено только для примера!!!
+// https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css
+@import "./bootstrap.min.css";
+
+body {
+  // fix normalize => font: inherit;
+  font-family: var(--bs-body-font-family) !important;
+  font-size: var(--bs-body-font-size) !important;
+  font-weight: var(--bs-body-font-weight) !important;
+  line-height: var(--bs-body-line-height) !important;
+}
+//

@@ -1,6 +1,6 @@
 <template>
   <DialogCore/>
-  <component :is="currentLayout" id="appLayout" />
+  <component :is="currentLayout" id="app" />
 </template>
 
 <script>
@@ -19,8 +19,9 @@ export default {
 
 <style>
 
-#app, #appLayout {
+#app {
   height: 100%;
+  width: 100%;
 }
 
 </style>
