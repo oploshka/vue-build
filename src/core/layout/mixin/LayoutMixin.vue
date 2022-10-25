@@ -72,11 +72,3 @@ export default {
   },
 };
 </script>
-
-<style>
-
-#app, #appLayout {
-  height: 100%;
-}
-
-</style>

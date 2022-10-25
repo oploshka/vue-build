@@ -1,8 +1,8 @@
 <template>
-  <div>
+  <div class="layout-default">
     <HeaderPart title="VUE BUILD"/>
   
-    <div class="main-content container">
+    <div class="layout-default-main">
       <router-view />
     </div>
   
@@ -25,10 +25,14 @@ export default {
 
 </script>
 
-<style lang="scss">
-.main-content {
+<style lang="scss" scoped>
+.layout-default {
+  width: 100%;
+  height: 100%;
+}
+.layout-default-main {
   min-height: 100%;
   min-height: calc(100% - 80px);
-  //padding: 100px 0 50px 0;
+  padding: 80px 0 50px 0;
 }
 </style>

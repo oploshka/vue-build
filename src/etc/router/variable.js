@@ -2,7 +2,6 @@
 export const HOME           = 'HOME';
 export const ABOUT          = 'ABOUT';
 export const CONTACT        = 'CONTACT';
-export const CONTRACT        = 'CONTRACT';
 
 //
 export const USER_AUTH = 'USER_AUTH';

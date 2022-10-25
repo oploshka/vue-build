@@ -12,7 +12,7 @@
 @import "./src/normalize/svg.scss";
 @import "./src/normalize/custom-fix.scss";
 //
-@import "./src/normalize/user-reset-default.scss";
+//@import "./src/normalize/user-reset-default.scss";
 
 
 
@@ -53,5 +53,9 @@ body {
   font-size: var(--bs-body-font-size) !important;
   font-weight: var(--bs-body-font-weight) !important;
   line-height: var(--bs-body-line-height) !important;
+}
+html, body, #app {
+  height: 100%;
+  width: 100%;
 }
 //

@@ -1,6 +1,7 @@
 <template>
+  <!-- Vue 3 не мержит div#app -->
   <DialogCore/>
-  <component :is="currentLayout" id="app" />
+  <component :is="currentLayout" />
 </template>
 
 <script>
@@ -17,11 +18,7 @@ export default {
 };
 </script>
 
-<style>
+<style scoped lang="scss">
 
-#app {
-  height: 100%;
-  width: 100%;
-}
 
 </style>
