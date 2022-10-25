@@ -1,5 +1,4 @@
 
-
 const LAYOUT = {
   DEFAULT     :  'DEFAULT',
   BLOCK_CENTER:  'BLOCK_CENTER',

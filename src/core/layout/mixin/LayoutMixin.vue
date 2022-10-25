@@ -1,24 +1,9 @@
-<template>
-  <DialogCore/>
-  <component :is="currentLayout" id="appLayout" />
-</template>
-
 <script>
 
-import LAYOUT from "./layoutName";
-import LAYOUT_COMPONENT from "./layoutComponent";
-
-import DialogCore from "vue-dlg/src/DialogCore";
-
-// import Notifications from "@layout/Notifications";
-// template   => <Notifications />
-// components => Notifications,
+import {LAYOUT, LAYOUT_COMPONENT} from '@core/layout/init';
 
 export default {
-  name: 'layout-core',
-  components: {
-    DialogCore,
-  },
+  name: 'LayoutMixin',
   // mixins: [
   //   // grid,
   // ],
@@ -71,15 +56,15 @@ export default {
       //document.body.className = document.body.className.replace("loading","");
       // TODO: Установить минимальное время прелоадера??
       setTimeout(()=> {
-        document.body.className = document.body.className.replace("loading","");
+        document.body.className = document.body.className.replace('loading','');
       }, 300);
     }
     //
-    if (document.readyState == "complete") {
+    if (document.readyState === 'complete') {
       EndLoading();
     } else {
       document.onreadystatechange = () => {
-        if (document.readyState == "complete") {
+        if (document.readyState === 'complete') {
           EndLoading();
         }
       };

@@ -13,7 +13,6 @@ const alias = {
   // core
   '@core'           : path.join(__dirname, './src/core'      ),
   '@user'           : path.join(__dirname, './src/core/user'  ), // TODO: подумать куда и где разместить
-  '@layout'         : path.join(__dirname, './src/core/layout'    ),
   '@loading'        : path.join(__dirname, './src/core/loading'   ),
   
   // etc - настройки и конфигурация
@@ -23,25 +22,24 @@ const alias = {
   '@filter'         : path.join(__dirname, './src/etc/filter'      ),
   '@router'         : path.join(__dirname, './src/etc/router'      ), // TODO: подумать о необходимости
   
-  //
-  '@store'          : path.join(__dirname, './src/store'       ),
   
   // usr
   '@library'        : path.join(__dirname, './src/usr/library'     ),
   '@plugin'         : path.join(__dirname, './src/usr/plugin'      ),
   '@service'        : path.join(__dirname, './src/usr/service'     ),
+  '@store'          : path.join(__dirname, './src/usr/store'       ),
   
-  // site2
-  '@field'          : path.join(__dirname, './src/site2/field'     ),
-  // '@layout'         : path.join(__dirname, './src/site2/layout'    ),
-  // '@loading'        : path.join(__dirname, './src/site2/loading'   ),
-  '@widget'         : path.join(__dirname, './src/site2/widget'    ),
-  '@mixin'          : path.join(__dirname, './src/site2/mixin'     ),
   
-  // base site
-  '@page'           : path.join(__dirname, './src/site/page'        ),
-  '@component'      : path.join(__dirname, './src/site/component'   ),
-  '@part'           : path.join(__dirname, './src/site/part'        ),
+  // site
+  '@page'           : path.join(__dirname, './src/view/page'        ),
+  '@component'      : path.join(__dirname, './src/view/component'   ),
+  '@part'           : path.join(__dirname, './src/view/part'        ),
+  // site base
+  '@field'          : path.join(__dirname, './src/view/base/field'     ),
+  '@layout'         : path.join(__dirname, './src/view/base/layout'    ),
+  // '@loading'        : path.join(__dirname, './src/view/base/loading'   ),
+  '@widget'         : path.join(__dirname, './src/view/base/widget'    ),
+  '@mixin'          : path.join(__dirname, './src/view/base/mixin'     ),
   
   //
   '@test'           : path.join(__dirname, './test'),

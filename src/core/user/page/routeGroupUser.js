@@ -1,5 +1,5 @@
 import * as pageName from '@router/variable';
-import LAYOUT from '@layout/layoutName';
+import LAYOUT from '@layout/LayoutName';
 import * as PERMISSION from '@permission/Permission';
 
 export default [
