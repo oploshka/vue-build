@@ -13,7 +13,6 @@ const alias = {
   // core
   '@core'           : path.join(__dirname, './src/core'      ),
   '@user'           : path.join(__dirname, './src/core/user'  ), // TODO: подумать куда и где разместить
-  '@router'         : path.join(__dirname, './src/core/router'      ), // TODO: подумать о необходимости
   '@layout'         : path.join(__dirname, './src/core/layout'    ),
   '@loading'        : path.join(__dirname, './src/core/loading'   ),
   
@@ -22,7 +21,7 @@ const alias = {
   '@enum'           : path.join(__dirname, './src/etc/enum'        ), // TODO: подумать о необходимости
   '@config'         : path.join(__dirname, './src/etc/config'      ), // TODO: подумать о необходимости
   '@filter'         : path.join(__dirname, './src/etc/filter'      ),
-  // '@router'         : path.join(__dirname, './src/etc/router'      ), // TODO: подумать о необходимости
+  '@router'         : path.join(__dirname, './src/etc/router'      ), // TODO: подумать о необходимости
   
   //
   '@store'          : path.join(__dirname, './src/store'       ),

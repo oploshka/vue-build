@@ -11,7 +11,7 @@
 import HeaderSection   from '@component/Part/HeaderSection';
 import FooterSection  from '@component/Part/FooterSection';
 
-import {routerPageLoading} from '@router/router.store';
+import {routerPageLoading} from '@core/router/router.store';
 import LoadingView from '@loading/component/LoadingView';
 
 export default {

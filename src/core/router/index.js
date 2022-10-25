@@ -1,6 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router'
 // import * as $routeName from '@router/variable'; TODO correct way to add $routeName to Vue instance prototype
-import { routePrepare } from '@router/function/routePrepare';
+import { routePrepare } from '@core/router/function/routePrepare';
 
 
 const routes = [];
@@ -38,7 +38,7 @@ const router = createRouter({
 });
 
 //
-import {routerPageLoading} from '@router/router.store';
+import {routerPageLoading} from '@core/router/router.store';
 router.beforeEach((to, from, next) => {
   routerPageLoading.value = true;
   next();

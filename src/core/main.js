@@ -24,7 +24,7 @@ import userInitFunc from '@user/init';
 
 // дефолтный импорт
 import App    from '@layout';
-import router from '@router';
+import router from '@core/router';
 import * as $routeName from "@router/variable";
 
 
