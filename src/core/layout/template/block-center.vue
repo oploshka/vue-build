@@ -10,12 +10,9 @@
 
 
 <script>
-// import HeaderSection from "@component/Part/HeaderSection";
+
 export default {
   name: 'layout-block-center',
-  // components: {
-  //   HeaderSection
-  // }
 };
 </script>
 
@@ -23,7 +20,8 @@ export default {
 .layout-center-block {
   width: 100%;
   height: 100%;
-  background-color: var(--color-background);
+  background: #e5e5e5;
+
   padding: 15px;
 }
 
