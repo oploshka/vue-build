@@ -1,0 +1,96 @@
+
+.th-icon-btn {
+  width: 40px;
+  height: 40px;
+  // background: #C9EAF8;
+  border-radius: 8px;
+  
+  cursor: pointer;
+  
+  display: flex;
+  justify-content: center;
+  flex-wrap: nowrap;
+  align-items: center;
+  
+  &:hover {
+    // background: #A8DEF4;
+    background: #C9EAF8;
+  }
+}
+
+/*
+
+<div class="th-btn">click me</div>
+
+*/
+
+.th-btn {
+  border-radius: 8px;
+  height: 40px;
+  min-width: 120px;
+  display: flex;
+  justify-content: center;
+  padding: 0 20px 0 20px;
+  align-items: center;
+  cursor: pointer;
+  font-family: Inter, sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  transition: background-color 0.5s ease;
+  border: none;
+
+  &.th-btn-primary {
+    background: var(--color-primary);
+    color: var(--color-white);
+
+    &.th-btn--disabled {
+      cursor: not-allowed;
+      pointer-events: none;
+      background: var(--color-primary-accent-50);
+    }
+  }
+
+  &.th-btn-secondary {
+    background: var(--color-primary-accent-25);
+    color: var(--color-black);
+
+    &.th-btn--disabled {
+      cursor: not-allowed;
+      pointer-events: none;
+      color: var(--color-bluegray);
+      background: var(--color-table-stroke-gray);
+      border-color: var(--color-table-stroke-gray);
+    }
+
+    &:hover {
+      box-shadow: 0 0 8px rgba(201, 234, 248, 0.2), 0 0 20px #C9EAF8;
+    }
+
+    &:active {
+      box-shadow: inset 0 3px 0 rgba(38, 173, 228, 0.1), inset 0 1px 5px rgba(38, 173, 228, 0.1);
+    }
+  }
+
+  &-bordered {
+    border: 1px solid #C1D4DC;
+    color: var(--color-black);
+  }
+
+  &-primary:hover:not(.th-btn--disabled) {
+    box-shadow: 0 0 20px rgba(47, 154, 255, 0.6);
+  }
+
+  &-bordered:hover {
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+  }
+
+  .th-btn-disabled {
+    border-color: #EAEAEA;
+    background-color: #E7E8EA;
+    color: #8E9095;
+    pointer-events: none;
+    cursor: not-allowed !important;
+  }
+
+}

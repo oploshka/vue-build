@@ -1,0 +1,72 @@
+version: '3.5'
+
+# ENV:
+# # DR__ROOT_DIR="../"
+# # DR__WORK_DIR="/var/www/html"
+
+# sites
+x-serv-front-volumes: &x-serv-front-volumes
+  # dir
+  - ${DR__ROOT_DIR}/node_modules:${DR__WORK_DIR}/node_modules:rw
+  - ${DR__ROOT_DIR}/public:${DR__WORK_DIR}/public:ro
+  - ${DR__ROOT_DIR}/resource:${DR__WORK_DIR}/resource:ro
+  - ${DR__ROOT_DIR}/src:${DR__WORK_DIR}/src:ro
+  - ${DR__ROOT_DIR}/test:${DR__WORK_DIR}/test:ro
+  # - ${DR__ROOT_DIR}/test:${DR__WORK_DIR}/test:ro
+  # files
+  - ${DR__ROOT_DIR}/.browserslistrc:${DR__WORK_DIR}/.browserslistrc:ro
+  - ${DR__ROOT_DIR}/.editorconfig:${DR__WORK_DIR}/.editorconfig:ro
+  - ${DR__ROOT_DIR}/.env:${DR__WORK_DIR}/.env:ro
+  - ${DR__ROOT_DIR}/.env.example:${DR__WORK_DIR}/.env.example:ro
+  - ${DR__ROOT_DIR}/.eslintrc.js:${DR__WORK_DIR}/.eslintrc.js:ro
+  - ${DR__ROOT_DIR}/.gitignore:${DR__WORK_DIR}/.gitignore:ro
+  - ${DR__ROOT_DIR}/babel.config.js:${DR__WORK_DIR}/babel.config.js:ro
+  - ${DR__ROOT_DIR}/cypress.json:${DR__WORK_DIR}/cypress.json:ro
+  - ${DR__ROOT_DIR}/jest.config.js:${DR__WORK_DIR}/jest.config.js:ro
+  - ${DR__ROOT_DIR}/package.json:${DR__WORK_DIR}/package.json:rw
+  - ${DR__ROOT_DIR}/package-lock.json:${DR__WORK_DIR}/package-lock.json:rw
+  - ${DR__ROOT_DIR}/README.md:${DR__WORK_DIR}/README.md:ro
+  - ${DR__ROOT_DIR}/tsconfig.json:${DR__WORK_DIR}/tsconfig.json:ro
+  - ${DR__ROOT_DIR}/vue.alias.js:${DR__WORK_DIR}/vue.alias.js:ro
+  - ${DR__ROOT_DIR}/vue.config.devserver.js:${DR__WORK_DIR}/vue.config.devserver.js:ro
+  - ${DR__ROOT_DIR}/vue.config.js:${DR__WORK_DIR}/vue.config.js:ro
+  - ${DR__ROOT_DIR}/webpack.alias.js:${DR__WORK_DIR}/webpack.alias.js:ro
+  # - ${DR__ROOT_DIR}/test:${DR__WORK_DIR}/test:ro
+
+
+services:
+
+  serv_front:
+    stdin_open: true
+    tty: true
+    # command: "bash"
+    #
+    container_name: nodejs-vue
+    build:
+      context: ./
+      dockerfile: nodejs-vue.dockerfile
+      args:
+        - USER_ID
+        - GROUP_ID
+    # environment:
+    #   XDEBUG_CONFIG: ${PHP_XDEBUG_CONFIG}
+    #   PHP_IDE_CONFIG: ${PHP_IDE_CONFIG}
+    #   PHP_INI: ${PHP_INI}
+    # env_file:
+    #   - '.env'
+    ports:
+      - ${DOMAIN_PORT}:${DOMAIN_PORT}
+    volumes:
+      *x-serv-front-volumes
+    networks:
+      - docker-network
+
+
+#Docker Networks
+networks:
+  docker-network:
+    driver: bridge
+    ipam:
+      driver: default
+      config:
+        - subnet: 192.168.220.0/28

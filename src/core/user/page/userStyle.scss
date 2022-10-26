@@ -1,0 +1,54 @@
+.auth__main {
+  width: 512px;
+}
+
+.auth__title {
+  margin: 0 0 32px;
+  text-align: center;
+  font-weight: 500;
+  color: #1B2E47;
+}
+
+.auth__subtitle {
+  font-size: 16px;
+  line-height: 1.5;
+  color: var(--color-gray-06);
+  margin-bottom: 2rem;
+}
+
+.auth__text {
+  color: var(--color-gray-08);
+  font-size: 16px;
+  line-height: inherit;
+  margin-bottom: 24px;
+}
+
+.auth__link {
+  color: var(--color-secondary);
+  font-size: inherit;
+  line-height: inherit;
+  text-decoration: underline;
+}
+
+.auth__btn {
+  display: inline-block;
+  text-align: center;
+  width: 100%;
+  border-radius: 8px;
+  background-color: var(--color-primary);
+  color: #fff;
+  padding: 12px 24px;
+  border: 0;
+  cursor: pointer;
+  line-height: 24px;
+  font-size: 16px;
+  transition: 0.25s ease;
+  &:hover {
+    background-color: #F98D5F;
+  }
+}
+
+.auth__bottom {
+  font-size: 14px;
+  line-height: 1.5;
+}

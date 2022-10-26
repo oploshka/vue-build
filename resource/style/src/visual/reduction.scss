@@ -3,3 +3,30 @@
 .tmp {
   outline: 1px dashed lightgray;
 }
+
+.th-px {
+  padding-left: 2.5rem;
+  padding-right: 2.5rem;
+}
+
+.pointer {
+  cursor: pointer;
+}
+
+.title {
+  font-family: var(--default-title-font-family);
+  font-size: 28px;
+  color: var(--color-black);
+  font-weight: 600;
+  margin-bottom: 16px;
+}
+
+.title-rubik {
+  font-family: var(--default-title-font-family);
+  color: var(--color-black);
+}
+
+.subtitle {
+  font-family: var(--default-title-font-family);
+  font-size: 22px;
+}

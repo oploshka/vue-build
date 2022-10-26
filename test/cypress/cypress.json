@@ -1,5 +1,5 @@
 {
-  "baseUrl": "http://pluspay.test:9090",
+  "baseUrl": "$[DOMAIN_PROTOCOL]://$[DOMAIN_NAME]:$[DOMAIN_PORT]",
 
   "viewportWidth": 1300,
   "viewportHeight": 1000,

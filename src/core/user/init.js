@@ -1,23 +1,12 @@
-import Vue from 'vue';
 
-//
-import initUser from "@user/initUser";
-import UserClass from "@user/UserClass";
-
-//
-import initPermission from "@user/initPermission";
-
-
-const User = new UserClass();
-initPermission();
+import AuthCore from '@user/core/AuthCore';
 
 export default async function () {
-
-  if(global.User || Vue.prototype.$user) {
+  if( global.USER ) {
     console.error('Duplicate user init');
-    return User;
+    return global.USER;
   }
-  await initUser(User);
 
-  return User;
+  const $user = await AuthCore();
+  return $user;
 }

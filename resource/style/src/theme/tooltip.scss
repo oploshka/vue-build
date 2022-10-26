@@ -1,0 +1,34 @@
+.v-popper__popper {
+  .v-popper__arrow-outer {
+    border-width: 7px;
+  }
+  &[data-popper-placement=top] {
+    .v-popper__arrow-outer {
+      top: -1px;
+    }
+  }
+  &[data-popper-placement^=bottom] {
+    .v-popper__arrow-outer {
+      bottom: -1px;
+    }
+  }
+  &[data-popper-placement=left] {
+    .v-popper__arrow-outer {
+      left: -1px;
+    }
+  }
+  &[data-popper-placement=rigth] {
+    .v-popper__arrow-outer {
+      right: -1px;
+    }
+  }
+}
+
+.v-popper__wrapper .v-popper__inner {
+  font-family: Inter, sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 140%;
+  //border-color: var(--color-black);
+}

@@ -1,5 +1,60 @@
-:root {
-  --color-main: #F5AC1C;
-}
+@use 'sass:meta';
 
-// TODO: @import "~@widgetFormValidate/style/const.scss";
+:root {
+  // ==== DEFAULT SETTINGS:
+
+  // font family
+  --default-font-family: 'Inter';
+  --default-font-size: 1rem;
+  --default-line-height: 1.4;
+  --default-font-weight: 400;
+
+  // color
+  --default-color: 1.4;
+  --default-background: 1.4;
+
+  // TODO: title settings
+  --default-title-font-family: 'Rubik';
+
+  // ==== DEFAULT SETTINGS END;
+
+  // custom
+  //--color-primary: #{$color-primary};
+  --color-secondary: #{$color-secondary};
+  //--color-black: #{$color-black};
+  --color-icon-default: #{$color-icon-default};
+  --color-icon-active: #{$color-icon-active};
+  --color-icon-gray: #{$color-icon-gray};
+
+  // custom group #1
+  --color-white: #ffffff;
+  --color-select-line: #f7f9fb;
+  --color-driver: #edf4fd;
+  --color-table-stroke-gray: #e7e8ea;
+  --color-bluegray: #a4b0b5;
+  --color-disable: #8e9095;
+  --color-black: #3a4042;
+  --color-menu: #1b2e47;
+  --color-default-black: #000000;
+
+  // custom group #2
+  --color-caption: rgba(16, 24, 40, 0.6); //#101828
+  --color-orange: rgba(255, 150, 32, 1); //#FF9620
+  --color-green: rgba(89, 168, 117, 1); //#59A875
+  --color-attention: rgba(237, 57, 57, 1); //#ED3939
+
+  // custom group #3
+  --color-primary-accent-10: #e9f7fc;
+  --color-primary-accent-25: #c9eaf8;
+  --color-primary-accent-50: #a8def4;
+  --color-primary: #26ade4;
+  --color-primary-accent-dark: #1595c9;
+
+  --color-state-available-text: #59a875;
+  --color-state-not-available-text: #59a875;
+  --color-state-available-with-restrictions-text: #59a875;
+
+  --color-state-available-bg: rgba(10, 203, 91, 0.15);
+  --color-state-not-available-bg: rgba(225, 80, 80, 0.2);
+  --color-state-available-with-restrictions-bg: rgba(255, 163, 7, 0.14);
+}

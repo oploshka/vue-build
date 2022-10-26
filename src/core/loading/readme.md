@@ -1,15 +1,8 @@
 
-@layout/index.vue добавить
-```js
+      https://codepen.io/camdenfoucht/pen/BVxawq
 
-    mounted() {
-      // магическая штука для отключения лоадинга
-      document.onreadystatechange = () => {
-        if (document.readyState == "complete") {
-          document.body.className = document.body.className.replace("loading","");
-        }
-      };
-    },
-```
+Проблемы с лоадингом в момент когда компонент страницы не загрузился
++ необходимо учесть загрузку layout (или грузить их в начале)
 
-@/public/index.html заменить ./index-loading.html
+https://stackoverflow.com/questions/44886812/how-to-display-a-loading-animation-while-a-lazy-loaded-route-component-is-bein
+

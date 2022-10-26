@@ -1,0 +1,17 @@
+{
+  "name": "test-server",
+  "version": "1.0.0",
+  "scripts": {
+    "dev": "nodemon ./src/server.js",
+    "run": "node ./src/server.js"
+  },
+  "dependencies": {
+    "dotenv": "^16.0.0",
+    "module-alias": "^2.2.2"
+  },
+  "_moduleAliases": {
+    "@root": ".",
+    "@src": "./src",
+    "@store": "./src/store"
+  }
+}
