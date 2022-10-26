@@ -22,7 +22,7 @@
 
 <script>
 export default {
-  name: "Pagination",
+  name: 'Pagination',
   props: {
     isActive: Boolean
   }

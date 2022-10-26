@@ -26,7 +26,7 @@ import userInitFunc from '@user/init';
 import '@core/layout/init';
 import App    from '@layout/Layout';
 import router from '@core/router';
-import * as $routeName from "@router/variable";
+import * as $routeName from '@router/variable';
 
 
 global.ENUM           = $enum;
@@ -40,7 +40,7 @@ userInitFunc().then(($user) => {
   global.USER = $user;
 
   // 1. Assign app to a variable
-  let app = createApp(App);
+  const app = createApp(App);
 
   // 2. Assign the global variable before mounting
   app.config.globalProperties.$enum       = $enum;

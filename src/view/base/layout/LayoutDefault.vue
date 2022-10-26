@@ -42,6 +42,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+
 .layout-default {
   width: 100%;
   height: 100%;
@@ -51,4 +52,5 @@ export default {
   min-height: calc(100% - 80px);
   padding: 80px 0 50px 0;
 }
+
 </style>
