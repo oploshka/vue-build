@@ -3,7 +3,12 @@
     <HeaderPart title="VUE BUILD"/>
   
     <div class="layout-default-main">
-      <router-view />
+      <template v-if="routerPageLoading">
+        <div style="width: 100%; height: 100%; padding: 10px;"><LoadingView/></div>
+      </template>
+      <template v-else>
+        <router-view />
+      </template>
     </div>
   
     <FooterPart/>
@@ -15,11 +20,22 @@
 import HeaderPart from '@part/HeaderPart';
 import FooterPart from '@part/FooterPart';
 
+// TODO: fix
+import {routerPageLoading} from '@core/router/router.store';
+import LoadingView from '@loading/component/LoadingView';
+
 export default {
   name: 'LayoutDefault',
   components: {
     HeaderPart,
     FooterPart,
+    //
+    LoadingView,
+  },
+  computed: {
+    routerPageLoading() {
+      return routerPageLoading.value;
+    }
   },
 };
 

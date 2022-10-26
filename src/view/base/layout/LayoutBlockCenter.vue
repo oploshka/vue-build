@@ -12,7 +12,7 @@
 <script>
 
 export default {
-  name: 'layout-block-center',
+  name: 'LayoutBlockCenter',
 };
 </script>
 

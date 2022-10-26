@@ -5,7 +5,7 @@
 
 <script>
 export default {
-  name: 'layout-fullscreen',
+  name: 'LayoutFullscreen',
   components: {}
 };
 </script>
