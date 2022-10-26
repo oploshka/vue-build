@@ -1,0 +1,37 @@
+
+
+
+/*
+<div class="th-icon-group">
+  <div class="th-icon-group__item" @click="() => {}">
+    <img svg-inline src="" />
+  </div>
+</div>
+*/
+
+.th-icon-group {
+  display: flex;
+  align-items: center;
+  margin-left: auto;
+  gap: 2px;
+  
+  
+  .th-icon-group__item {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+  
+    svg path { fill: var(--color-black); }
+    &:hover svg path { fill: var(--color-icon-active); }
+  }
+  
+  .th-icon-group__item.th-icon-group__item--disabled {
+    cursor: not-allowed;
+    svg path { fill: var(--color-bluegray); }
+    &:hover svg path { fill: var(--color-bluegray); }
+  }
+  
+}

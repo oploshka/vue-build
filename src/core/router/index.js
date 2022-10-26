@@ -1,39 +1,51 @@
-import Vue from 'vue';
-import VueRouter from 'vue-router';
-import * as $routeName from '@router/variable';
-import { routePrepare } from '@router/function/routePrepare';
+import { createRouter, createWebHistory } from 'vue-router'
+// import * as $routeName from '@router/variable'; TODO correct way to add $routeName to Vue instance prototype
+import { routePrepare } from '@core/router/routePrepare';
 
-Vue.prototype.$routeName = $routeName;
 
-// user
-import routeUser        from '@user/page/routeGroupUser';
-//
-import routeBase     from './group/base';
-//
-import routeSystem      from '@router/page/routeGroupSystem';
+const routes = [];
+const addRoutes = (routeList) => {
+  for(let i = 0; i < routeList.length; i++){
+    for(let j = 0; j < routeList[i].length; j++){
+      routes.push(routePrepare(routeList[i][j]));
+    }
+  }
+};
 
-Vue.use(VueRouter);
+// add user routes
+import routeList from '@router/routeList';
+addRoutes(routeList);
 
-let routeList = [
-  // custom
-  routeBase,
-  // user
-  routeUser,
-  //
+// add system routes
+import routeSystem    from '@router/page/routeGroupSystem';
+let routeListAdditional = [
   routeSystem,
 ];
 
-const routes = [];
-for(let i = 0; i < routeList.length; i++){
-  for(let j = 0; j < routeList[i].length; j++){
-    routes.push(routePrepare(routeList[i][j]));
-  }
+// Test routes
+import routeGroupTest from '@test/page/routeGroupTest';
+if (process.env.NODE_ENV === 'development') {
+  routeListAdditional.push(routeGroupTest);
 }
+addRoutes(routeListAdditional);
 
-const router = new VueRouter({
-  mode: 'history',
-  base: process.env.BASE_URL,
+
+//
+const router = createRouter({
+  // history: createWebHistory(process.env.BASE_URL),
+  history: createWebHistory(),
   routes
 });
+
+//
+import {routerPageLoading} from '@core/router/router.store';
+router.beforeEach((to, from, next) => {
+  routerPageLoading.value = true;
+  next();
+});
+router.afterEach(() => {
+  routerPageLoading.value = false;
+});
+//
 
 export default router;

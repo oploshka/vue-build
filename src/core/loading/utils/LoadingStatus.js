@@ -1,0 +1,5 @@
+
+// const LOAD_STATUS_CREATE    = 'create';
+export const LOAD_STATUS_LOAD    = 'LOAD_STATUS_LOAD';
+export const LOAD_STATUS_SUCCESS = 'LOAD_STATUS_SUCCESS';
+export const LOAD_STATUS_ERROR   = 'LOAD_STATUS_ERROR';

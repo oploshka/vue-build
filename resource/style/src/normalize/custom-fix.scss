@@ -1,7 +1,4 @@
-//# Дополнительные исправления
-svg {
-  outline: none;
-}
+
 //
 button,
 input {
@@ -9,34 +6,4 @@ input {
   &:focus {
     outline: none;
   }
-  /*
-  &::-webkit-input-placeholder {
-    font-family       : var(--fve-placeholder--font-family      ) !important;
-    //font-size         : var(--fve-placeholder--font-size        ) !important;
-    font-weight       : var(--fve-placeholder--font-weight      ) !important;
-    color             : var(--fve-placeholder--font-color       ) !important;
-    line-height       : var(--fve-placeholder--line-height      ) !important;
-  }
-  &:-ms-input-placeholder      {
-    font-family       : var(--fve-placeholder--font-family      ) !important;
-    //font-size         : var(--fve-placeholder--font-size        ) !important;
-    font-weight       : var(--fve-placeholder--font-weight      ) !important;
-    color             : var(--fve-placeholder--font-color       ) !important;
-    line-height       : var(--fve-placeholder--line-height      ) !important;
-  }
-  &::-ms-input-placeholder     {
-    font-family       : var(--fve-placeholder--font-family      ) !important;
-    //font-size         : var(--fve-placeholder--font-size        ) !important;
-    font-weight       : var(--fve-placeholder--font-weight      ) !important;
-    color             : var(--fve-placeholder--font-color       ) !important;
-    line-height       : var(--fve-placeholder--line-height      ) !important;
-  }
-  &::placeholder               {
-    font-family       : var(--fve-placeholder--font-family      ) !important;
-    //font-size         : var(--fve-placeholder--font-size        ) !important;
-    font-weight       : var(--fve-placeholder--font-weight      ) !important;
-    color             : var(--fve-placeholder--font-color       ) !important;
-    line-height       : var(--fve-placeholder--line-height      ) !important;
-  }
-  */
 }

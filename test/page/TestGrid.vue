@@ -193,7 +193,7 @@ export default {
 <style lang="scss" scoped>
 
 main {
-  @import "~@style/src/b5_my_grid/bootstrap-grid.scss";
+  //@import "~@style/src/b5_my_grid/bootstrap-grid.scss";
 
 
   .bd-placeholder-img {
