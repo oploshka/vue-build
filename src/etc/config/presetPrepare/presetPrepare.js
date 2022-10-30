@@ -25,15 +25,16 @@ switch (PRESET.URL_MODE) {
     ExtractionServerUrl = PRESET.URL_DEV_PROXY_EXTRACTION;
     // MockServerUrl   = PRESET.URL_DEV_PROXY_MOCK;
     break;
-  case 'SUB_DOMAIN':
-    let protocol  = document.location.protocol + '//';
-    let host      = document.location.host;
+  case 'SUB_DOMAIN': {
+    const protocol  = document.location.protocol + '//';
+    const host      = document.location.host;
     //
     AuthServerUrl       = protocol + PRESET.URL_SUB_DOMAIN_AUTH + host;
     ApiServerUrl        = protocol + PRESET.URL_SUB_DOMAIN_API  + host;
     ExtractionServerUrl = protocol + PRESET.URL_SUB_DOMAIN_EXTRACTION  + host;
     // MockServerUrl   = protocol + PRESET.URL_SUB_DOMAIN_MOCK + host;
     break;
+  }
   default:
     console.error('Unsupported VUE_APP_URL_MODE', PRESET.URL_MODE);
     break;

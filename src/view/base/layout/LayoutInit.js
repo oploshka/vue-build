@@ -3,7 +3,7 @@ import LayoutDefault      from './LayoutDefault';
 import LayoutBlockCenter  from './LayoutBlockCenter';
 import LayoutFullscreen   from './LayoutFullscreen';
 
-import LAYOUT from './LayoutName'
+import LAYOUT from './LayoutName';
 
 export default (setLayout) => {
   setLayout(LAYOUT.DEFAULT,       LayoutDefault);
