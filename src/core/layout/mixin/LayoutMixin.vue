@@ -43,7 +43,7 @@ export default {
 
       let ln = this.layoutName;
       if(!LAYOUT_COMPONENT[ln]){
-        console.error('[LAYOUT_COMPONENT]: undefined template name')
+        console.error('[LAYOUT_COMPONENT]: undefined template name');
         ln = LAYOUT.DEFAULT;
       }
 
@@ -58,7 +58,7 @@ export default {
       setTimeout(()=> {
         document.body.className = document.body.className.replace('loading','');
       }, 300);
-    }
+    };
     //
     if (document.readyState === 'complete') {
       EndLoading();

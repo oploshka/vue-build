@@ -32,7 +32,7 @@ export default (date) => {
   const mm = date.getMonth();
   // if (mm < 10) mm = '0' + mm
   const yyyy = date.getFullYear();
-  const n = date.getDay();
+  // const n = date.getDay();
   // return days[n] + ' ' + dd + ' ' + monthName[mm] + '   ' + yyyy;
   return dd + ' ' + monthName[mm] + '   ' + yyyy;
 };
