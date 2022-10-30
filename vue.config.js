@@ -18,17 +18,17 @@ module.exports = {
   devServer: devServer,
 
   // рендерим все в папку
-  outputDir: path.resolve(__dirname, './web'),
+  outputDir: path.resolve(__dirname, './build'),
   assetsDir: './resource/',
 
   filenameHashing: true,
   css: {
     loaderOptions: {
       sass: {
-        additionalData: "@import '@style/base/variable.scss'",
+        additionalData: '@import "@style/base/variable.scss"',
       },
       scss: {
-        additionalData: "@import '@style/base/variable.scss';",
+        additionalData: '@import "@style/base/variable.scss";',
       },
     },
     // sourceMap: true

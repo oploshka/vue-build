@@ -1,9 +1,9 @@
 //
-import dayjs from "dayjs";
+import dayjs from 'dayjs';
 
 // locale
-require("dayjs/locale/ru");
-dayjs.locale("en");
+require('dayjs/locale/ru');
+dayjs.locale('en');
 
 // //
 // const customParseFormat = require('dayjs/plugin/customParseFormat');
