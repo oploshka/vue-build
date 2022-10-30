@@ -1,0 +1,22 @@
+
+//html, body, a {
+//  font-family: var(--default-font-family);
+//  font-size: var(--default-font-size);
+//  line-height: var(--default-line-height);
+//  font-weight: var(--default-font-weight);
+//}
+//body {
+//  color: var(--default-color);
+//}
+
+html, body, #app {
+  height: 100%;
+  width: 100%;
+}
+
+a {
+  text-decoration: none;
+}
+html {
+  overflow: hidden;
+}

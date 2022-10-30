@@ -34,7 +34,7 @@ global.CONFIG         = $config;
 global.RequestManager = $requestManager;
 
 // глобальные стили
-import '@style/init.scss';
+import '@style/index.scss';
 
 userInitFunc().then(($user) => {
   global.USER = $user;

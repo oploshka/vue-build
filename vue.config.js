@@ -25,10 +25,10 @@ module.exports = {
   css: {
     loaderOptions: {
       sass: {
-        additionalData: '@import "@style/base/variable.scss"',
+        additionalData: '@import "@style/base/var/variable.scss"',
       },
       scss: {
-        additionalData: '@import "@style/base/variable.scss";',
+        additionalData: '@import "@style/base/var/variable.scss";',
       },
     },
     // sourceMap: true
@@ -64,8 +64,8 @@ module.exports = {
     'style-resources-loader': {
       preProcessor: 'scss',
       patterns: [
-        path.resolve(__dirname, './resource/style/base/variable.scss'),
-        path.resolve(__dirname, './resource/style/base/mixins.scss')
+        path.resolve(__dirname, './resource/style/base/var/variable.scss'),
+        path.resolve(__dirname, './resource/style/base/var/mixins.scss')
       ]
     }
   },

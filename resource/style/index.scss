@@ -1,0 +1,19 @@
+@import "./base/var/variable.scss";
+@import "./base/var/mixins.scss";
+@import "./base/var/root.scss";
+
+// font
+//@import "~@font/roboto/roboto.scss";
+
+//
+@import "./base/normalize/reset.scss";
+@import "./base/normalize/normalize-box-sizing.scss";
+@import "./base/normalize/normalize.scss";
+@import "./base/normalize/svg.scss";
+@import "./base/normalize/custom-fix.scss";
+
+//
+@import './custom/init.scss';
+
+// develop
+// @import './dev/debug.scss';
