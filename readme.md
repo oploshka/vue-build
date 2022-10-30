@@ -18,5 +18,3 @@
 ## Структура папок
 
 [Структура папок описана тут](./doc/codestyle/10_vue-dir-structure.md)
-
-## TODO
